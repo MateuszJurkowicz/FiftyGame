@@ -10,13 +10,21 @@
 
     <Button
         android:id="@+id/joinGameButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Dołącz do gry" />
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="200dp"
+        android:backgroundTint="#515151"
+        android:text="@string/game_join_button"
+        android:textSize="18sp"
+        app:cornerRadius="5dp" />
 
     <Button
         android:id="@+id/createGameButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Stwórz nową grę" />
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="#757575"
+        android:text="@string/game_create_button"
+        android:textSize="18sp"
+        app:cornerRadius="5dp" />
 </LinearLayout>

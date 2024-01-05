@@ -96,3 +96,7 @@ w
 G.idea/sonarlint/issuestore/7/4/749edfcc96398253e5b3416184e95c46621da850,d\4\d4115e7e13112fe372c450a6354345d7e7531a57
 w
 G.idea/sonarlint/issuestore/8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e,3\2\32813322c99a6c8a141ab2dc12bc10af3425f1b4
+m
+=app/src/main/java/com/example/fiftygame/CreateGameActivity.kt,0\3\030d19431f8dec66aad7bf449bdff138720dae87
+k
+;app/src/main/java/com/example/fiftygame/JoinGameActivity.kt,4\5\45f2ff19f55822d6536eb756c9f10f6fd0999593
