@@ -1,15 +1,14 @@
 <resources>
-    <string name="app_name">FiftyGame</string>
+    <string name="app_name">Fifty Game</string>
     <string name="game_join_button">Dołącz do gry</string>
     <string name="game_create_button">Stwórz nową grę</string>
     <string name="settings_item">Ustawienia</string>
     <string name="help_item">Pomoc</string>
     <string name="title_activity_join_game">JoinGameActivity</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="title_activity_create_game">CreateGameActivity</string>
+    <string name="pin_edit_text">PIN</string>
+    <string name="name_edit_text">Wpisz tu swoje imię</string>
+    <string name="join_button">Dołącz</string>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris

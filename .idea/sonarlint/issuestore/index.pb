@@ -100,3 +100,13 @@ m
 =app/src/main/java/com/example/fiftygame/CreateGameActivity.kt,0\3\030d19431f8dec66aad7bf449bdff138720dae87
 k
 ;app/src/main/java/com/example/fiftygame/JoinGameActivity.kt,4\5\45f2ff19f55822d6536eb756c9f10f6fd0999593
+g
+7app/src/main/java/com/example/fiftygame/GameActivity.kt,5\e\5ea02868436cbcea5add63a28a9704d42d69bf53
+b
+2app/src/main/java/com/example/fiftygame/Field.java,d\2\d2cbf85aed402aeab7dba527bcc6aaef2936136c
+j
+:app/src/main/java/com/example/fiftygame/FieldsStorage.java,4\4\44587bfa7ff071aed69dadd4594278ed2c509a24
+`
+0app/src/main/java/com/example/fiftygame/Field.kt,2\3\231fb17604e46d3d1effa0d546dfcc1b7f7d04bf
+h
+8app/src/main/java/com/example/fiftygame/FieldsStorage.kt,e\a\ea4a1ec6b477c3cb346cd5acef7cf098c4fcbefe

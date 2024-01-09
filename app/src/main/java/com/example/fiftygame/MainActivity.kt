@@ -12,8 +12,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        joinGameButton = findViewById(R.id.joinGameButton)
-        createGameButton = findViewById(R.id.createGameButton)
+        joinGameButton = findViewById(R.id.moveToJoinGameButton)
+        createGameButton = findViewById(R.id.moveToCreateGameButton)
         joinGameButton.setOnClickListener{
             val intent = Intent(this@MainActivity, JoinGameActivity::class.java)
             startActivity(intent)
