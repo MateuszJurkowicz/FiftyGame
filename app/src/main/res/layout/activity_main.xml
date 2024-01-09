@@ -12,7 +12,7 @@
         android:id="@+id/joinGameButton"
         android:layout_width="200dp"
         android:layout_height="60dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="350dp"
         android:backgroundTint="#515151"
         android:text="@string/game_join_button"
         android:textSize="18sp"
