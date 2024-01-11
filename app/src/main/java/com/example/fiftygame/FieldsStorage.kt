@@ -11,7 +11,7 @@ class FieldsStorage {
         for(i in 0 until 50)
         {
             val field = Field()
-            field.setNumber(i)
+            field.number = i
             fields.add(field)
         }
     }
