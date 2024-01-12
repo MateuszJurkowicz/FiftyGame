@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/create_game_nav"
+    app:startDestination="@id/listFieldsFragment">
+    <fragment
+        android:id="@+id/listFieldsFragment"
+        android:name="com.example.fiftygame.create.ListFieldsFragment"
+        android:label="List"
+        tools:layout="@layout/fragment_list_fields" >
+        <action
+            android:id="@+id/action_listFieldsFragment_to_addFieldFragment"
+            app:destination="@id/addFieldFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addFieldFragment"
+        android:name="com.example.fiftygame.create.AddFieldFragment"
+        android:label="Add"
+        tools:layout="@layout/fragment_add_field" >
+        <action
+            android:id="@+id/action_addFieldFragment_to_listFieldsFragment"
+            app:destination="@id/listFieldsFragment" />
+    </fragment>
+</navigation>

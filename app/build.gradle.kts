@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -33,6 +35,9 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    kapt {
+        generateStubs = true
+    }
 }
 
 dependencies {
@@ -48,20 +53,22 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     // Navigation Component
-    implementation ("androidx.navigation:navigation-fragment-ktx:2.2.2")
-    implementation ("androidx.navigation:navigation-ui-ktx:2.2.2")
+    implementation ("androidx.navigation:navigation-fragment-ktx:2.7.6")
+    implementation ("androidx.navigation:navigation-ui-ktx:2.7.6")
     // Room components
-    implementation ("androidx.room:room-runtime:2.2.5")
-    implementation ("androidx.room:room-ktx:2.2.5")
-    androidTestImplementation ("androidx.room:room-testing:2.2.5")
+    implementation ("androidx.room:room-runtime:2.6.1")
+    kapt ("androidx.room:room-compiler:2.6.1")
+    implementation ("androidx.room:room-ktx:2.6.1")
+    androidTestImplementation ("androidx.room:room-testing:2.6.1")
+    kapt ("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31")
 
     // Lifecycle components
     implementation ("androidx.lifecycle:lifecycle-extensions:2.2.0")
-    implementation ("androidx.lifecycle:lifecycle-common-java8:2.2.0")
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
+    implementation ("androidx.lifecycle:lifecycle-common-java8:2.7.0")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
 
     // Kotlin components
-    implementation ("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.72")
-    api ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.5")
-    api ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.5")
+    implementation ("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.0")
+    api ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
+    api ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
 }

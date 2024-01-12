@@ -8,6 +8,5 @@ data class Field (
     @PrimaryKey(autoGenerate = true)
     val id: Int,
     val question: String,
-    val answer: String,
     val correctAnswer: String
 )

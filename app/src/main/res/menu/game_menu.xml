@@ -15,4 +15,9 @@
         android:icon="@drawable/ic_action_settings"
         android:title="@string/help_item"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/fragmentContainerView"
+        android:icon="@drawable/ic_navigate_before"
+        android:title="Cofnij"
+        app:showAsAction="ifRoom" />
 </menu>

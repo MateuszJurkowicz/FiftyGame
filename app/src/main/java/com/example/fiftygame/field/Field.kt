@@ -1,4 +1,4 @@
-package com.example.fiftygame
+package com.example.fiftygame.field
 
 import java.util.UUID
 

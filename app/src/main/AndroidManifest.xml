@@ -21,7 +21,7 @@
             android:label="@string/title_activity_join_game"
             android:theme="@style/Theme.FiftyGame" />
         <activity
-            android:name=".CreateGameActivity"
+            android:name=".create.CreateGameActivity"
             android:exported="false"
             android:label="@string/title_activity_create_game"
             android:theme="@style/Theme.FiftyGame" />

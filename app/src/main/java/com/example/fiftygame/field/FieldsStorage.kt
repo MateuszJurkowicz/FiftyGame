@@ -1,4 +1,4 @@
-package com.example.fiftygame
+package com.example.fiftygame.field
 
 class FieldsStorage {
     private val fields: List<Field>? = null
