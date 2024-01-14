@@ -18,7 +18,6 @@ import com.example.fiftygame.R
 import com.example.fiftygame.data.Field
 import com.example.fiftygame.data.FieldViewModel
 import com.example.fiftygame.databinding.FragmentAddFieldBinding
-import com.example.fiftygame.databinding.FragmentListFieldsBinding
 
 
 class AddFieldFragment : Fragment() {
@@ -42,10 +41,11 @@ class AddFieldFragment : Fragment() {
     }
 
     private fun insertDataToDatabase() {
+        val entry = binding.entryEditText.text.toString()
         val question = binding.questionEditText.text.toString()
         val answer = binding.answerEditText.text.toString()
-        if (!(TextUtils.isEmpty(question) && TextUtils.isEmpty(answer))) {
-            val field = Field(0, question, answer)
+        if (!(TextUtils.isEmpty(question) && TextUtils.isEmpty(answer) && TextUtils.isEmpty(entry))) {
+            val field = Field(0, entry, question, answer)
             mFieldViewModel.addField(field)
             Toast.makeText(requireContext(), "Pomyślnie dodano!", Toast.LENGTH_LONG).show()
             findNavController().navigate(R.id.action_addFieldFragment_to_listFieldsFragment)

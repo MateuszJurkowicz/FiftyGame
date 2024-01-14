@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 
 @Database(entities = [Field::class], version = 1, exportSchema = false)
 abstract class FieldDatabase : RoomDatabase() {
@@ -14,15 +16,16 @@ abstract class FieldDatabase : RoomDatabase() {
         private var INSTANCE: FieldDatabase? = null
         fun getDatabase(context: Context): FieldDatabase {
             val tempInstance = INSTANCE
-            if (tempInstance != null){
+            if (tempInstance != null) {
                 return tempInstance
             }
-            synchronized(this){
+            synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     FieldDatabase::class.java,
                     "field_database"
-                ).build()
+                )
+                    .build()
                 INSTANCE = instance
                 return instance
             }

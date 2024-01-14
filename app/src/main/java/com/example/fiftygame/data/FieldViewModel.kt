@@ -8,7 +8,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class FieldViewModel(application: Application): AndroidViewModel(application) {
-    private val readAllData: LiveData<List<Field>>
+    val readAllData: LiveData<List<Field>>
     private val repository: FieldRepository
     init {
         val fieldDao = FieldDatabase.getDatabase(application).fieldDao()
