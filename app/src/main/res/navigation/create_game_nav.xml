@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_listFieldsFragment_to_addFieldFragment"
             app:destination="@id/addFieldFragment" />
+        <action
+            android:id="@+id/action_listFieldsFragment_to_updateFieldFragment"
+            app:destination="@id/updateFieldFragment" />
     </fragment>
     <fragment
         android:id="@+id/addFieldFragment"
@@ -21,5 +24,17 @@
         <action
             android:id="@+id/action_addFieldFragment_to_listFieldsFragment"
             app:destination="@id/listFieldsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateFieldFragment"
+        android:name="com.example.fiftygame.create.UpdateFieldFragment"
+        android:label="Update"
+        tools:layout="@layout/fragment_update_field" >
+        <action
+            android:id="@+id/action_updateFieldFragment_to_listFieldsFragment"
+            app:destination="@id/listFieldsFragment" />
+        <argument
+            android:name="currentField"
+            app:argType="com.example.fiftygame.data.Field" />
     </fragment>
 </navigation>

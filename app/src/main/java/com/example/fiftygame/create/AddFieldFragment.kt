@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
@@ -44,7 +43,7 @@ class AddFieldFragment : Fragment() {
         val entry = binding.entryEditText.text.toString()
         val question = binding.questionEditText.text.toString()
         val answer = binding.answerEditText.text.toString()
-        if (!(TextUtils.isEmpty(question) && TextUtils.isEmpty(answer) && TextUtils.isEmpty(entry))) {
+        if (inputCheck(entry, question, answer)) {
             val field = Field(0, entry, question, answer)
             mFieldViewModel.addField(field)
             Toast.makeText(requireContext(), "Pomyślnie dodano!", Toast.LENGTH_LONG).show()
@@ -52,6 +51,9 @@ class AddFieldFragment : Fragment() {
         } else {
             Toast.makeText(requireContext(), "Pola są puste!", Toast.LENGTH_LONG).show()
         }
+    }
+    private fun inputCheck(entry: String, question: String, answer: String) :Boolean {
+        return !(TextUtils.isEmpty(question) && TextUtils.isEmpty(answer) && TextUtils.isEmpty(entry))
     }
 
 }

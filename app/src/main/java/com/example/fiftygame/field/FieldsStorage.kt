@@ -1,5 +1,7 @@
 package com.example.fiftygame.field
 
+import com.example.fiftygame.data.Field
+
 class FieldsStorage {
     private val fields: List<Field>? = null
     companion object {          //private static final FieldsStorage fieldsStorage = new FieldsStorage()
@@ -10,9 +12,6 @@ class FieldsStorage {
         val fields = ArrayList<Field>()
         for(i in 0 until 50)
         {
-            val field = Field()
-            field.number = i
-            fields.add(field)
         }
     }
 }

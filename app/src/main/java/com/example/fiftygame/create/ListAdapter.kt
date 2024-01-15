@@ -1,13 +1,16 @@
 package com.example.fiftygame.create
 
+import android.text.Layout.Directions
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.ListFragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fiftygame.R
 import com.example.fiftygame.data.Field
-import com.example.fiftygame.databinding.FragmentAddFieldBinding
 
 class ListAdapter: RecyclerView.Adapter<ListAdapter.ViewHolder>() {
     private var fieldsList = emptyList<Field>()
@@ -25,6 +28,11 @@ class ListAdapter: RecyclerView.Adapter<ListAdapter.ViewHolder>() {
         holder.itemView.findViewById<TextView>(R.id.entry_textView).text = currentItem.entry
         holder.itemView.findViewById<TextView>(R.id.question_textView).text = currentItem.question
         holder.itemView.findViewById<TextView>(R.id.correctAnswer_textView).text = currentItem.correctAnswer
+
+        holder.itemView.findViewById<ConstraintLayout>(R.id.custom_row).setOnClickListener{
+            val action = ListFieldsFragmentDirections.actionListFieldsFragmentToUpdateFieldFragment(currentItem)
+            holder.itemView.findNavController().navigate(action)
+        }
     }
     fun setData(field: List<Field>){
         this.fieldsList = field
