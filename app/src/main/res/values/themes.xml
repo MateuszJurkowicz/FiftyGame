@@ -4,10 +4,6 @@
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
-    <style name="Base.Theme.FiftyGameMain.NoActionBar" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Dodaj atrybut windowNoTitle, aby ukryć ActionBar -->
-        <item name="android:windowNoTitle">true</item>
-    </style>
 
     <style name="Theme.FiftyGame" parent="Base.Theme.FiftyGame" />
 

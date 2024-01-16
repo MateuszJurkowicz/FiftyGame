@@ -10,21 +10,14 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_launcher_monochrome"
         android:supportsRtl="true"
-        android:theme="@style/Theme.FiftyGameMain"
+        android:theme="@style/Theme.FiftyGame"
         tools:targetApi="31">
         <activity
-            android:name=".GameActivity"
-            android:exported="false" />
+            android:name=".GameActivity" />
         <activity
-            android:name=".JoinGameActivity"
-            android:exported="false"
-            android:label="@string/title_activity_join_game"
-            android:theme="@style/Theme.FiftyGame" />
+            android:name=".JoinGameActivity" />
         <activity
-            android:name=".create.CreateGameActivity"
-            android:exported="false"
-            android:label="@string/title_activity_create_game"
-            android:theme="@style/Theme.FiftyGame" />
+            android:name=".create.CreateGameActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

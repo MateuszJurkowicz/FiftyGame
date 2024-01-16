@@ -3,6 +3,7 @@ package com.example.fiftygame.data
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -27,5 +28,19 @@ class FieldViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.updateField(field)
         }
+    }
+
+    fun deleteField(field: Field) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteField(field)
+        }
+    }
+    fun deleteAllFields() {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteAllFields()
+        }
+    }
+    fun searchDatabase(searchQuery: String): LiveData<List<Field>> {
+        return repository.searchDatabase(searchQuery).asLiveData()
     }
 }

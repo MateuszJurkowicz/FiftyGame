@@ -5,6 +5,7 @@ plugins {
     id("kotlin-kapt")
     id("kotlin-parcelize")
     id("androidx.navigation.safeargs")
+    id("dagger.hilt.android.plugin")
 }
 
 
@@ -25,7 +26,9 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
@@ -50,26 +53,27 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    implementation("androidx.fragment:fragment-ktx:1.6.2")
+    implementation("com.google.dagger:hilt-android:2.28.3-alpha")
+    kapt("com.google.dagger:hilt-android-compiler:2.28.3-alpha")
     // Navigation Component
-    implementation ("androidx.navigation:navigation-fragment:2.7.6")
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.6")
-    implementation ("androidx.navigation:navigation-ui-ktx:2.7.6")
-    implementation("androidx.navigation:navigation-ui:2.7.6")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.6")
     implementation("androidx.navigation:navigation-dynamic-features-fragment:2.7.6")
     // Room components
-    implementation ("androidx.room:room-runtime:2.6.1")
-    kapt ("androidx.room:room-compiler:2.6.1")
-    implementation ("androidx.room:room-ktx:2.6.1")
-    androidTestImplementation ("androidx.room:room-testing:2.6.1")
-    kapt ("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31")
+    implementation("androidx.room:room-runtime:2.6.1")
+    kapt("androidx.room:room-compiler:2.6.1")
+    implementation("androidx.room:room-ktx:2.6.1")
+    androidTestImplementation("androidx.room:room-testing:2.6.1")
+    kapt("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31")
 
     // Lifecycle components
-    implementation ("androidx.lifecycle:lifecycle-extensions:2.2.0")
-    implementation ("androidx.lifecycle:lifecycle-common-java8:2.7.0")
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
+    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
+    implementation("androidx.lifecycle:lifecycle-common-java8:2.7.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
 
     // Kotlin components
-    implementation ("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.0")
-    api ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
-    api ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.0")
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
 }

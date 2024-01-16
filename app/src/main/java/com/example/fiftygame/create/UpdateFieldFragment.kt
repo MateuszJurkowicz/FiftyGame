@@ -1,9 +1,13 @@
 package com.example.fiftygame.create
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
@@ -38,6 +42,7 @@ class UpdateFieldFragment : Fragment() {
             updateItem()
         }
 
+        setHasOptionsMenu(true)
 
         return view
 
@@ -61,4 +66,27 @@ class UpdateFieldFragment : Fragment() {
         return !(TextUtils.isEmpty(question) && TextUtils.isEmpty(answer) && TextUtils.isEmpty(entry))
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.create_game_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == R.id.delete_item) {
+            deleteUser()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun deleteUser() {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setPositiveButton("Potwierdź") {_, _ ->
+            mFieldViewModel.deleteField(args.currentField)
+            Toast.makeText(requireContext(), "Pomyślnie usunięto!", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_updateFieldFragment_to_listFieldsFragment)
+        }
+        builder.setNegativeButton("Cofnij") {_, _ -> }
+            builder.setTitle("Usunąć ${args.currentField.id} pytanie?")
+        builder.setMessage("Czy jesteś pewny, że chcesz usunąć ${args.currentField.id} pytanie?")
+        builder.create().show()
+    }
 }
