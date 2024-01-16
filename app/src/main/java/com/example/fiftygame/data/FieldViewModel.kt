@@ -11,6 +11,7 @@ import kotlinx.coroutines.launch
 class FieldViewModel(application: Application) : AndroidViewModel(application) {
     val readAllData: LiveData<List<Field>>
     private val repository: FieldRepository
+    private val firestore: Firestore = Firestore()
 
     init {
         val fieldDao = FieldDatabase.getDatabase(application).fieldDao()
@@ -21,6 +22,7 @@ class FieldViewModel(application: Application) : AndroidViewModel(application) {
     fun addField(field: Field) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.addField(field)
+            firestore.addField(field)
         }
     }
 
