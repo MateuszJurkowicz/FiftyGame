@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_listFieldsFragment_to_updateFieldFragment"
             app:destination="@id/updateFieldFragment" />
+        <action
+            android:id="@+id/action_listFieldsFragment_to_userProfileFragment"
+            app:destination="@id/userProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/addFieldFragment"
@@ -36,5 +39,14 @@
         <argument
             android:name="currentField"
             app:argType="com.example.fiftygame.data.Field" />
+    </fragment>
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="com.example.fiftygame.create.UserProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_user_profile" >
+        <action
+            android:id="@+id/action_userProfileFragment_to_listFieldsFragment"
+            app:destination="@id/listFieldsFragment" />
     </fragment>
 </navigation>

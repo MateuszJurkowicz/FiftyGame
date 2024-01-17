@@ -48,6 +48,12 @@ class UpdateFieldFragment : Fragment() {
 
     }
 
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        menu.findItem(R.id.search_item).setVisible(false)
+        menu.findItem(R.id.profile_item).setVisible(false)
+        super.onPrepareOptionsMenu(menu)
+    }
+
     private fun updateItem() {
         val entry = binding.updateEntryEditText.text.toString()
         val question = binding.updateQuestionEditText.text.toString()

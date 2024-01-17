@@ -426,3 +426,7 @@ w
 G.idea/sonarlint/issuestore/c/7/c76499eb523c29a11219d64213c35fc7c0f1498d,2\4\24181caeb3d2b4ed6224096362649a8561664dda
 i
 9app/src/main/java/com/example/fiftygame/SignInActivity.kt,c\8\c8bb2f8c984c3ec736685277696eea86047601e3
+n
+>app/src/main/java/com/example/fiftygame/UserProfileFragment.kt,7\0\709e5752621fdace24497755826a20f9f4cf54d3
+u
+Eapp/src/main/java/com/example/fiftygame/create/UserProfileFragment.kt,c\d\cd89b101ca340e8130b2cb28e321980eb9f8eb3a

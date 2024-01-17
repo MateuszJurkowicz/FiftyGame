@@ -18,7 +18,6 @@ import com.google.firebase.auth.GoogleAuthProvider
 class SignInActivity : AppCompatActivity() {
     companion object {
         private const val RC_SIGN_IN = 15
-        private var showOneTapUI = true
     }
 
     private lateinit var mAuth: FirebaseAuth
@@ -30,16 +29,6 @@ class SignInActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        /*val signInRequest = BeginSignInRequest.builder()
-            .setGoogleIdTokenRequestOptions(
-                BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
-                    .setSupported(true)
-                    // Your server's client ID, not your Android client ID.
-                    .setServerClientId(getString(R.string.webId))
-                    // Only show accounts previously used to sign in.
-                    .setFilterByAuthorizedAccounts(true)
-                    .build())
-            .build()*/
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.webId))
             .requestEmail()

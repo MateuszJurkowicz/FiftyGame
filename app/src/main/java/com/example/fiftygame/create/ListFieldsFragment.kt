@@ -1,6 +1,7 @@
 package com.example.fiftygame.create
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,6 +15,7 @@ import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fiftygame.R
@@ -63,6 +65,9 @@ class ListFieldsFragment : Fragment(), SearchView.OnQueryTextListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.itemId == R.id.delete_item) {
             deleteAllFields()
+        }
+        if(item.itemId == R.id.profile_item) {
+            findNavController().navigate(R.id.action_listFieldsFragment_to_userProfileFragment)
         }
         return super.onOptionsItemSelected(item)
     }

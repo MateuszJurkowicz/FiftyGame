@@ -87,4 +87,6 @@ dependencies {
     implementation("com.google.firebase:firebase-auth")
     // Also add the dependency for the Google Play services library and specify its version
     implementation("com.google.android.gms:play-services-auth:20.7.0")
+    //Glide
+    implementation("com.github.bumptech.glide:glide:4.11.0")
 }
