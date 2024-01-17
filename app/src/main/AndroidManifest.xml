@@ -13,11 +13,11 @@
         android:theme="@style/Theme.FiftyGame"
         tools:targetApi="31">
         <activity
-            android:name=".GameActivity" />
-        <activity
-            android:name=".JoinGameActivity" />
-        <activity
-            android:name=".create.CreateGameActivity" />
+            android:name=".SignInActivity"
+            android:exported="false" />
+        <activity android:name=".GameActivity" />
+        <activity android:name=".JoinGameActivity" />
+        <activity android:name=".create.CreateGameActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

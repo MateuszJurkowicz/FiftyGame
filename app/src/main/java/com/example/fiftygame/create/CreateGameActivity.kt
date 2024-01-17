@@ -15,14 +15,10 @@ class CreateGameActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         setupActionBarWithNavController(navController)
     }
-
-    /*override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val navController = findNavController(R.id.fragmentContainerView)
-        return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
-    }*/
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.fragmentContainerView)
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
+
 
 }

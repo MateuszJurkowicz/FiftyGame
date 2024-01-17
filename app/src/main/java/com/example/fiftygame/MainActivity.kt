@@ -5,22 +5,35 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.example.fiftygame.create.CreateGameActivity
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
-    lateinit var joinGameButton: Button
-    lateinit var createGameButton: Button
+    private lateinit var joinGameButton: Button
+    private lateinit var createGameButton: Button
+    private lateinit var mAuth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        mAuth = FirebaseAuth.getInstance()
+        val user = mAuth.currentUser
+
         joinGameButton = findViewById(R.id.moveToJoinGameButton)
         createGameButton = findViewById(R.id.moveToCreateGameButton)
-        joinGameButton.setOnClickListener{
-            val intent = Intent(this@MainActivity, JoinGameActivity::class.java)
-            startActivity(intent)
+        joinGameButton.setOnClickListener {
+            val joinGameIntent = Intent(this, JoinGameActivity::class.java)
+            startActivity(joinGameIntent)
         }
         createGameButton.setOnClickListener {
-            val intent = Intent(this@MainActivity, CreateGameActivity::class.java)
-            startActivity(intent)
+            if (user != null) {
+                val createGameIntent = Intent(this, CreateGameActivity::class.java)
+                startActivity(createGameIntent)
+                finish()
+            } else {
+                val signInIntent = Intent(this, SignInActivity::class.java)
+                startActivity(signInIntent)
+                finish()
+            }
         }
 
     }

@@ -424,3 +424,5 @@ Q.idea/sonarlint/securityhotspotstore/9/a/9aed88f31eac276604c6355c1adcc0bce1f80f
 Q.idea/sonarlint/securityhotspotstore/f/7/f7819ea138c33fec28e7e536cb2de34db38fc121,e\5\e5babc9c4e98545e8c1fa7856f821fec6cf0d876
 w
 G.idea/sonarlint/issuestore/c/7/c76499eb523c29a11219d64213c35fc7c0f1498d,2\4\24181caeb3d2b4ed6224096362649a8561664dda
+i
+9app/src/main/java/com/example/fiftygame/SignInActivity.kt,c\8\c8bb2f8c984c3ec736685277696eea86047601e3
