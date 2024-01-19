@@ -1,23 +1,0 @@
-
-o
-java:S2293W"YReplace the type specification in this constructor call with the diamond operator ("<>").(‚‘Û‘
-f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(âêî€
-k	java:S117L"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İ×—³ùÿÿÿÿ
-e	java:S117Q"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹§>
-f	java:S117W"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚‘Û‘
-k	java:S117Y"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÑİıÓüÿÿÿÿ
-b	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(¤ÎËå
-g
-java:S1128"QRemove this unnecessary import: java.lang classes are always implicitly imported.(ùÃÌé
-g
-java:S1128"QRemove this unnecessary import: java.lang classes are always implicitly imported.(®ş±Ã
-g
-java:S1128"QRemove this unnecessary import: java.lang classes are always implicitly imported.(ú®Ú±
-l
-java:S1128"QRemove this unnecessary import: java.lang classes are always implicitly imported.(ôİÕıÿÿÿÿ
-l
-java:S1128"QRemove this unnecessary import: java.lang classes are always implicitly imported.(¤î˜Óüÿÿÿÿ
-d	java:S116"ORename this field "__db" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(àÛôÇ
-~	java:S116"dRename this field "__insertionAdapterOfField" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÏÊÈåüÿÿÿÿ
-H
-java:S1113x"-Do not override the Object.finalize() method.(œäºÒúÿÿÿÿ

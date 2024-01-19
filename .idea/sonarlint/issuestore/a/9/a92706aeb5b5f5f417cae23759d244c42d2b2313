@@ -1,9 +1,0 @@
-
-`kotlin:S6619;"<Remove this useless null-safe access ?., it always succeeds.(§¾ğûıÿÿÿÿ8çÏÍÑ1
-‚kotlin:S4144^"cUpdate this function so that its implementation is not identical to "onQueryTextSubmit" on line 87.(­ƒÎÅ8éÏÍÑ1
-8kotlin:S1128"Remove this unused import.(Ş‚½8ñÏÍÑ1
->kotlin:S1128"Remove this unused import.(«¢íøÿÿÿÿ8ñÏÍÑ1
->kotlin:S1128"Remove this unused import.(ºØışÿÿÿÿ8ñÏÍÑ1
-Bkotlin:S1874'"#Deprecated code should not be used.(—§ØÅ8òÏÍÑ1
-Gkotlin:S1874H"#Deprecated code should not be used.(àı•°ùÿÿÿÿ8òÏÍÑ1
-Kkotlin:S6518-",Replace function call with indexed accessor.(ÃŞ³8öÏÍÑ1

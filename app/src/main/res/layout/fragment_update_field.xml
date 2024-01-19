@@ -4,19 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".create.UpdateFieldFragment"
+    tools:context=".fragments.create_fields.UpdateFieldFragment"
     android:padding="24sp">
 
-    <TextView
-        android:id="@+id/textView"
+    <EditText
+        android:id="@+id/update_number_edit_text"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pytanie nr"
+        android:layout_height="50dp"
+        android:text="Numer pytania"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.04000002" />
+        app:layout_constraintVertical_bias="0.04" />
 
     <EditText
         android:id="@+id/update_entry_edit_text"

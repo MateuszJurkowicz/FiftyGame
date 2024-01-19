@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/create_games_nav"
+    app:startDestination="@id/listGamesFragment">
+
+    <fragment
+        android:id="@+id/listGamesFragment"
+        android:name="com.example.fiftygame.fragments.create_games.ListGamesFragment"
+        android:label="Games list"
+        tools:layout="@layout/fragment_list_games" >
+        <action
+            android:id="@+id/action_listGamesFragment_to_addGameFragment"
+            app:destination="@id/addGameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addGameFragment"
+        android:name="com.example.fiftygame.fragments.create_games.AddGameFragment"
+        android:label="Add game"
+        tools:layout="@layout/fragment_add_game" >
+        <action
+            android:id="@+id/action_addGameFragment_to_listGamesFragment"
+            app:destination="@id/listGamesFragment" />
+    </fragment>
+</navigation>
