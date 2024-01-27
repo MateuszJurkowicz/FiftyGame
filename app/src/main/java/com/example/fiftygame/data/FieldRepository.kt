@@ -17,15 +17,18 @@ class FieldRepository(private val appDao: AppDao) {
     suspend fun deleteField(field: Field) {
         appDao.deleteField(field)
     }
+    suspend fun deleteFieldsInGame(gameId: Int) {
+        appDao.deleteFieldsInGame(gameId)
+    }
     suspend fun deleteAllFields() {
         appDao.deleteAllFields()
     }
     fun readGameWithFields(gameId: Int): LiveData<List<GameWithFields>> {
-        Log.d("game id repository",gameId.toString())
-
         return appDao.readGameWithFields(gameId)
     }
     fun searchDatabase(searchQuery: String): Flow<List<Field>> {
         return appDao.searchDatabase(searchQuery)
     }
+
+
 }

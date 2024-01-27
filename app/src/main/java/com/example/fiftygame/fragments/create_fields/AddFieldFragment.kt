@@ -23,14 +23,13 @@ class AddFieldFragment : Fragment() {
     private var _binding: FragmentAddFieldBinding? = null
     private val binding get() = _binding!!
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentAddFieldBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        mFieldViewModel = ViewModelProvider(this).get(FieldViewModel::class.java)
+        mFieldViewModel = ViewModelProvider(this)[FieldViewModel::class.java]
 
 
         binding.addQuestionButton.setOnClickListener {
@@ -46,23 +45,25 @@ class AddFieldFragment : Fragment() {
         val question = binding.questionEditText.text.toString()
         val answer = binding.answerEditText.text.toString()
         val gameId = args.game.gameId
-        Log.d("insertfield", gameId.toString())
         if (inputCheck(number, entry, question, answer)) {
             val field = Field(0, number.toInt(), entry, question, answer, gameId)
             mFieldViewModel.addField(field)
             Toast.makeText(requireContext(), "Pomyślnie dodano!", Toast.LENGTH_LONG).show()
-            val action =
-                AddFieldFragmentDirections.actionAddFieldFragmentToListFieldsFragment(
-                    args.game
-                )
-            Log.d("action2", gameId.toString())
+            val action = AddFieldFragmentDirections.actionAddFieldFragmentToListFieldsFragment(
+                args.game
+            )
             findNavController().navigate(action)
         } else {
             Toast.makeText(requireContext(), "Pola są puste!", Toast.LENGTH_LONG).show()
         }
     }
-    private fun inputCheck(number: String, entry: String, question: String, answer: String): Boolean {
-        return !(TextUtils.isEmpty(number) && TextUtils.isEmpty(question) && TextUtils.isEmpty(answer) && TextUtils.isEmpty(entry))
+
+    private fun inputCheck(
+        number: String, entry: String, question: String, answer: String
+    ): Boolean {
+        return !(TextUtils.isEmpty(number) && TextUtils.isEmpty(question) && TextUtils.isEmpty(
+            answer
+        ) && TextUtils.isEmpty(entry))
     }
 
 }

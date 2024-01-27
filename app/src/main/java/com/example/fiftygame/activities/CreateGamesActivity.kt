@@ -23,10 +23,5 @@ class CreateGamesActivity : AppCompatActivity() {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
 
-    /*fun editGame(game: Game) {
-        val intent = Intent(this, CreateFieldsActivity::class.java)
-        intent.putExtra("game ID", game.gameId)
-        Log.d("create gameid", game.gameId.toString())
-        startActivity(intent)
-    }*/
+
 }

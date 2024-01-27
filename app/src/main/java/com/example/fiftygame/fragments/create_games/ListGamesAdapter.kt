@@ -1,10 +1,12 @@
 package com.example.fiftygame.fragments.create_games
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -30,6 +32,10 @@ class ListGamesAdapter(private val fragment: ListGamesFragment): RecyclerView.Ad
         holder.itemView.findViewById<TextView>(R.id.description_textView).text = currentItem.description
         holder.itemView.findViewById<ConstraintLayout>(R.id.game_row).setOnClickListener{
             fragment.editGame(currentItem)
+        }
+        holder.itemView.findViewById<ConstraintLayout>(R.id.game_row).setOnLongClickListener{
+            fragment.deleteGame(currentItem)
+            true
         }
     }
 

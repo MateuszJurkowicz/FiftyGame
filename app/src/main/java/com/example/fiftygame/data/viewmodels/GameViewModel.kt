@@ -44,7 +44,5 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     }
 
 
-    fun searchDatabase(searchQuery: String): LiveData<List<Field>> {
-        return repository.searchDatabase(searchQuery).asLiveData()
-    }
+
 }

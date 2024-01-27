@@ -28,20 +28,16 @@ class ListFieldsAdapter : RecyclerView.Adapter<ListFieldsAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        Log.d("fields", "onBindViewHolder");
         val currentItem = fieldsList[position]
-        holder.itemView.findViewById<TextView>(R.id.number_textView).text =
-            currentItem.number.toString()
+        holder.itemView.findViewById<TextView>(R.id.number_textView).text = currentItem.number.toString()
         holder.itemView.findViewById<TextView>(R.id.entry_textView).text = currentItem.entry
         holder.itemView.findViewById<TextView>(R.id.question_textView).text = currentItem.question
-        holder.itemView.findViewById<TextView>(R.id.correctAnswer_textView).text =
-            currentItem.correctAnswer
+        holder.itemView.findViewById<TextView>(R.id.correctAnswer_textView).text = currentItem.correctAnswer
 
         holder.itemView.findViewById<ConstraintLayout>(R.id.field_row).setOnClickListener {
-            val action =
-                ListFieldsFragmentDirections.actionListFieldsFragmentToUpdateFieldFragment(
-                    currentItem
-                )
+            val action = ListFieldsFragmentDirections.actionListFieldsFragmentToUpdateFieldFragment(
+                currentItem
+            )
             holder.itemView.findNavController().navigate(action)
         }
     }
@@ -50,10 +46,12 @@ class ListFieldsAdapter : RecyclerView.Adapter<ListFieldsAdapter.ViewHolder>() {
         gameWithFieldsList.forEach { gameWithFields ->
             fieldsList = gameWithFields.fields
             // Tutaj możesz wykonać operacje na fields
-            Log.d("setdata1", gameWithFieldsList.toString())
-
         }
-        Log.d("setdata2", fieldsList.toString())
+        notifyDataSetChanged()
+    }
+
+    fun setDataForSearch(it: List<Field>) {
+        fieldsList = it
         notifyDataSetChanged()
     }
 

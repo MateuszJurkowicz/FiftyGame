@@ -26,8 +26,7 @@ class UpdateFieldFragment : Fragment() {
     private var _binding: FragmentUpdateFieldBinding? = null
     private val binding get() = _binding!!
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentUpdateFieldBinding.inflate(inflater, container, false)
@@ -35,6 +34,7 @@ class UpdateFieldFragment : Fragment() {
 
         mFieldViewModel = ViewModelProvider(this)[FieldViewModel::class.java]
 
+        binding.updateNumberEditText.setText(args.currentField.number.toString())
         binding.updateEntryEditText.setText(args.currentField.entry)
         binding.updateQuestionEditText.setText(args.currentField.question)
         binding.updateAnswerEditText.setText(args.currentField.correctAnswer)
@@ -62,7 +62,8 @@ class UpdateFieldFragment : Fragment() {
         val answer = binding.updateAnswerEditText.text.toString()
         val gameId = args.currentField.gameId
         if (inputCheck(number, entry, question, answer)) {
-            val updatedField = Field(args.currentField.fieldId, number.toInt(), entry, question, answer, gameId)
+            val updatedField =
+                Field(args.currentField.fieldId, number.toInt(), entry, question, answer, gameId)
             mFieldViewModel.updateField(updatedField)
             Toast.makeText(requireContext(), "Pomyślnie zaktualizowano!", Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_updateFieldFragment_to_listFieldsFragment)
@@ -72,8 +73,12 @@ class UpdateFieldFragment : Fragment() {
         }
     }
 
-    private fun inputCheck(number: String, entry: String, question: String, answer: String): Boolean {
-        return !(TextUtils.isEmpty(number) && TextUtils.isEmpty(question) && TextUtils.isEmpty(answer) && TextUtils.isEmpty(entry))
+    private fun inputCheck(
+        number: String, entry: String, question: String, answer: String
+    ): Boolean {
+        return !(TextUtils.isEmpty(number) && TextUtils.isEmpty(question) && TextUtils.isEmpty(
+            answer
+        ) && TextUtils.isEmpty(entry))
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -82,12 +87,12 @@ class UpdateFieldFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.delete_item) {
-            deleteUser()
+            deleteField()
         }
         return super.onOptionsItemSelected(item)
     }
 
-    private fun deleteUser() {
+    private fun deleteField() {
         val builder = AlertDialog.Builder(requireContext())
         builder.setPositiveButton("Potwierdź") { _, _ ->
             mFieldViewModel.deleteField(args.currentField)

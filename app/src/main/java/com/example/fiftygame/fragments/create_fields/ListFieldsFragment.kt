@@ -2,7 +2,6 @@ package com.example.fiftygame.fragments.create_fields
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.Menu
@@ -14,7 +13,6 @@ import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,8 +28,7 @@ class ListFieldsFragment : Fragment(), SearchView.OnQueryTextListener {
     private var _binding: FragmentListFieldsBinding? = null
     private val binding get() = _binding!!
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentListFieldsBinding.inflate(inflater, container, false)
@@ -44,23 +41,16 @@ class ListFieldsFragment : Fragment(), SearchView.OnQueryTextListener {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
 
-        val gameId = receiveGameId()
-
-        Log.d("editgame1", gameId.toString())
-        Log.d("editgame333", args.game.gameId.toString())
-
         mFieldViewModel = ViewModelProvider(this)[FieldViewModel::class.java]
-        mFieldViewModel.readGameWithFields(args.game.gameId).observe(viewLifecycleOwner, Observer { field ->
-            adapter.setData(field)
-        })
+        mFieldViewModel.readGameWithFields(args.game.gameId)
+            .observe(viewLifecycleOwner, Observer { gameWithFields ->
+                adapter.setData(gameWithFields)
+            })
 
         binding.fieldFloatingActionButton.setOnClickListener {
-            Log.d("action1", gameId.toString())
-            val action =
-                ListFieldsFragmentDirections.actionListFieldsFragmentToAddFieldFragment(
-                    args.game
-                )
-            Log.d("action2", gameId.toString())
+            val action = ListFieldsFragmentDirections.actionListFieldsFragmentToAddFieldFragment(
+                args.game
+            )
             findNavController().navigate(action)
         }
 
@@ -113,15 +103,12 @@ class ListFieldsFragment : Fragment(), SearchView.OnQueryTextListener {
     }
 
     private fun searchDatabase(query: String) {
-        /* val searchQuery = "%$query%"
-         mFieldViewModel.searchDatabase(searchQuery).observe(this, { list ->
-             list.let {
-                 adapter.setData(it)
-             }
-         })*/
+        val searchQuery = "%$query%"
+        mFieldViewModel.searchDatabase(searchQuery).observe(this) { list ->
+            list.let {
+                adapter.setDataForSearch(it)
+            }
+        }
     }
 
-    private fun receiveGameId(): Int {
-        return arguments?.getInt("game ID") ?: (1..1000).random()
-    }
 }

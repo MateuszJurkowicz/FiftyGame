@@ -41,6 +41,11 @@ class FieldViewModel(application: Application) : AndroidViewModel(application) {
             repository.deleteField(field)
         }
     }
+    fun deleteFieldsInGame(gameId: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteFieldsInGame(gameId)
+        }
+    }
 
     fun deleteAllFields() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -55,4 +60,6 @@ class FieldViewModel(application: Application) : AndroidViewModel(application) {
     fun searchDatabase(searchQuery: String): LiveData<List<Field>> {
         return repository.searchDatabase(searchQuery).asLiveData()
     }
+
+
 }
