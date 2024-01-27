@@ -1,6 +1,7 @@
 package com.example.fiftygame.fragments.create_games
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,6 +40,7 @@ class ListGamesAdapter(private val fragment: ListGamesFragment): RecyclerView.Ad
 
     fun setData(game: List<Game>) {
         this.gamesList = game
+        Log.d("gameslist", gamesList.toString())
         notifyDataSetChanged()
 
     }

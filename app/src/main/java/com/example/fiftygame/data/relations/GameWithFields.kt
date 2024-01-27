@@ -1,5 +1,6 @@
 package com.example.fiftygame.data.relations
 
+import androidx.lifecycle.LiveData
 import androidx.room.Embedded
 import androidx.room.Relation
 import com.example.fiftygame.data.models.Field
@@ -11,5 +12,5 @@ data class GameWithFields (
         parentColumn = "gameId",
         entityColumn = "gameId"
     )
-    val fields: List<Field>
+    var fields: List<Field>
 )
