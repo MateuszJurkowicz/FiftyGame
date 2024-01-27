@@ -6,19 +6,21 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.fiftygame.data.AppDatabase
-import com.example.fiftygame.data.AppRepository
+import com.example.fiftygame.data.FieldRepository
+import com.example.fiftygame.data.GameRepository
 import com.example.fiftygame.data.models.Field
 import com.example.fiftygame.data.Firestore
+import com.example.fiftygame.data.relations.GameWithFields
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class FieldViewModel(application: Application) : AndroidViewModel(application) {
-    private val repository: AppRepository
+    private val repository: FieldRepository
     private val firestore: Firestore = Firestore()
 
     init {
         val appDao = AppDatabase.getDatabase(application).appDao()
-        repository = AppRepository(appDao)
+        repository = FieldRepository(appDao)
     }
 
     fun addField(field: Field) {
@@ -46,7 +48,7 @@ class FieldViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun readGameWithFields(gameId: Int): LiveData<List<Field>> {
+    fun readGameWithFields(gameId: Int): LiveData<List<GameWithFields>> {
         return repository.readGameWithFields(gameId)
     }
 

@@ -15,20 +15,19 @@ class CreateFieldsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_fields)
 
-        Log.d("fields", "CreateFieldsActivity")
-
+        val intent = intent
+        val gameId = intent.getIntExtra("game ID", 1)
 
         val mFragmentManager = supportFragmentManager
         val mFragmentTransaction = mFragmentManager.beginTransaction()
         val mFragment = ListFieldsFragment()
 
-        val intent = intent
-        val gameId = intent.getIntExtra("game ID", 1)
 
         val mBundle = Bundle()
         mBundle.putInt("game ID", gameId)
+        Log.d("gameid FieldsActivity", gameId.toString())
         mFragment.arguments = mBundle
-        mFragmentTransaction.add(R.id.fields_ConstraintLayout, mFragment).commit()
+        mFragmentTransaction.replace(R.id.fields_ConstraintLayout, mFragment).commit()
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentFieldsContainerView) as NavHostFragment
         val navController = navHostFragment.navController

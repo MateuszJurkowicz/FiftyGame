@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/create_game_nav"
+    android:id="@+id/create_fields_nav"
     app:startDestination="@id/listFieldsFragment">
     <fragment
         android:id="@+id/listFieldsFragment"
@@ -18,18 +18,21 @@
         <action
             android:id="@+id/action_listFieldsFragment_to_userProfileFragment"
             app:destination="@id/userProfileFragment" />
+        <argument
+            android:name="game"
+            app:argType="com.example.fiftygame.data.models.Game" />
     </fragment>
     <fragment
         android:id="@+id/addFieldFragment"
         android:name="com.example.fiftygame.fragments.create_fields.AddFieldFragment"
         android:label="Add field"
         tools:layout="@layout/fragment_add_field" >
+        <argument
+            android:name="game"
+            app:argType="com.example.fiftygame.data.models.Game" />
         <action
             android:id="@+id/action_addFieldFragment_to_listFieldsFragment"
             app:destination="@id/listFieldsFragment" />
-        <argument
-            android:name="currentGameId"
-            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/updateFieldFragment"

@@ -800,3 +800,7 @@ w
 G.idea/sonarlint/issuestore/f/3/f36d1f33a0e5d10431e99ad836c9ef657234fff8,a\7\a70e26d8e0bf6089181c25321766c3d7adf25c56
 w
 G.idea/sonarlint/issuestore/f/0/f06e4b9b883c4d53c45f2b8a028d48790a4ce86c,8\d\8d2a0c0ac5d551523a5bcbd8e8c5afe6d096f0f2
+o
+?app/src/main/java/com/example/fiftygame/data/FieldRepository.kt,9\5\95ca1220d2097c8e689b5d02b24ec8c4182d839e
+n
+>app/src/main/java/com/example/fiftygame/data/GameRepository.kt,7\7\777ce431dfc5c4a2e8bf53fc07d95d8ac07d2846

@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_listGamesFragment_to_addGameFragment"
             app:destination="@id/addGameFragment" />
+        <action
+            android:id="@+id/action_listGamesFragment_to_create_game_nav"
+            app:destination="@id/navigation" />
     </fragment>
     <fragment
         android:id="@+id/addGameFragment"
@@ -23,4 +26,11 @@
             android:id="@+id/action_addGameFragment_to_listGamesFragment"
             app:destination="@id/listGamesFragment" />
     </fragment>
+    <navigation android:id="@+id/navigation"
+        app:startDestination="@id/create_fields_nav">
+        <include app:graph="@navigation/create_fields_nav" />
+        <argument
+            android:name="game"
+            app:argType="com.example.fiftygame.data.models.Game" />
+    </navigation>
 </navigation>

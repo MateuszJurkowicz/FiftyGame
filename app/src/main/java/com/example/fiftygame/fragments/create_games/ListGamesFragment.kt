@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fiftygame.R
@@ -16,6 +17,7 @@ import com.example.fiftygame.data.models.Game
 import com.example.fiftygame.data.viewmodels.GameViewModel
 import com.example.fiftygame.databinding.FragmentListGamesBinding
 import com.example.fiftygame.fragments.create_fields.ListFieldsAdapter
+import com.example.fiftygame.fragments.create_fields.ListFieldsFragmentDirections
 
 class ListGamesFragment : Fragment() {
     private lateinit var mGameViewModel: GameViewModel
@@ -34,7 +36,7 @@ class ListGamesFragment : Fragment() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        mGameViewModel = ViewModelProvider(this).get(GameViewModel::class.java)
+        mGameViewModel = ViewModelProvider(this)[GameViewModel::class.java]
         mGameViewModel.readAllGames.observe(viewLifecycleOwner, Observer { game ->
             adapter.setData(game)
         })
@@ -46,6 +48,9 @@ class ListGamesFragment : Fragment() {
         return view
     }
     fun editGame(game: Game) {
-        (activity as CreateGamesActivity).editGame(game)
+        val action =
+            ListGamesFragmentDirections.actionListGamesFragmentToCreateGameNav(game)
+        findNavController().navigate(action)
+        //(activity as CreateGamesActivity).editGame(game)
     }
 }

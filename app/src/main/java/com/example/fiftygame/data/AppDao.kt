@@ -6,9 +6,11 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Transaction
 import androidx.room.Update
 import com.example.fiftygame.data.models.Field
 import com.example.fiftygame.data.models.Game
+import com.example.fiftygame.data.relations.GameWithFields
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -37,9 +39,14 @@ interface AppDao {
     @Query("SELECT * FROM games_table ORDER BY gameId ASC")
     fun readAllGames(): LiveData<List<Game>>
 
+    @Transaction
+    @Query("SELECT * FROM games_table WHERE  gameId = :gameId")
+    fun readGameWithId(gameId: Int): Game
+
     // live data moze do zmiany na samo List<Field>
-    @Query("SELECT * FROM fields_table WHERE gameId = :gameId ORDER BY fieldId ASC")
-    fun readGameWithFields(gameId: Int): LiveData<List<Field>>
+    @Transaction
+    @Query("SELECT * FROM games_table WHERE gameId = :gameId")
+    fun readGameWithFields(gameId: Int): LiveData<List<GameWithFields>>
 
 
     @Query("SELECT * FROM fields_table WHERE entry LIKE :searchQuery OR question LIKE :searchQuery OR correctAnswer LIKE :searchQuery")

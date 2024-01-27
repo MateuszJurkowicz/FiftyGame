@@ -2,6 +2,7 @@ package com.example.fiftygame.fragments.create_fields
 
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -44,12 +45,18 @@ class AddFieldFragment : Fragment() {
         val entry = binding.entryEditText.text.toString()
         val question = binding.questionEditText.text.toString()
         val answer = binding.answerEditText.text.toString()
-        val gameId = args.currentGameId
+        val gameId = args.game.gameId
+        Log.d("insertfield", gameId.toString())
         if (inputCheck(number, entry, question, answer)) {
             val field = Field(0, number.toInt(), entry, question, answer, gameId)
             mFieldViewModel.addField(field)
             Toast.makeText(requireContext(), "Pomyślnie dodano!", Toast.LENGTH_LONG).show()
-            findNavController().navigate(R.id.action_addFieldFragment_to_listFieldsFragment)
+            val action =
+                AddFieldFragmentDirections.actionAddFieldFragmentToListFieldsFragment(
+                    args.game
+                )
+            Log.d("action2", gameId.toString())
+            findNavController().navigate(action)
         } else {
             Toast.makeText(requireContext(), "Pola są puste!", Toast.LENGTH_LONG).show()
         }

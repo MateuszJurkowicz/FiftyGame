@@ -33,7 +33,7 @@ class UpdateFieldFragment : Fragment() {
         _binding = FragmentUpdateFieldBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        mFieldViewModel = ViewModelProvider(this).get(FieldViewModel::class.java)
+        mFieldViewModel = ViewModelProvider(this)[FieldViewModel::class.java]
 
         binding.updateEntryEditText.setText(args.currentField.entry)
         binding.updateQuestionEditText.setText(args.currentField.question)

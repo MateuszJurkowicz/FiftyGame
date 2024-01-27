@@ -74,7 +74,7 @@ class SignInActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     Log.d("SignInActivity", "signInWithCredential:success")
-                    val intent = Intent(this, CreateFieldsActivity::class.java)
+                    val intent = Intent(this, CreateGamesActivity::class.java)
                     startActivity(intent)
                     finish()
                 } else {
