@@ -1,6 +1,7 @@
-package com.example.fiftygame.data
+package com.example.fiftygame.data.repositories
 
 import androidx.lifecycle.LiveData
+import com.example.fiftygame.data.AppDao
 import com.example.fiftygame.data.models.Game
 
 class GameRepository(private val appDao: AppDao) {

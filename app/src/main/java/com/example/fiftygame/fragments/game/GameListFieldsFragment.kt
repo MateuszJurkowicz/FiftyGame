@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fiftygame.R
 import com.example.fiftygame.data.viewmodels.FieldViewModel
+import com.example.fiftygame.data.viewmodels.PlayerViewModel
 import com.example.fiftygame.databinding.FragmentGameListFieldsBinding
 
 class GameListFieldsFragment : Fragment() {
@@ -21,10 +22,10 @@ class GameListFieldsFragment : Fragment() {
     private val binding get() = _binding!!
     private val adapter: GameListFieldsAdapter by lazy { GameListFieldsAdapter() }
     private lateinit var mFieldViewModel: FieldViewModel
+    private lateinit var mPlayerViewModel: PlayerViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentGameListFieldsBinding.inflate(inflater, container, false)
@@ -33,6 +34,13 @@ class GameListFieldsFragment : Fragment() {
         val recyclerView = binding.gameRecyclerView
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
         recyclerView.adapter = adapter
+
+        mPlayerViewModel = ViewModelProvider(this)[PlayerViewModel::class.java]
+        mPlayerViewModel.setName(args.playerName)
+
+        mPlayerViewModel.getLevel.observe(viewLifecycleOwner, Observer { playerLevel ->
+                adapter.setLevel(playerLevel)
+        })
 
         mFieldViewModel = ViewModelProvider(this)[FieldViewModel::class.java]
         mFieldViewModel.readGameWithFields(args.currentGame.gameId)

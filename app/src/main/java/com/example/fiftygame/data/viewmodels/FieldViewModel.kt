@@ -6,10 +6,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.fiftygame.data.AppDatabase
-import com.example.fiftygame.data.FieldRepository
-import com.example.fiftygame.data.GameRepository
+import com.example.fiftygame.data.repositories.FieldRepository
 import com.example.fiftygame.data.models.Field
-import com.example.fiftygame.data.Firestore
+import com.example.fiftygame.data.repositories.Firestore
 import com.example.fiftygame.data.relations.GameWithFields
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

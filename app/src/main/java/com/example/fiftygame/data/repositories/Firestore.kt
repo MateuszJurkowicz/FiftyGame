@@ -1,4 +1,4 @@
-package com.example.fiftygame.data
+package com.example.fiftygame.data.repositories
 
 import android.content.ContentValues.TAG
 import android.util.Log
