@@ -51,9 +51,11 @@ interface AppDao {
     @Query("SELECT * FROM games_table WHERE gameId = :gameId")
     fun readGameWithFields(gameId: Int): LiveData<List<GameWithFields>>
 
-
     @Query("SELECT * FROM fields_table WHERE entry LIKE :searchQuery OR question LIKE :searchQuery OR correctAnswer LIKE :searchQuery")
     fun searchDatabase(searchQuery: String): Flow<List<Field>>
+
+    @Query("SELECT * FROM games_table WHERE pin = :pin")
+    fun readGameWithPin(pin: Int): Game
 
 
 }

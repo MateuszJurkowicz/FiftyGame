@@ -5,26 +5,27 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.example.fiftygame.R
+import com.example.fiftygame.databinding.ActivityMainBinding
+import com.example.fiftygame.databinding.FragmentAddFieldBinding
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var joinGameButton: Button
-    private lateinit var createGameButton: Button
     private lateinit var mAuth: FirebaseAuth
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         mAuth = FirebaseAuth.getInstance()
         val user = mAuth.currentUser
 
-        joinGameButton = findViewById(R.id.moveToJoinGameButton)
-        createGameButton = findViewById(R.id.moveToCreateGameButton)
-        joinGameButton.setOnClickListener {
+        binding.moveToJoinGameButton.setOnClickListener {
             val joinGameIntent = Intent(this, JoinGameActivity::class.java)
             startActivity(joinGameIntent)
         }
-        createGameButton.setOnClickListener {
+        binding.moveToCreateGameButton.setOnClickListener {
             if (user != null) {
                 val createGameIntent = Intent(this, CreateGamesActivity::class.java)
                 startActivity(createGameIntent)

@@ -10,5 +10,6 @@
     <string name="name_edit_text">Wpisz tu swoje imię</string>
     <string name="join_button">Dołącz</string>
     <string name="webId" translatable="false">"301188230894-08iel7ibv5tolr31cns8qc4onk60plts.apps.googleusercontent.com"</string>
+    <string name="game_field_number">Nr pola\n</string>
 
 </resources>

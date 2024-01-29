@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/game_nav"
+    app:startDestination="@id/joinGameFragment">
+
+    <fragment
+        android:id="@+id/gameListFieldsFragment"
+        android:name="com.example.fiftygame.fragments.game.GameListFieldsFragment"
+        android:label="Gra"
+        tools:layout="@layout/fragment_game_list_fields" >
+        <action
+            android:id="@+id/action_gameListFieldsFragment_to_gameFieldFragment"
+            app:destination="@id/gameFieldFragment" />
+        <argument
+            android:name="currentGame"
+            app:argType="com.example.fiftygame.data.models.Game" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFieldFragment"
+        android:name="com.example.fiftygame.fragments.game.GameFieldFragment"
+        android:label="Pole"
+        tools:layout="@layout/fragment_game_field" >
+        <action
+            android:id="@+id/action_gameFieldFragment_to_gameListFieldsFragment"
+            app:destination="@id/gameListFieldsFragment" />
+        <argument
+            android:name="currentItem"
+            app:argType="com.example.fiftygame.data.models.Field" />
+    </fragment>
+    <fragment
+        android:id="@+id/joinGameFragment"
+        android:name="com.example.fiftygame.fragments.game.JoinGameFragment"
+        android:label="Dołącz do gry"
+        tools:layout="@layout/fragment_join_game" >
+        <action
+            android:id="@+id/action_joinGameFragment_to_gameListFieldsFragment"
+            app:destination="@id/gameListFieldsFragment" />
+    </fragment>
+</navigation>

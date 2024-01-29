@@ -4,7 +4,9 @@ import android.content.ContentValues.TAG
 import android.util.Log
 import com.example.fiftygame.data.models.Field
 import com.example.fiftygame.data.models.Game
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.Firebase
+import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.firestore
 
 class Firestore {

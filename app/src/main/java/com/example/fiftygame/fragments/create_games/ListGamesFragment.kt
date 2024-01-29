@@ -32,9 +32,10 @@ class ListGamesFragment : Fragment() {
     private val adapter: ListGamesAdapter by lazy { ListGamesAdapter(this) }
     private var _binding: FragmentListGamesBinding? = null
     private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentListGamesBinding.inflate(inflater, container, false)
         val view = binding.root

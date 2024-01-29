@@ -3,11 +3,10 @@ package com.example.fiftygame.data.viewmodels
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.asLiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.fiftygame.data.AppDatabase
 import com.example.fiftygame.data.GameRepository
-import com.example.fiftygame.data.models.Field
 import com.example.fiftygame.data.Firestore
 import com.example.fiftygame.data.models.Game
 import kotlinx.coroutines.Dispatchers
@@ -43,6 +42,9 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
+    fun readGameWithPin(pin: Int): Game {
+        return repository.readGameWithPin(pin)
+    }
 
 
 }
