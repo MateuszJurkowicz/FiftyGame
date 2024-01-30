@@ -20,7 +20,7 @@ class GameListFieldsFragment : Fragment() {
     private val args by navArgs<GameListFieldsFragmentArgs>()
     private var _binding: FragmentGameListFieldsBinding? = null
     private val binding get() = _binding!!
-    private val adapter: GameListFieldsAdapter by lazy { GameListFieldsAdapter() }
+    private val adapter: GameListFieldsAdapter by lazy { GameListFieldsAdapter(args.currentGame) }
     private lateinit var mFieldViewModel: FieldViewModel
     private lateinit var mPlayerViewModel: PlayerViewModel
 
@@ -36,8 +36,6 @@ class GameListFieldsFragment : Fragment() {
         recyclerView.adapter = adapter
         mPlayerViewModel = ViewModelProvider(this)[PlayerViewModel::class.java]
 
-
-        mPlayerViewModel.setName(args.playerName)
 
         mPlayerViewModel.getLevel.observe(viewLifecycleOwner, Observer { playerLevel ->
             adapter.setLevel(playerLevel-1)

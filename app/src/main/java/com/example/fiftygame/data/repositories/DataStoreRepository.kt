@@ -8,6 +8,7 @@ import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import com.example.fiftygame.data.models.Game
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
@@ -47,6 +48,7 @@ class DataStoreRepository private constructor(context: Context) {
         }
     }
 
+
     suspend fun sumLevel(add: Int) {
         dataStore.edit { preference ->
             preference[levelKey]?.plus(add)
@@ -79,6 +81,8 @@ class DataStoreRepository private constructor(context: Context) {
             playerLevel
         }
     }
+
+
 
 
 }

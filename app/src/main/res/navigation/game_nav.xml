@@ -25,9 +25,6 @@
         <argument
             android:name="currentGame"
             app:argType="com.example.fiftygame.data.models.Game" />
-        <argument
-            android:name="playerName"
-            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/gameFieldFragment"
@@ -40,5 +37,8 @@
         <argument
             android:name="currentItem"
             app:argType="com.example.fiftygame.data.models.Field" />
+        <argument
+            android:name="currentGame"
+            app:argType="com.example.fiftygame.data.models.Game" />
     </fragment>
 </navigation>

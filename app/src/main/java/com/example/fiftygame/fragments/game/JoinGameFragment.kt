@@ -40,7 +40,7 @@ class JoinGameFragment : Fragment() {
             val pin = binding.pinEditText.text.toString()
             val playerName = binding.nameEditText.text.toString()
 
-            if (playerName.isNotEmpty() && pin.isNotEmpty()) {
+            if (playerName.isNotEmpty() && pin.isNotEmpty() && pin.length == 6) {
                 lifecycleScope.launch(Dispatchers.IO) {
                     val currentGame = mGameViewModel.readGameWithPin(pin.toInt())
                     mPlayerViewModel.setName(playerName)
@@ -52,7 +52,7 @@ class JoinGameFragment : Fragment() {
                                 .show()
                             val action =
                                 JoinGameFragmentDirections.actionJoinGameFragmentToGameListFieldsFragment(
-                                    currentGame, playerName
+                                    currentGame
                                 )
                             findNavController().navigate(action)
                         }

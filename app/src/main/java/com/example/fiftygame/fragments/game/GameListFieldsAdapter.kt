@@ -11,12 +11,15 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fiftygame.R
 import com.example.fiftygame.data.models.Field
+import com.example.fiftygame.data.models.Game
 import com.example.fiftygame.data.relations.GameWithFields
 
-class GameListFieldsAdapter : RecyclerView.Adapter<GameListFieldsAdapter.ViewHolder>() {
+class GameListFieldsAdapter(game: Game) : RecyclerView.Adapter<GameListFieldsAdapter.ViewHolder>() {
     private var fieldsList = emptyList<Field>()
     private var playerLevel: Int? = null
     private var clickablePosition: Int? = null
+    private var currentGame = game
+
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -50,12 +53,13 @@ class GameListFieldsAdapter : RecyclerView.Adapter<GameListFieldsAdapter.ViewHol
                 // Kliknięcie będzie obsługiwane tylko dla podświetlonego pola
                 val action =
                     GameListFieldsFragmentDirections.actionGameListFieldsFragmentToGameFieldFragment(
-                        currentItem,
+                        currentItem, currentGame
                     )
                 holder.itemView.findNavController().navigate(action)
             } else {
                 // Pokaż powiadomienie "Pole niedostępne"
-                Toast.makeText(holder.itemView.context, "Pole niedostępne", Toast.LENGTH_SHORT).show()
+                Toast.makeText(holder.itemView.context, "Pole niedostępne", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
     }
