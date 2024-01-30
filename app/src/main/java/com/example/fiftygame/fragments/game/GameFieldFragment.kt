@@ -70,15 +70,17 @@ class GameFieldFragment : Fragment() {
     private fun showResultDialog(result: Int) {
         MaterialAlertDialogBuilder(requireContext()).setTitle("Wynik rzutu kostką")
             .setMessage("Wylosowano liczbę: $result").setPositiveButton("OK") { dialog, _ ->
-                mPlayerViewModel.setLevel(mPlayerViewModel.getLevel.value?.plus(result) ?: result)
-                /*mPlayerViewModel.getLevel.observe(viewLifecycleOwner) { playerLevel ->
-                    val newPlayerLevel = playerLevel + result
-                    Log.d("GameLevel", "Nowy poziom gry: $newPlayerLevel")
-                    mPlayerViewModel.setLevel(newPlayerLevel)
-                }*/
-                Log.d("game dialog", result.toString())
+                mPlayerViewModel.getLevel.observe(viewLifecycleOwner) { pLevel ->
+                    mPlayerViewModel.setLevel(pLevel + result)
+                    Log.d("GameLevel", "Nowy poziom gry: $pLevel")
+                    val action = GameFieldFragmentDirections.actionGameFieldFragmentToGameListFieldsFragment(args.currentGame)
+                    findNavController().navigate(action)
+
+                }
+
+                Log.d("game dialog1", result.toString())
+                Log.d("game dialog3", mPlayerViewModel.getLevel.value.toString())
                 dialog.dismiss()
-                //findNavController().navigate(R.id.action_gameFieldFragment_to_gameListFieldsFragment)
             }.show()
     }
 
