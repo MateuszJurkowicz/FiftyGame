@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">Fifty Game</string>
-    <string name="game_join_button">Dołącz do gry</string>
-    <string name="game_create_button">Stwórz nową grę</string>
     <string name="settings_item">Ustawienia</string>
     <string name="help_item">Pomoc</string>
     <string name="title_activity_join_game">JoinGameActivity</string>
@@ -16,5 +14,12 @@
     <string name="field_question">Treść pytania</string>
     <string name="field_answer">Odpowiedź</string>
     <string name="submit_button">Idź dalej</string>
+    <string name="sign_in">Sign in</string>
+    <string name="game_join_button">Dołącz do gry</string>
+    <string name="game_create_button">Stwórz nową grę</string>
+    <string name="_1">1</string>
+    <string name="magnetofon">Magnetofon</string>
+    <string name="w_kt_rym">W którym</string>
+    <string name="_20">20</string>
 
 </resources>

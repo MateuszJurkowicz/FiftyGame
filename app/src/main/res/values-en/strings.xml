@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Fifty Game</string>
+    <string name="game_create_button">Make new game</string>
+    <string name="settings_item">Settings</string>
+    <string name="help_item">Help</string>
+    <string name="title_activity_join_game">Dołącz do gry</string>
+    <string name="title_activity_create_game">Stwórz nową grę</string>
+    <string name="pin_edit_text">wpisz PIN</string>
+    <string name="name_edit_text">Enter your name</string>
+    <string name="join_button">Join</string>
+    <string name="game_field_number">Number field game</string>
+    <string name="field_number">Number field</string>
+    <string name="field_entry">Password</string>
+    <string name="field_question">The content of the question</string>
+    <string name="field_answer">Answer</string>
+    <string name="submit_button">Keep going</string>
+    <string name="sign_in">Sign in</string>
+    <string name="game_join_button">Join the game</string>
+</resources>
