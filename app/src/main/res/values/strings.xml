@@ -1,15 +1,15 @@
 <resources>
-    <string name="app_name">Fifty Game</string>
+    <string name="app_name">Pięćdziesiątka</string>
     <string name="settings_item">Ustawienia</string>
     <string name="help_item">Pomoc</string>
-    <string name="title_activity_join_game">JoinGameActivity</string>
-    <string name="title_activity_create_game">CreateGameActivity</string>
-    <string name="pin_edit_text">PIN</string>
+    <string name="title_activity_join_game">Dołącz do gry</string>
+    <string name="title_activity_create_game">Stwórz nową grę</string>
+    <string name="pin_edit_text" translatable="false">PIN</string>
     <string name="name_edit_text">Wpisz tu swoje imię</string>
     <string name="join_button">Dołącz</string>
     <string name="webId" translatable="false">"301188230894-08iel7ibv5tolr31cns8qc4onk60plts.apps.googleusercontent.com"</string>
     <string name="game_field_number">Nr pola\n</string>
-    <string name="field_number">Numer pola</string>
+    <string name="field_number">Numer</string>
     <string name="field_entry">Hasło</string>
     <string name="field_question">Treść pytania</string>
     <string name="field_answer">Odpowiedź</string>
@@ -17,9 +17,5 @@
     <string name="sign_in">Sign in</string>
     <string name="game_join_button">Dołącz do gry</string>
     <string name="game_create_button">Stwórz nową grę</string>
-    <string name="_1">1</string>
-    <string name="magnetofon">Magnetofon</string>
-    <string name="w_kt_rym">W którym</string>
-    <string name="_20">20</string>
 
 </resources>

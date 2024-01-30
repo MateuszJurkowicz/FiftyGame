@@ -11,7 +11,7 @@
         android:id="@+id/number_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/_1"
+        android:text="@string/field_number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:text="@string/magnetofon"
+        android:text="@string/field_entry"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/number_textView"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:text="@string/w_kt_rym"
+        android:text="@string/field_question"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/entry_textView"
         app:layout_constraintTop_toTopOf="parent" />
@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
-        android:text="@string/_20"
+        android:text="@string/field_answer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/question_textView"
         app:layout_constraintTop_toTopOf="parent" />
