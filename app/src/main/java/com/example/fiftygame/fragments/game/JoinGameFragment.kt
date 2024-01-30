@@ -33,7 +33,7 @@ class JoinGameFragment : Fragment() {
         val view = binding.root
 
         mGameViewModel = ViewModelProvider(this)[GameViewModel::class.java]
-        //mPlayerViewModel = ViewModelProvider(this)[PlayerViewModel::class.java]
+        mPlayerViewModel = ViewModelProvider(this)[PlayerViewModel::class.java]
 
 
         binding.joinGameButton.setOnClickListener {
@@ -42,17 +42,17 @@ class JoinGameFragment : Fragment() {
 
             if (playerName.isNotEmpty() && pin.isNotEmpty()) {
                 lifecycleScope.launch(Dispatchers.IO) {
-                    val game = mGameViewModel.readGameWithPin(pin.toInt())
+                    val currentGame = mGameViewModel.readGameWithPin(pin.toInt())
+                    mPlayerViewModel.setName(playerName)
+                    mPlayerViewModel.setLevel(1)
 
-                    if (game.pin == pin.toInt()) {
+                    if (currentGame.pin == pin.toInt()) {
                         launch(Dispatchers.Main) {
-                            //mPlayerViewModel.setName(playerName)
-                            //mPlayerViewModel.setLevel(1)
                             Toast.makeText(requireContext(), "Znaleziono grę", Toast.LENGTH_LONG)
                                 .show()
                             val action =
                                 JoinGameFragmentDirections.actionJoinGameFragmentToGameListFieldsFragment(
-                                    game, playerName
+                                    currentGame, playerName
                                 )
                             findNavController().navigate(action)
                         }

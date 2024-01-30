@@ -50,7 +50,7 @@ class GameListFieldsAdapter : RecyclerView.Adapter<GameListFieldsAdapter.ViewHol
                 // Kliknięcie będzie obsługiwane tylko dla podświetlonego pola
                 val action =
                     GameListFieldsFragmentDirections.actionGameListFieldsFragmentToGameFieldFragment(
-                        currentItem
+                        currentItem,
                     )
                 holder.itemView.findNavController().navigate(action)
             } else {

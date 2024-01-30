@@ -9,7 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class PlayerViewModel(application: Application) : AndroidViewModel(application) {
-    private val dataStore = DataStoreRepository(application)
+    private val dataStore = DataStoreRepository.getInstance(application)
 
     val getName = dataStore.getName().asLiveData(Dispatchers.IO)
     val getLevel = dataStore.getLevel().asLiveData(Dispatchers.IO)
@@ -21,7 +21,12 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
 
     fun setLevel(level: Int) {
         viewModelScope.launch {
-            dataStore.getLevel()
+            dataStore.setLevel(level)
+        }
+    }
+    fun sumLevel(add: Int) {
+        viewModelScope.launch {
+            dataStore.sumLevel(add)
         }
     }
 }

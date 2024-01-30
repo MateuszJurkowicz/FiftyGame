@@ -34,21 +34,42 @@ class GameListFieldsFragment : Fragment() {
         val recyclerView = binding.gameRecyclerView
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
         recyclerView.adapter = adapter
-
         mPlayerViewModel = ViewModelProvider(this)[PlayerViewModel::class.java]
+
+
         mPlayerViewModel.setName(args.playerName)
 
         mPlayerViewModel.getLevel.observe(viewLifecycleOwner, Observer { playerLevel ->
-                adapter.setLevel(playerLevel)
+            adapter.setLevel(playerLevel-1)
+            Log.d("oncreateview", "${mPlayerViewModel.getLevel.value}")
+            Log.d("oncreateview2", playerLevel.toString())
+
+
         })
 
         mFieldViewModel = ViewModelProvider(this)[FieldViewModel::class.java]
-        mFieldViewModel.readGameWithFields(args.currentGame.gameId)
-            .observe(viewLifecycleOwner, Observer { gameWithFields ->
-                adapter.setData(gameWithFields)
-            })
+        args.currentGame.let {
+            mFieldViewModel.readGameWithFields(it.gameId)
+                .observe(viewLifecycleOwner, Observer { gameWithFields ->
+                    adapter.setData(gameWithFields)
+                })
+        }
 
         return view
+    }
+
+    private fun setLevel(toAdd: Int) {
+        val oldLevel = mPlayerViewModel.getLevel.value
+        if (oldLevel != null) {
+            mPlayerViewModel.setLevel(oldLevel + toAdd)
+            Log.d("game level", mPlayerViewModel.setLevel(oldLevel + toAdd).toString())
+        }
+    }
+
+    override fun onDestroy() {
+        mPlayerViewModel.setLevel(1)
+        Log.d("destroyview", "DESTROY")
+        super.onDestroy()
     }
 
 }

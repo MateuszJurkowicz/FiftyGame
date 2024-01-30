@@ -6,6 +6,15 @@
     app:startDestination="@id/joinGameFragment">
 
     <fragment
+        android:id="@+id/joinGameFragment"
+        android:name="com.example.fiftygame.fragments.game.JoinGameFragment"
+        android:label="Dołącz do gry"
+        tools:layout="@layout/fragment_join_game">
+        <action
+            android:id="@+id/action_joinGameFragment_to_gameListFieldsFragment"
+            app:destination="@id/gameListFieldsFragment" />
+    </fragment>
+    <fragment
         android:id="@+id/gameListFieldsFragment"
         android:name="com.example.fiftygame.fragments.game.GameListFieldsFragment"
         android:label="Gra"
@@ -31,14 +40,5 @@
         <argument
             android:name="currentItem"
             app:argType="com.example.fiftygame.data.models.Field" />
-    </fragment>
-    <fragment
-        android:id="@+id/joinGameFragment"
-        android:name="com.example.fiftygame.fragments.game.JoinGameFragment"
-        android:label="Dołącz do gry"
-        tools:layout="@layout/fragment_join_game" >
-        <action
-            android:id="@+id/action_joinGameFragment_to_gameListFieldsFragment"
-            app:destination="@id/gameListFieldsFragment" />
     </fragment>
 </navigation>

@@ -13,13 +13,24 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import java.io.IOException
 
-private const val PREFERENCE_NAME = "player_preferences"
 
-class DataStoreRepository(context: Context) {
+class DataStoreRepository private constructor(context: Context) {
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = PREFERENCE_NAME)
     private val dataStore = context.dataStore
 
     companion object {
+        private const val PREFERENCE_NAME = "player_preferences"
+
+        // Singleton instance
+        @Volatile
+        private var instance: DataStoreRepository? = null
+
+        fun getInstance(context: Context): DataStoreRepository {
+            return instance ?: synchronized(this) {
+                instance ?: DataStoreRepository(context).also { instance = it }
+            }
+        }
+
         val nameKey = stringPreferencesKey("NAME_KEY")
         val levelKey = intPreferencesKey("LEVEL_KEY")
     }
@@ -33,6 +44,12 @@ class DataStoreRepository(context: Context) {
     suspend fun setLevel(level: Int) {
         dataStore.edit { preference ->
             preference[levelKey] = level
+        }
+    }
+
+    suspend fun sumLevel(add: Int) {
+        dataStore.edit { preference ->
+            preference[levelKey]?.plus(add)
         }
     }
 
@@ -62,4 +79,6 @@ class DataStoreRepository(context: Context) {
             playerLevel
         }
     }
+
+
 }

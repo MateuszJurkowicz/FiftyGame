@@ -104,8 +104,6 @@ R
 "app/src/main/res/values/colors.xml,9\6\969faa2a5d9f5e8390e958d2c07f2cfd54676e6b
 S
 #app/src/main/res/values/strings.xml,d\2\d2281fbb3027de2722081a53408dd77628bf080e
-[
-+app/src/main/res/layout/field_list_item.xml,6\b\6b32fc82c7717b4c2f7fceddd8ea0cfbada03232
 Y
 )app/src/main/res/layout/activity_main.xml,7\6\76b07e40f24cce093536731477540f12e7da3cb6
 Y
@@ -132,8 +130,6 @@ d
 4app/src/main/res/drawable/ic_launcher_background.xml,4\9\49845c622cb06d895975c7b1e3f943e320bce688
 H
 app/google-services.json,f\d\fd8d34b142d02ec743a8efefefd2c097961666e9
-i
-9app/src/main/java/com/example/fiftygame/data/Firestore.kt,7\5\75dcbc2571fb80082c2ec1c571602cb9f9c09461
 w
 G.idea/sonarlint/issuestore/9/d/9db44714da783e82392884aeea0d83f0125570ed,2\e\2e19a4ba2d2e5f3cae9976fda549f2d93663c9c6
 
@@ -547,8 +543,6 @@ Q.idea/sonarlint/securityhotspotstore/9/a/9a43762646d6c9d33ccdc2a92292c8078d1078
 
 Q.idea/sonarlint/securityhotspotstore/d/0/d0d6d674703168857461424b47769ddbbe26d061,f\9\f97fd68ed2a04d62108f626a7589847d7ada15b0
 
-Q.idea/sonarlint/securityhotspotstore/7/9/79a40f5d2d62d5ab5622e0415af4f610380b1a88,f\d\fd263687f93e1ab6e17904122b9419c03b7fdcfc
-
 Q.idea/sonarlint/securityhotspotstore/9/9/99760ae82bc34b01066f1f503875b14af74d88cf,d\7\d78143d01f24ba401fcb4aedb22c265b7b24f5c1
 w
 G.idea/sonarlint/issuestore/9/9/99760ae82bc34b01066f1f503875b14af74d88cf,d\3\d30d3b1b9c4fc9f3dcbd378a57c65926b5d8e3bd
@@ -766,18 +760,12 @@ w
 G.idea/sonarlint/issuestore/f/3/f36d1f33a0e5d10431e99ad836c9ef657234fff8,a\7\a70e26d8e0bf6089181c25321766c3d7adf25c56
 w
 G.idea/sonarlint/issuestore/f/0/f06e4b9b883c4d53c45f2b8a028d48790a4ce86c,8\d\8d2a0c0ac5d551523a5bcbd8e8c5afe6d096f0f2
-o
-?app/src/main/java/com/example/fiftygame/data/FieldRepository.kt,9\5\95ca1220d2097c8e689b5d02b24ec8c4182d839e
-n
->app/src/main/java/com/example/fiftygame/data/GameRepository.kt,7\7\777ce431dfc5c4a2e8bf53fc07d95d8ac07d2846
 {
 Kapp/src/main/java/com/example/fiftygame/fragments/game/GameFieldFragment.kt,2\9\294863e8d37200cf8f1e780af82c2942fa04d9fc
 €
 Papp/src/main/java/com/example/fiftygame/fragments/game/GameListFieldsFragment.kt,2\b\2bbd9c5c5ea4f77dc6df4e4a8b8cb8fa5aed1012
 
 Oapp/src/main/java/com/example/fiftygame/fragments/game/GameListFieldsAdapter.kt,d\1\d149d6be59835466cc3e3e10a5282f25ac68f382
-k
-;app/src/main/java/com/example/fiftygame/JoinGameFragment.kt,c\f\cf0b2bbe171176dacc96fbaa3385713fa637fba5
 z
 Japp/src/main/java/com/example/fiftygame/fragments/game/JoinGameFragment.kt,c\c\cc0056cb72ac5fa8edb484d5a404a9bd18e5875b
 {
@@ -790,5 +778,3 @@ Fapp/src/main/java/com/example/fiftygame/data/repositories/Firestore.kt,8\6\86f
 Papp/src/main/java/com/example/fiftygame/data/repositories/DataStoreRepository.kt,c\b\cb100b7a7ba61d815c948f925a8efd2070433ef5
 z
 Japp/src/main/java/com/example/fiftygame/data/viewmodels/PlayerViewModel.kt,b\1\b148e23ef4b51cb88f382130927b26ab3d131cc1
-‚
-Rapp/src/main/java/com/example/fiftygame/data/repositories/DataStoreRepository.java,e\c\ec1c3ce48eff93107f041d684a497256590f96b0
