@@ -16,4 +16,5 @@
     <string name="submit_button">Next</string>
     <string name="sign_in">Sign in</string>
     <string name="game_join_button">Join the game</string>
+    <string name="game_description">Short description about game</string>
 </resources>

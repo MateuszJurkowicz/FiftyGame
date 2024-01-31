@@ -27,7 +27,6 @@ class ListGamesAdapter(private val fragment: ListGamesFragment): RecyclerView.Ad
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = gamesList[position]
-        holder.itemView.findViewById<TextView>(R.id.id_textView).text = currentItem.gameId.toString()
         holder.itemView.findViewById<TextView>(R.id.pin_textView).text = currentItem.pin.toString()
         holder.itemView.findViewById<TextView>(R.id.description_textView).text = currentItem.description
         holder.itemView.findViewById<ConstraintLayout>(R.id.game_row).setOnClickListener{

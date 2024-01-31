@@ -8,7 +8,7 @@
     <string name="name_edit_text">Wpisz tu swoje imię</string>
     <string name="join_button">Dołącz</string>
     <string name="webId" translatable="false">"301188230894-08iel7ibv5tolr31cns8qc4onk60plts.apps.googleusercontent.com"</string>
-    <string name="game_field_number">Nr pola\n</string>
+    <string name="game_field_number">Nr pola</string>
     <string name="field_number">Numer</string>
     <string name="field_entry">Hasło</string>
     <string name="field_question">Treść pytania</string>
@@ -17,5 +17,9 @@
     <string name="sign_in">Sign in</string>
     <string name="game_join_button">Dołącz do gry</string>
     <string name="game_create_button">Stwórz nową grę</string>
+    <string name="game_pin" translatable="false">123456</string>
+    <string name="game_description">Krótki tekst opisujący gre</string>
+    <string name="logo" translatable="false">50</string>
+    <string name="logo_word" translatable="false">GAME</string>
 
 </resources>
