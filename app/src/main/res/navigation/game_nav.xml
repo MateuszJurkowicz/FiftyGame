@@ -8,20 +8,24 @@
     <fragment
         android:id="@+id/joinGameFragment"
         android:name="com.example.fiftygame.fragments.game.JoinGameFragment"
-        android:label="Dołącz do gry"
+        android:label="@string/Join_to_the_game"
         tools:layout="@layout/fragment_join_game">
         <action
             android:id="@+id/action_joinGameFragment_to_gameListFieldsFragment"
-            app:destination="@id/gameListFieldsFragment" />
+            app:destination="@id/gameListFieldsFragment"
+            app:popUpTo="@+id/joinGameFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/gameListFieldsFragment"
         android:name="com.example.fiftygame.fragments.game.GameListFieldsFragment"
-        android:label="Gra"
+        android:label="@string/Game"
         tools:layout="@layout/fragment_game_list_fields" >
         <action
             android:id="@+id/action_gameListFieldsFragment_to_gameFieldFragment"
-            app:destination="@id/gameFieldFragment" />
+            app:destination="@id/gameFieldFragment"
+            app:popUpTo="@+id/gameListFieldsFragment"
+            app:popUpToInclusive="false" />
         <argument
             android:name="currentGame"
             app:argType="com.example.fiftygame.data.models.Game" />
@@ -29,11 +33,15 @@
     <fragment
         android:id="@+id/gameFieldFragment"
         android:name="com.example.fiftygame.fragments.game.GameFieldFragment"
-        android:label="Pole"
+        android:label="@string/Field"
         tools:layout="@layout/fragment_game_field" >
         <action
             android:id="@+id/action_gameFieldFragment_to_gameListFieldsFragment"
-            app:destination="@id/gameListFieldsFragment" />
+            app:destination="@id/gameListFieldsFragment"
+            app:popUpTo="@+id/gameFieldFragment"
+            app:popUpToInclusive="true"
+            app:popUpToSaveState="true"
+            app:restoreState="true"/>
         <argument
             android:name="currentItem"
             app:argType="com.example.fiftygame.data.models.Field" />

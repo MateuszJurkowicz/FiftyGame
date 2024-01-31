@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.cardview.widget.CardView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fiftygame.R
@@ -41,11 +42,11 @@ class GameListFieldsAdapter(game: Game) : RecyclerView.Adapter<GameListFieldsAda
 
         // Sprawdź i podświetl pole, jeśli playerLevel jest zdefiniowany i równy poziomowi pola
         if (playerLevel != null && playerLevel == position) {
-            holder.itemView.setBackgroundColor(holder.itemView.context.resources.getColor(R.color.black))
+            holder.itemView.findViewById<CardView>(R.id.field_CardView).setCardBackgroundColor(holder.itemView.context.getColor(R.color.access_color_card_view))
             clickablePosition = position // Ustaw klikalność tylko dla podświetlonego pola
         } else {
             // Jeśli nie, przywróć domyślny kolor tła
-            holder.itemView.setBackgroundColor(holder.itemView.context.resources.getColor(android.R.color.transparent))
+            holder.itemView.findViewById<CardView>(R.id.field_CardView).setCardBackgroundColor(holder.itemView.context.getColor(R.color.card_field_color))
         }
 
         holder.itemView.findViewById<TextView>(R.id.field_number).setOnClickListener {

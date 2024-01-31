@@ -71,8 +71,8 @@ class ListGamesFragment : Fragment() {
         builder.create().show()
     }
 
-    fun editGame(game: Game) {
-        val action = ListGamesFragmentDirections.actionListGamesFragmentToCreateGameNav(game)
+    fun editGame(currentGame: Game) {
+        val action = ListGamesFragmentDirections.actionListGamesFragmentToCreateGameNav(currentGame)
         findNavController().navigate(action)
     }
 }

@@ -29,11 +29,9 @@ class MainActivity : AppCompatActivity() {
             if (user != null) {
                 val createGameIntent = Intent(this, CreateGamesActivity::class.java)
                 startActivity(createGameIntent)
-                finish()
             } else {
                 val signInIntent = Intent(this, SignInActivity::class.java)
                 startActivity(signInIntent)
-                finish()
             }
         }
 

@@ -73,7 +73,10 @@ class GameFieldFragment : Fragment() {
                 mPlayerViewModel.getLevel.observe(viewLifecycleOwner) { pLevel ->
                     mPlayerViewModel.setLevel(pLevel + result)
                     Log.d("GameLevel", "Nowy poziom gry: $pLevel")
-                    val action = GameFieldFragmentDirections.actionGameFieldFragmentToGameListFieldsFragment(args.currentGame)
+                    val action =
+                        GameFieldFragmentDirections.actionGameFieldFragmentToGameListFieldsFragment(
+                            args.currentGame
+                        )
                     findNavController().navigate(action)
 
                 }
@@ -83,8 +86,6 @@ class GameFieldFragment : Fragment() {
                 dialog.dismiss()
             }.show()
     }
-
-
 
 
 }

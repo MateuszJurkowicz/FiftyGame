@@ -24,7 +24,7 @@ import com.example.fiftygame.databinding.FragmentListFieldsBinding
 class ListFieldsFragment : Fragment(), SearchView.OnQueryTextListener {
     private val args by navArgs<ListFieldsFragmentArgs>()
     private lateinit var mFieldViewModel: FieldViewModel
-    private val adapter: ListFieldsAdapter by lazy { ListFieldsAdapter() }
+    private val adapter: ListFieldsAdapter by lazy { ListFieldsAdapter(args.currentGame) }
     private var _binding: FragmentListFieldsBinding? = null
     private val binding get() = _binding!!
     override fun onCreateView(
@@ -42,14 +42,14 @@ class ListFieldsFragment : Fragment(), SearchView.OnQueryTextListener {
 
 
         mFieldViewModel = ViewModelProvider(this)[FieldViewModel::class.java]
-        mFieldViewModel.readGameWithFields(args.game.gameId)
-            .observe(viewLifecycleOwner, Observer { gameWithFields ->
+        mFieldViewModel.readGameWithFields(args.currentGame.gameId)
+            .observe(viewLifecycleOwner) { gameWithFields ->
                 adapter.setData(gameWithFields)
-            })
+            }
 
         binding.fieldFloatingActionButton.setOnClickListener {
             val action = ListFieldsFragmentDirections.actionListFieldsFragmentToAddFieldFragment(
-                args.game
+                args.currentGame
             )
             findNavController().navigate(action)
         }

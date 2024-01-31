@@ -24,5 +24,18 @@
     <string name="add">Dodaj</string>
     <string name="add_game_description">Opis</string>
     <string name="update">Aktualizuj</string>
+    <string name="fields_list">Lista pól</string>
+    <string name="add_field">Dodaj pole</string>
+    <string name="update_field">Zaktualizuj pole</string>
+    <string name="profile">Profil</string>
+    <string name="games_list">Lista gier</string>
+    <string name="add_game">Dodaj grę</string>
+    <string name="Join_to_the_game">Dołącz do gry</string>
+    <string name="Game" translatable="false">Gra</string>
+    <string name="Field" translatable="false">Pole</string>
+    <string name="floating_button_fields">Dodaj nowe pole</string>
+    <string name="floating_button_games">Dodaj nową grę</string>
+    <string name="Logout">Wyloguj</string>
+    <string name="name_and_surname">Imię i nazwisko</string>
 
 </resources>

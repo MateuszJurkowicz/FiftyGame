@@ -66,7 +66,8 @@ class UpdateFieldFragment : Fragment() {
                 Field(args.currentField.fieldId, number.toInt(), entry, question, answer, gameId)
             mFieldViewModel.updateField(updatedField)
             Toast.makeText(requireContext(), "Pomyślnie zaktualizowano!", Toast.LENGTH_SHORT).show()
-            findNavController().navigate(R.id.action_updateFieldFragment_to_listFieldsFragment)
+            val action = UpdateFieldFragmentDirections.actionUpdateFieldFragmentToListFieldsFragment(args.currentGame)
+            findNavController().navigate(action)
         } else {
             Toast.makeText(requireContext(), "Nie udało się zaktualizować!", Toast.LENGTH_SHORT)
                 .show()

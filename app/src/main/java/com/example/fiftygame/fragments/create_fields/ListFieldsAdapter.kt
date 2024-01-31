@@ -10,10 +10,12 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fiftygame.R
 import com.example.fiftygame.data.models.Field
+import com.example.fiftygame.data.models.Game
 import com.example.fiftygame.data.relations.GameWithFields
 
-class ListFieldsAdapter : RecyclerView.Adapter<ListFieldsAdapter.ViewHolder>() {
+class ListFieldsAdapter (game: Game): RecyclerView.Adapter<ListFieldsAdapter.ViewHolder>() {
     private var fieldsList = emptyList<Field>()
+    private val currentGame = game
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {}
 
@@ -36,7 +38,7 @@ class ListFieldsAdapter : RecyclerView.Adapter<ListFieldsAdapter.ViewHolder>() {
 
         holder.itemView.findViewById<ConstraintLayout>(R.id.field_row).setOnClickListener {
             val action = ListFieldsFragmentDirections.actionListFieldsFragmentToUpdateFieldFragment(
-                currentItem
+                currentItem, currentGame
             )
             holder.itemView.findNavController().navigate(action)
         }
@@ -45,9 +47,9 @@ class ListFieldsAdapter : RecyclerView.Adapter<ListFieldsAdapter.ViewHolder>() {
     fun setData(gameWithFieldsList: List<GameWithFields>) {
         gameWithFieldsList.forEach { gameWithFields ->
             fieldsList = gameWithFields.fields
-            // Tutaj możesz wykonać operacje na fields
+            notifyDataSetChanged()
+
         }
-        notifyDataSetChanged()
     }
 
     fun setDataForSearch(it: List<Field>) {

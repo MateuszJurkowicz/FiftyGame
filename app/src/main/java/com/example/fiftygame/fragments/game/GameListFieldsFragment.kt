@@ -64,10 +64,6 @@ class GameListFieldsFragment : Fragment() {
         }
     }
 
-    override fun onDestroy() {
-        mPlayerViewModel.setLevel(1)
-        Log.d("destroyview", "DESTROY")
-        super.onDestroy()
-    }
+
 
 }

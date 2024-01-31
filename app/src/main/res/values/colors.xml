@@ -4,4 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="card_field_color">#2196FF</color>
     <color name="gradient_end_color">#2196DC</color>
+    <color name="access_color_card_view">#3F8F42</color>
 </resources>

@@ -9,6 +9,7 @@
     android:padding="24sp">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/field_CardView"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:clickable="true"
@@ -27,6 +28,7 @@
                 android:layout_height="match_parent"
                 android:fontFamily="@font/aclonica"
                 android:gravity="center"
+                android:textSize="18sp"
                 android:text="@string/game_field_number"
                 android:textColor="@color/white" />
         </LinearLayout>
