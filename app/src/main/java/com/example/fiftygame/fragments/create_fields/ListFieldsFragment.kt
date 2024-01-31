@@ -2,6 +2,7 @@ package com.example.fiftygame.fragments.create_fields
 
 import  android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.Menu
@@ -17,6 +18,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fiftygame.R
+import com.example.fiftygame.data.models.Field
+import com.example.fiftygame.data.models.FieldStorage
 import com.example.fiftygame.data.viewmodels.FieldViewModel
 import com.example.fiftygame.databinding.FragmentListFieldsBinding
 
@@ -36,6 +39,8 @@ class ListFieldsFragment : Fragment(), SearchView.OnQueryTextListener {
 
         setHasOptionsMenu(true)
 
+        val fieldStorage: FieldStorage
+
         val recyclerView = binding.fieldsRecyclerView
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
@@ -52,6 +57,10 @@ class ListFieldsFragment : Fragment(), SearchView.OnQueryTextListener {
                 args.currentGame
             )
             findNavController().navigate(action)
+        }
+        binding.fieldFloatingActionButton.setOnLongClickListener {
+            insertExampleDataToDatabase(args.currentGame.gameId)
+            true
         }
 
 
@@ -109,6 +118,15 @@ class ListFieldsFragment : Fragment(), SearchView.OnQueryTextListener {
                 adapter.setDataForSearch(it)
             }
         }
+    }
+
+    private fun insertExampleDataToDatabase(gameId: Int) {
+        val Fields = FieldStorage.getExampleFields(gameId)
+        Log.d("insert", Fields.toString())
+        Fields.map{ field -> mFieldViewModel.addField(field)
+            Log.d("insert2", field.toString())}
+            ///mFieldViewModel.addField(field)
+        Toast.makeText(requireContext(), "Pomyślnie dodano!", Toast.LENGTH_LONG).show()
     }
 
 }
