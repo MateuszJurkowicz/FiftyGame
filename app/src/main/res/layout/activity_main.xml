@@ -34,12 +34,13 @@
     <Button
         android:id="@+id/moveToJoinGameButton"
         android:layout_width="190dp"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginBottom="50dp"
         android:backgroundTint="#515151"
         android:text="@string/game_join_button"
         android:textSize="18sp"
-        app:cornerRadius="5dp"
+        android:textStyle="bold"
+        app:cornerRadius="10dp"
         app:layout_constraintBottom_toTopOf="@+id/moveToCreateGameButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -47,12 +48,13 @@
     <Button
         android:id="@+id/moveToCreateGameButton"
         android:layout_width="190dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="175dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="150dp"
         android:backgroundTint="#757575"
         android:text="@string/game_create_button"
         android:textSize="18sp"
-        app:cornerRadius="5dp"
+        android:textStyle="bold"
+        app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
