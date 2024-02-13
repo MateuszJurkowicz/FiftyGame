@@ -9,7 +9,7 @@
     <string name="join_button">Dołącz</string>
     <string name="webId" translatable="false">"301188230894-08iel7ibv5tolr31cns8qc4onk60plts.apps.googleusercontent.com"</string>
     <string name="game_field_number">Nr pola</string>
-    <string name="field_number">Numer</string>
+    <string name="field_number">Nr</string>
     <string name="field_entry">Hasło</string>
     <string name="field_question">Treść pytania</string>
     <string name="field_answer">Odpowiedź</string>
@@ -37,5 +37,7 @@
     <string name="floating_button_games">Dodaj nową grę</string>
     <string name="Logout">Wyloguj</string>
     <string name="name_and_surname">Imię i nazwisko</string>
+    <string name="search">Search</string>
+    <string name="delete">Delete</string>
 
 </resources>

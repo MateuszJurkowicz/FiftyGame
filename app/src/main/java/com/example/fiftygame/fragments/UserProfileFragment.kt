@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.example.fiftygame.R
 import com.example.fiftygame.activities.CreateFieldsActivity
 import com.example.fiftygame.databinding.FragmentUserProfileBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -29,7 +31,8 @@ class UserProfileFragment : Fragment() {
 
         binding.signOutButton.setOnClickListener {
             mAuth.signOut()
-            (activity as CreateFieldsActivity).backToSignIn()
+            findNavController().navigate(R.id.action_userProfileFragment_to_mainActivity)
+
 
         }
 

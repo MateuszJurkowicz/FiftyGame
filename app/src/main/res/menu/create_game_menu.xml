@@ -5,19 +5,20 @@
         android:id="@+id/delete_item"
         android:icon="@drawable/ic_delete"
         android:iconTint="@color/black"
-        android:title="Delete"
+        android:title="@string/delete"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/search_item"
         android:icon="@drawable/ic_search"
         android:iconTint="@color/black"
-        android:title="Search"
+        
+        android:title="@string/search"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/profile_item"
         android:icon="@drawable/ic_profile"
         android:iconTint="@color/black"
-        android:title="Profile"
+        android:title="@string/profile"
         app:showAsAction="ifRoom" />
 </menu>

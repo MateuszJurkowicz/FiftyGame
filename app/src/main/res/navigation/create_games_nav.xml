@@ -16,8 +16,11 @@
             app:popUpTo="@+id/listGamesFragment"
             app:popUpToInclusive="false" />
         <action
-            android:id="@+id/action_listGamesFragment_to_create_game_nav"
-            app:destination="@id/navigation" />
+            android:id="@+id/action_listGamesFragment_to_create_fields_nav"
+            app:destination="@id/fields_navigation" />
+        <action
+            android:id="@+id/action_listGamesFragment_to_profile_navigation"
+            app:destination="@id/profile_navigation" />
     </fragment>
     <fragment
         android:id="@+id/addGameFragment"
@@ -31,11 +34,18 @@
             app:popUpToInclusive="false" />
     </fragment>
     <navigation
-        android:id="@+id/navigation"
+        android:id="@+id/fields_navigation"
         app:startDestination="@id/create_fields_nav">
         <include app:graph="@navigation/create_fields_nav" />
         <argument
             android:name="currentGame"
             app:argType="com.example.fiftygame.data.models.Game" />
+    </navigation>
+    <navigation android:id="@+id/profile_navigation"
+        app:startDestination="@id/profile_nav">
+        <include app:graph="@navigation/profile_nav" />
+        <action
+            android:id="@+id/action_global_listGamesFragmentFromProfile"
+            app:destination="@id/listGamesFragment" />
     </navigation>
 </navigation>

@@ -10,6 +10,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.MenuProvider
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -26,7 +27,7 @@ import com.example.fiftygame.databinding.FragmentListGamesBinding
 import com.example.fiftygame.fragments.create_fields.ListFieldsAdapter
 import com.example.fiftygame.fragments.create_fields.ListFieldsFragmentDirections
 
-class ListGamesFragment : Fragment() {
+class ListGamesFragment : Fragment(), MenuProvider {
     private lateinit var mGameViewModel: GameViewModel
     private lateinit var mFieldViewModel: FieldViewModel
     private val adapter: ListGamesAdapter by lazy { ListGamesAdapter(this) }
@@ -39,6 +40,8 @@ class ListGamesFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentListGamesBinding.inflate(inflater, container, false)
         val view = binding.root
+
+        activity?.addMenuProvider(this, viewLifecycleOwner)
 
         val recyclerView = binding.gamesRecyclerView
         recyclerView.adapter = adapter
@@ -72,7 +75,20 @@ class ListGamesFragment : Fragment() {
     }
 
     fun editGame(currentGame: Game) {
-        val action = ListGamesFragmentDirections.actionListGamesFragmentToCreateGameNav(currentGame)
+        val action = ListGamesFragmentDirections.actionListGamesFragmentToCreateFieldsNav(currentGame)
         findNavController().navigate(action)
+    }
+
+    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+        menuInflater.inflate(R.menu.create_game_menu, menu)
+    }
+
+    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        if(menuItem.itemId == R.id.profile_item)
+        {
+            findNavController().navigate(R.id.action_listGamesFragment_to_profile_navigation)
+            return true
+        }
+        return false
     }
 }

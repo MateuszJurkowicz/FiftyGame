@@ -16,8 +16,7 @@ class CreateFieldsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_create_fields)
 
 
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.fragmentFieldsContainerView) as NavHostFragment
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentFieldsContainerView) as NavHostFragment
         val navController = navHostFragment.navController
         setupActionBarWithNavController(navController)
     }
@@ -27,10 +26,5 @@ class CreateFieldsActivity : AppCompatActivity() {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
 
-    fun backToSignIn() {
-        val intent = Intent(this, SignInActivity::class.java)
-        startActivity(intent)
-        finish()
-    }
 
 }

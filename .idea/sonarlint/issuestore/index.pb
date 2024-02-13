@@ -122,8 +122,6 @@ V
 .app/src/main/res/xml/data_extraction_rules.xml,3\b\3bc4db92963be77ebed9d7a4fff09127a1110e4d
 U
 %app/src/main/res/xml/backup_rules.xml,e\0\e0bc1eda8e2c689cb79d5b6e5cfd11385f06c2b8
-`
-0app/src/main/res/drawable/ic_navigate_before.xml,8\7\87d409707d933cafe147c13979d6c0d53fbaffcc
 d
 4app/src/main/res/drawable/ic_launcher_background.xml,4\9\49845c622cb06d895975c7b1e3f943e320bce688
 H
@@ -190,8 +188,6 @@ w
 G.idea/sonarlint/issuestore/7/6/76b07e40f24cce093536731477540f12e7da3cb6,2\b\2b5b3f69b7d66689d415c6f5684459dee3bb377d
 Å
 Q.idea/sonarlint/securityhotspotstore/2/4/246ec273c967b129750b03b40078b2bf2eed0dcc,a\b\abf2c9b605d1d716e90d73e30699ca62561bf5a8
-Å
-Q.idea/sonarlint/securityhotspotstore/8/7/87d409707d933cafe147c13979d6c0d53fbaffcc,b\5\b53b8902fc8037c116f5dcfab8934c867ae24c33
 w
 G.idea/sonarlint/issuestore/7/3/73a359878b92e4f0e1d714696966aeacd5e91b7c,d\0\d0d6d674703168857461424b47769ddbbe26d061
 Å
@@ -204,8 +200,6 @@ Q.idea/sonarlint/securityhotspotstore/d/4/d4115e7e13112fe372c450a6354345d7e7531a
 Q.idea/sonarlint/securityhotspotstore/8/c/8c3a6b96d9ffba496992e612d58227c19e6b9e65,8\b\8bebccb5ed71bd3fc5dfe2d2bfecae861bf3cec5
 w
 G.idea/sonarlint/issuestore/8/e/8e1e7bdb1ae067bed594ec43ea163d35865581b2,a\4\a41c2e8ca6dcc47f858bc200329f34fed7aa0e7f
-w
-G.idea/sonarlint/issuestore/8/7/87d409707d933cafe147c13979d6c0d53fbaffcc,3\f\3f4cdfd09220ed8911fb670f414a874e45815b68
 w
 G.idea/sonarlint/issuestore/8/b/8bc2665b8cd90161206212e4e3741e54d17acc5f,a\b\abb5482cbb448f11f3863a293c0c56253b06d73b
 Å
@@ -399,8 +393,6 @@ G.idea/sonarlint/issuestore/b/8/b86279fa0f08a48815766b267d844d29fcd222d5,f\8\f8
 w
 G.idea/sonarlint/issuestore/b/9/b90939f3742d8cda98839cbdab815b0109ab2834,8\5\8579f9e55e76ca44d55a473da8965e1e45f71d34
 w
-G.idea/sonarlint/issuestore/b/5/b53b8902fc8037c116f5dcfab8934c867ae24c33,2\8\285b890834beb1b22124d117506e5dbe821f1cf8
-w
 G.idea/sonarlint/issuestore/b/8/b8088dbe5467070c0507b8825d5a3deb7bb92266,e\d\ed4957fbcdfbbbb504487d2f4f32a366fe839bfa
 w
 G.idea/sonarlint/issuestore/b/d/bd35ab6b08d5f05ea8b6b2a7728ecca53b262f8f,7\4\746522d5960ac99f683f84f1e2b1af5c22d5a346
@@ -470,8 +462,6 @@ Q.idea/sonarlint/securityhotspotstore/9/9/994f1980d0f0df42c4444de326a4d981a8da63
 Q.idea/sonarlint/securityhotspotstore/8/b/8bebccb5ed71bd3fc5dfe2d2bfecae861bf3cec5,8\f\8f5005c9be2a35581353eabe477eb01b902fba94
 w
 G.idea/sonarlint/issuestore/1/5/15ff8ba7ba8aa142a4d5588fa03db65ddf2b4f45,e\a\ea29c0aa8c5689373f9f8db034062fcfabacd2a0
-w
-G.idea/sonarlint/issuestore/1/7/17dcdd42d582d9cb73e27e94282011ea3b91d2d4,4\3\43a30cf827c01edf0e7a6b9dc0e08004aac1b926
 w
 G.idea/sonarlint/issuestore/1/d/1df6058348b9e2ca20d2e7135ca97153612e439b,d\a\da0c78bde1d34dc92410718386c4a9ba394944af
 w
@@ -553,8 +543,6 @@ G.idea/sonarlint/issuestore/2/6/26762cc1b6aabcee0f0c912f2e49caf02cc0dcdc,2\d\2d
 w
 G.idea/sonarlint/issuestore/2/6/26c370892a64e86838532e341d0fde40cf0324ae,2\f\2f98714730d9b955a688c4a3c53318efe7a36f39
 Å
-Q.idea/sonarlint/securityhotspotstore/1/7/17dcdd42d582d9cb73e27e94282011ea3b91d2d4,3\5\356622d242f2e2ae9f3f343bc80eaea9ccfa4440
-Å
 Q.idea/sonarlint/securityhotspotstore/1/d/1df6058348b9e2ca20d2e7135ca97153612e439b,3\8\38eacb3912390d41c0166fc5b107c5da1b5b0c3d
 Å
 Q.idea/sonarlint/securityhotspotstore/1/5/15ff8ba7ba8aa142a4d5588fa03db65ddf2b4f45,2\9\29ae425d58ca5b9bd0656da8ee9b9ab731a5fe85
@@ -562,8 +550,6 @@ Q.idea/sonarlint/securityhotspotstore/1/5/15ff8ba7ba8aa142a4d5588fa03db65ddf2b4f
 Q.idea/sonarlint/securityhotspotstore/b/8/b86279fa0f08a48815766b267d844d29fcd222d5,f\1\f1016cce60cc29e5cf3808512879bdcfd8e2bf7e
 Å
 Q.idea/sonarlint/securityhotspotstore/b/9/b90939f3742d8cda98839cbdab815b0109ab2834,2\b\2bd415f97e0d8ab22df0eb42a0faf537d5cceecb
-Å
-Q.idea/sonarlint/securityhotspotstore/b/5/b53b8902fc8037c116f5dcfab8934c867ae24c33,0\5\0559a513251d7e1087c8deba67dbe6919627a7a2
 Å
 Q.idea/sonarlint/securityhotspotstore/b/8/b8088dbe5467070c0507b8825d5a3deb7bb92266,3\3\33c73888a4a7133c8855e315899f086c819c79b7
 Å
@@ -584,8 +570,6 @@ w
 G.idea/sonarlint/issuestore/1/e/1e4a1d303a6018dc87c3b98f453259eada0a0645,3\d\3df0a5ceba34946d33391b2c75ecee7017737588
 w
 G.idea/sonarlint/issuestore/3/f/3ffc2b35597dce786ee8a1cc51b1cd1ce2cea9ce,0\8\087a2e648186601b5eece00c25f82315b984badd
-w
-G.idea/sonarlint/issuestore/3/f/3f4cdfd09220ed8911fb670f414a874e45815b68,b\0\b0a188c64bef23d1071735911b123cd7f2bb67ad
 Å
 Q.idea/sonarlint/securityhotspotstore/1/f/1f1616c51e5e684d1bdbc994888f3eac70b0c5ac,7\1\7114793116de5469e5db6cb697a5318d5b062453
 Å
@@ -697,10 +681,6 @@ Q.idea/sonarlint/securityhotspotstore/f/3/f37067537e8012bfd5065c3c31c099fef88d83
 Å
 Q.idea/sonarlint/securityhotspotstore/f/0/f06e4b9b883c4d53c45f2b8a028d48790a4ce86c,e\2\e2a3b5d3b6706c7d55347c7ded9bd7f914bf0ac2
 Å
-Q.idea/sonarlint/securityhotspotstore/f/2/f227f0b8d96cc235788172f9b631dd0a470018ce,5\8\58e92b1f0c9e2d3dd0a127a8fa59fccce2910b48
-Å
-Q.idea/sonarlint/securityhotspotstore/3/f/3f4cdfd09220ed8911fb670f414a874e45815b68,e\9\e9bdb1df47eff151922975f888f5b3d140003d65
-Å
 Q.idea/sonarlint/securityhotspotstore/5/1/511ece289ac39f5dd630205eeaa99699d539b2dd,2\1\21c207ca64b34d17c9615632c9124c89b2c9db84
 w
 G.idea/sonarlint/issuestore/2/a/2a31bb3175e18665be563560c0cb39b8807a1e55,1\2\12dd81b85c7df81eb21abcffe8bc5de176cdbc87
@@ -734,8 +714,6 @@ w
 G.idea/sonarlint/issuestore/6/0/601ade73bbacccbff1744aa267d455fe6ee6ffd6,a\a\aabe46f348e88e9328ed08a6e56a995641a48640
 w
 G.idea/sonarlint/issuestore/6/1/6114e179b6f78b12425947b3e556fb23630cafbd,a\7\a79d58f77e5e980f76ac7f23146fd12237c5c73f
-w
-G.idea/sonarlint/issuestore/f/2/f227f0b8d96cc235788172f9b631dd0a470018ce,a\7\a7df36f7cf8e131ba48664d0da3b6fd0df3a0dcb
 w
 G.idea/sonarlint/issuestore/f/3/f36d1f33a0e5d10431e99ad836c9ef657234fff8,a\7\a70e26d8e0bf6089181c25321766c3d7adf25c56
 w

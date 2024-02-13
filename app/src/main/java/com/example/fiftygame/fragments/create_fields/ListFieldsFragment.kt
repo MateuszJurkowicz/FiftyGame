@@ -12,19 +12,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
-import androidx.lifecycle.Observer
+import androidx.core.view.MenuProvider
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fiftygame.R
-import com.example.fiftygame.data.models.Field
 import com.example.fiftygame.data.models.FieldStorage
 import com.example.fiftygame.data.viewmodels.FieldViewModel
 import com.example.fiftygame.databinding.FragmentListFieldsBinding
 
 
-class ListFieldsFragment : Fragment(), SearchView.OnQueryTextListener {
+class ListFieldsFragment : Fragment(), SearchView.OnQueryTextListener, MenuProvider {
     private val args by navArgs<ListFieldsFragmentArgs>()
     private lateinit var mFieldViewModel: FieldViewModel
     private val adapter: ListFieldsAdapter by lazy { ListFieldsAdapter(args.currentGame) }
@@ -32,14 +31,12 @@ class ListFieldsFragment : Fragment(), SearchView.OnQueryTextListener {
     private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentListFieldsBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        setHasOptionsMenu(true)
-
-        val fieldStorage: FieldStorage
+        activity?.addMenuProvider(this, viewLifecycleOwner)
 
         val recyclerView = binding.fieldsRecyclerView
         recyclerView.adapter = adapter
@@ -67,23 +64,7 @@ class ListFieldsFragment : Fragment(), SearchView.OnQueryTextListener {
         return view
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.create_game_menu, menu)
-        val search = menu.findItem(R.id.search_item)
-        val searchView = search?.actionView as? SearchView
-        searchView?.isSubmitButtonEnabled = true
-        searchView?.setOnQueryTextListener(this)
-    }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.delete_item) {
-            deleteAllFields()
-        }
-        if (item.itemId == R.id.profile_item) {
-            findNavController().navigate(R.id.action_listFieldsFragment_to_userProfileFragment)
-        }
-        return super.onOptionsItemSelected(item)
-    }
 
     private fun deleteAllFields() {
         val builder = AlertDialog.Builder(requireContext())
@@ -121,12 +102,32 @@ class ListFieldsFragment : Fragment(), SearchView.OnQueryTextListener {
     }
 
     private fun insertExampleDataToDatabase(gameId: Int) {
-        val Fields = FieldStorage.getExampleFields(gameId)
-        Log.d("insert", Fields.toString())
-        Fields.map{ field -> mFieldViewModel.addField(field)
-            Log.d("insert2", field.toString())}
-            ///mFieldViewModel.addField(field)
-        Toast.makeText(requireContext(), "Pomyślnie dodano!", Toast.LENGTH_LONG).show()
+        val fields = FieldStorage.getExampleFields(gameId)
+        Log.d("insert", fields.toString())
+        fields.map { field ->
+            mFieldViewModel.addField(field)
+            Log.d("insert2", field.toString())
+        }
+    }
+
+    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+        menuInflater.inflate(R.menu.create_game_menu, menu)
+        val search = menu.findItem(R.id.search_item)
+        val searchView = search?.actionView as? SearchView
+        searchView?.isSubmitButtonEnabled = true
+        searchView?.setOnQueryTextListener(this)
+    }
+
+    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        if (menuItem.itemId == R.id.delete_item) {
+            deleteAllFields()
+            return true
+        }
+        if (menuItem.itemId == R.id.profile_item) {
+            findNavController().navigate(R.id.action_listFieldsFragment_to_profile_navigation)
+            return true
+        }
+        return false
     }
 
 }

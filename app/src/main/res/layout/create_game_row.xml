@@ -4,14 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/game_row"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="24sp">
+    android:layout_height="wrap_content">
 
 
     <TextView
         android:id="@+id/pin_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:ellipsize="end"
         android:text="@string/game_pin"
         android:textStyle="bold"
@@ -23,10 +25,10 @@
         android:id="@+id/description_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="32dp"
         android:ellipsize="end"
-        android:text="@string/game_description"
         android:lines="1"
+        android:text="@string/game_description"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/pin_textView"
         app:layout_constraintTop_toTopOf="parent" />
