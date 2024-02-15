@@ -9,7 +9,7 @@ data class GameWithFields (
     @Embedded val game: Game,
     @Relation(
         parentColumn = "gameId",
-        entityColumn = "gameId"
+        entityColumn = "ownerGameId"
     )
     val fields: List<Field>
 )

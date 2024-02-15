@@ -27,8 +27,7 @@ class JoinGameActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.fragmentJoinGameContainerView) as NavHostFragment
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentJoinGameContainerView) as NavHostFragment
         val navController = navHostFragment.navController
         setupActionBarWithNavController(navController)
 

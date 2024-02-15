@@ -49,8 +49,8 @@ class ListGamesFragment : Fragment(), MenuProvider {
 
         mFieldViewModel = ViewModelProvider(this)[FieldViewModel::class.java]
         mGameViewModel = ViewModelProvider(this)[GameViewModel::class.java]
-        mGameViewModel.readAllGames.observe(viewLifecycleOwner, Observer { game ->
-            adapter.setData(game)
+        mGameViewModel.readAllGames.observe(viewLifecycleOwner, Observer { games ->
+            adapter.setData(games)
         })
 
         binding.gameFloatingActionButton.setOnClickListener {
@@ -75,7 +75,7 @@ class ListGamesFragment : Fragment(), MenuProvider {
     }
 
     fun editGame(currentGame: Game) {
-        val action = ListGamesFragmentDirections.actionListGamesFragmentToCreateFieldsNav(currentGame)
+        val action = ListGamesFragmentDirections.actionListGamesFragmentToListFieldsFragment(currentGame)
         findNavController().navigate(action)
     }
 
@@ -86,7 +86,7 @@ class ListGamesFragment : Fragment(), MenuProvider {
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
         if(menuItem.itemId == R.id.profile_item)
         {
-            findNavController().navigate(R.id.action_listGamesFragment_to_profile_navigation)
+            findNavController().navigate(R.id.action_listGamesFragment_to_userProfileFragment)
             return true
         }
         return false

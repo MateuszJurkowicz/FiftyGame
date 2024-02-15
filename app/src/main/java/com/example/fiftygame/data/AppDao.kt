@@ -33,7 +33,7 @@ interface AppDao {
     @Delete
     suspend fun deleteGame(game: Game)
 
-    @Query("DELETE FROM fields_table WHERE gameId = :gameId")
+    @Query("DELETE FROM fields_table WHERE ownerGameId = :gameId")
     suspend fun deleteFieldsInGame(gameId: Int)
 
     @Query("DELETE FROM fields_table")

@@ -12,8 +12,7 @@ class CreateGamesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_games)
 
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.fragmentGamesContainerView) as NavHostFragment
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentGamesContainerView) as NavHostFragment
         val navController = navHostFragment.navController
         setupActionBarWithNavController(navController)
     }
@@ -22,7 +21,6 @@ class CreateGamesActivity : AppCompatActivity() {
         val navController = findNavController(R.id.fragmentGamesContainerView)
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
-
 
 
 }

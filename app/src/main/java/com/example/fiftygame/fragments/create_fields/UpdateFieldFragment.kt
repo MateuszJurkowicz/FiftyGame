@@ -60,7 +60,7 @@ class UpdateFieldFragment : Fragment() {
         val entry = binding.updateEntryEditText.text.toString()
         val question = binding.updateQuestionEditText.text.toString()
         val answer = binding.updateAnswerEditText.text.toString()
-        val gameId = args.currentField.gameId
+        val gameId = args.currentField.ownerGameId
         if (inputCheck(number, entry, question, answer)) {
             val updatedField =
                 Field(args.currentField.fieldId, number.toInt(), entry, question, answer, gameId)
@@ -98,7 +98,8 @@ class UpdateFieldFragment : Fragment() {
         builder.setPositiveButton("Potwierdź") { _, _ ->
             mFieldViewModel.deleteField(args.currentField)
             Toast.makeText(requireContext(), "Pomyślnie usunięto!", Toast.LENGTH_SHORT).show()
-            findNavController().navigate(R.id.action_updateFieldFragment_to_listFieldsFragment)
+            val action = UpdateFieldFragmentDirections.actionUpdateFieldFragmentToListFieldsFragment(args.currentGame)
+            findNavController().navigate(action)
         }
         builder.setNegativeButton("Cofnij") { _, _ -> }
         builder.setTitle("Usunąć ${args.currentField.number} pytanie?")

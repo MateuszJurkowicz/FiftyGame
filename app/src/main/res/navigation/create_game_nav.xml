@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/create_game_nav"
+    app:startDestination="@id/listGamesFragment">
+    <fragment
+        android:id="@+id/listGamesFragment"
+        android:name="com.example.fiftygame.fragments.create_games.ListGamesFragment"
+        android:label="@string/games_list"
+        tools:layout="@layout/fragment_list_games" >
+        <action
+            android:id="@+id/action_listGamesFragment_to_listFieldsFragment"
+            app:destination="@id/listFieldsFragment" />
+        <action
+            android:id="@+id/action_listGamesFragment_to_userProfileFragment"
+            app:destination="@id/userProfileFragment" />
+        <action
+            android:id="@+id/action_listGamesFragment_to_addGameFragment"
+            app:destination="@id/addGameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addGameFragment"
+        android:name="com.example.fiftygame.fragments.create_games.AddGameFragment"
+        android:label="@string/add_game"
+        tools:layout="@layout/fragment_add_game" >
+        <action
+            android:id="@+id/action_addGameFragment_to_listGamesFragment"
+            app:destination="@id/listGamesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listFieldsFragment"
+        android:name="com.example.fiftygame.fragments.create_fields.ListFieldsFragment"
+        android:label="@string/fields_list"
+        tools:layout="@layout/fragment_list_fields" >
+        <action
+            android:id="@+id/action_listFieldsFragment_to_userProfileFragment"
+            app:destination="@id/userProfileFragment" />
+        <action
+            android:id="@+id/action_listFieldsFragment_to_addFieldFragment"
+            app:destination="@id/addFieldFragment" />
+        <action
+            android:id="@+id/action_listFieldsFragment_to_updateFieldFragment"
+            app:destination="@id/updateFieldFragment" />
+        <argument
+            android:name="currentGame"
+            app:argType="com.example.fiftygame.data.models.Game" />
+    </fragment>
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="com.example.fiftygame.fragments.UserProfileFragment"
+        android:label="@string/profile"
+        tools:layout="@layout/fragment_user_profile" >
+        <action
+            android:id="@+id/action_userProfileFragment_to_mainActivity"
+            app:destination="@id/mainActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.fiftygame.activities.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/addFieldFragment"
+        android:name="com.example.fiftygame.fragments.create_fields.AddFieldFragment"
+        android:label="@string/add_field"
+        tools:layout="@layout/fragment_add_field" >
+        <action
+            android:id="@+id/action_addFieldFragment_to_listFieldsFragment"
+            app:destination="@id/listFieldsFragment" />
+        <argument
+            android:name="game"
+            app:argType="com.example.fiftygame.data.models.Game" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateFieldFragment"
+        android:name="com.example.fiftygame.fragments.create_fields.UpdateFieldFragment"
+        android:label="@string/update_field"
+        tools:layout="@layout/fragment_update_field" >
+        <action
+            android:id="@+id/action_updateFieldFragment_to_listFieldsFragment"
+            app:destination="@id/listFieldsFragment" />
+        <argument
+            android:name="currentField"
+            app:argType="com.example.fiftygame.data.models.Field" />
+        <argument
+            android:name="currentGame"
+            app:argType="com.example.fiftygame.data.models.Game" />
+    </fragment>
+</navigation>

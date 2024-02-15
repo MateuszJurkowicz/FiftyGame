@@ -18,6 +18,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fiftygame.R
+import com.example.fiftygame.data.models.Field
 import com.example.fiftygame.data.models.FieldStorage
 import com.example.fiftygame.data.viewmodels.FieldViewModel
 import com.example.fiftygame.databinding.FragmentListFieldsBinding
@@ -44,10 +45,13 @@ class ListFieldsFragment : Fragment(), SearchView.OnQueryTextListener, MenuProvi
 
 
         mFieldViewModel = ViewModelProvider(this)[FieldViewModel::class.java]
-        mFieldViewModel.readGameWithFields(args.currentGame.gameId)
-            .observe(viewLifecycleOwner) { gameWithFields ->
-                adapter.setData(gameWithFields)
+        mFieldViewModel.readGameWithFields(args.currentGame.gameId).observe(viewLifecycleOwner) { gameWithFieldsList ->
+            gameWithFieldsList?.let {
+                if (it.isNotEmpty()) {
+                    adapter.setData(it[0].fields)
+                }
             }
+        }
 
         binding.fieldFloatingActionButton.setOnClickListener {
             val action = ListFieldsFragmentDirections.actionListFieldsFragmentToAddFieldFragment(
@@ -63,7 +67,6 @@ class ListFieldsFragment : Fragment(), SearchView.OnQueryTextListener, MenuProvi
 
         return view
     }
-
 
 
     private fun deleteAllFields() {
@@ -124,7 +127,7 @@ class ListFieldsFragment : Fragment(), SearchView.OnQueryTextListener, MenuProvi
             return true
         }
         if (menuItem.itemId == R.id.profile_item) {
-            findNavController().navigate(R.id.action_listFieldsFragment_to_profile_navigation)
+            findNavController().navigate(R.id.action_listFieldsFragment_to_userProfileFragment)
             return true
         }
         return false

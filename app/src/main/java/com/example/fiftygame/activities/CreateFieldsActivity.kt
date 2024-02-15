@@ -15,16 +15,15 @@ class CreateFieldsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_fields)
 
-
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentFieldsContainerView) as NavHostFragment
+        /*val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentFieldsContainerView) as NavHostFragment
         val navController = navHostFragment.navController
-        setupActionBarWithNavController(navController)
+        setupActionBarWithNavController(navController)*/
     }
 
-    override fun onSupportNavigateUp(): Boolean {
+   /* override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.fragmentFieldsContainerView)
         return navController.navigateUp() || super.onSupportNavigateUp()
-    }
+    }*/
 
 
 }

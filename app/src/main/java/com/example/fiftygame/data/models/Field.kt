@@ -13,5 +13,5 @@ data class Field (
     val entry: String,
     val question: String,
     val correctAnswer: String,
-    val gameId: Int
+    val ownerGameId: Int
 ) : Parcelable

@@ -13,16 +13,15 @@ import com.example.fiftygame.data.models.Field
 import com.example.fiftygame.data.models.Game
 import com.example.fiftygame.data.relations.GameWithFields
 
-class ListFieldsAdapter (game: Game): RecyclerView.Adapter<ListFieldsAdapter.ViewHolder>() {
+class ListFieldsAdapter(game: Game) : RecyclerView.Adapter<ListFieldsAdapter.ViewHolder>() {
     private var fieldsList = emptyList<Field>()
     private val currentGame = game
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.create_field_row, parent, false)
-        )
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.create_field_row, parent, false)
+        return ViewHolder(view)
     }
 
     override fun getItemCount(): Int {
@@ -35,21 +34,19 @@ class ListFieldsAdapter (game: Game): RecyclerView.Adapter<ListFieldsAdapter.Vie
         holder.itemView.findViewById<TextView>(R.id.entry_textView).text = currentItem.entry
         holder.itemView.findViewById<TextView>(R.id.question_textView).text = currentItem.question
         holder.itemView.findViewById<TextView>(R.id.correctAnswer_textView).text = currentItem.correctAnswer
-
         holder.itemView.findViewById<ConstraintLayout>(R.id.field_row).setOnClickListener {
             val action = ListFieldsFragmentDirections.actionListFieldsFragmentToUpdateFieldFragment(
                 currentItem, currentGame
             )
             holder.itemView.findNavController().navigate(action)
         }
+
+
     }
 
-    fun setData(gameWithFieldsList: List<GameWithFields>) {
-        gameWithFieldsList.forEach { gameWithFields ->
-            fieldsList = gameWithFields.fields
-            notifyDataSetChanged()
-
-        }
+    fun setData(fields: List<Field>) {
+        fieldsList = fields
+        notifyDataSetChanged()
     }
 
     fun setDataForSearch(it: List<Field>) {

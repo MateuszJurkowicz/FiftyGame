@@ -30,7 +30,7 @@ class FieldStorage {
 
         }
         fun getExampleFields(gameId: Int): List<Field> {
-            return exampleFields.map { it.copy(gameId = gameId) }
+            return exampleFields.map { it.copy(ownerGameId = gameId) }
         }
     }
 }
