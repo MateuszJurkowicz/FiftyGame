@@ -56,8 +56,8 @@ class FieldViewModel(application: Application) : AndroidViewModel(application) {
         return repository.readGameWithFields(gameId)
     }
 
-    fun searchDatabase(searchQuery: String): LiveData<List<Field>> {
-        return repository.searchDatabase(searchQuery).asLiveData()
+    fun searchDatabase(gameId: Int, searchQuery: String): LiveData<List<Field>> {
+        return repository.searchDatabase(gameId, searchQuery).asLiveData()
     }
 
 

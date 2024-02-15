@@ -10,23 +10,29 @@ class FieldRepository(private val appDao: AppDao) {
     suspend fun addField(field: Field) {
         appDao.addField(field)
     }
+
     suspend fun updateField(field: Field) {
         appDao.updateField(field)
     }
+
     suspend fun deleteField(field: Field) {
         appDao.deleteField(field)
     }
+
     suspend fun deleteFieldsInGame(gameId: Int) {
         appDao.deleteFieldsInGame(gameId)
     }
+
     suspend fun deleteAllFields() {
         appDao.deleteAllFields()
     }
+
     fun readGameWithFields(gameId: Int): LiveData<List<GameWithFields>> {
         return appDao.readGameWithFields(gameId)
     }
-    fun searchDatabase(searchQuery: String): Flow<List<Field>> {
-        return appDao.searchDatabase(searchQuery)
+
+    fun searchDatabase(gameId: Int, searchQuery: String): Flow<List<Field>> {
+        return appDao.searchDatabase(gameId, searchQuery)
     }
 
 

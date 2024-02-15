@@ -49,8 +49,8 @@ class ListFieldsAdapter(game: Game) : RecyclerView.Adapter<ListFieldsAdapter.Vie
         notifyDataSetChanged()
     }
 
-    fun setDataForSearch(it: List<Field>) {
-        fieldsList = it
+    fun setDataForSearch(fields: List<Field>) {
+        fieldsList = fields
         notifyDataSetChanged()
     }
 

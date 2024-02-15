@@ -95,7 +95,7 @@ class ListFieldsFragment : Fragment(), SearchView.OnQueryTextListener, MenuProvi
 
     private fun searchDatabase(query: String) {
         val searchQuery = "%$query%"
-        mFieldViewModel.searchDatabase(searchQuery).observe(this) { list ->
+        mFieldViewModel.searchDatabase(args.currentGame.gameId, searchQuery).observe(this) { list ->
             list.let {
                 adapter.setDataForSearch(it)
             }
