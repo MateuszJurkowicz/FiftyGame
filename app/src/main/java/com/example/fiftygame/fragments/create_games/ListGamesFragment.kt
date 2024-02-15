@@ -13,19 +13,13 @@ import android.widget.Toast
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fiftygame.R
-import com.example.fiftygame.activities.CreateFieldsActivity
-import com.example.fiftygame.activities.CreateGamesActivity
-import com.example.fiftygame.data.models.Field
 import com.example.fiftygame.data.models.Game
 import com.example.fiftygame.data.viewmodels.FieldViewModel
 import com.example.fiftygame.data.viewmodels.GameViewModel
 import com.example.fiftygame.databinding.FragmentListGamesBinding
-import com.example.fiftygame.fragments.create_fields.ListFieldsAdapter
-import com.example.fiftygame.fragments.create_fields.ListFieldsFragmentDirections
 
 class ListGamesFragment : Fragment(), MenuProvider {
     private lateinit var mGameViewModel: GameViewModel
@@ -80,7 +74,7 @@ class ListGamesFragment : Fragment(), MenuProvider {
     }
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-        menuInflater.inflate(R.menu.create_game_menu, menu)
+        menuInflater.inflate(R.menu.create_games_menu, menu)
     }
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {

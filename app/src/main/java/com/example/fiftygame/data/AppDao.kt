@@ -16,10 +16,10 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface AppDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun addField(field: Field)
+    suspend fun addField(field: Field)
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun addGame(game: Game)
+    suspend fun addGame(game: Game)
 
     @Update
     suspend fun updateField(field: Field)

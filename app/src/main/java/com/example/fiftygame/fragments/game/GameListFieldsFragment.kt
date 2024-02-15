@@ -56,13 +56,6 @@ class GameListFieldsFragment : Fragment() {
         return view
     }
 
-    private fun setLevel(toAdd: Int) {
-        val oldLevel = mPlayerViewModel.getLevel.value
-        if (oldLevel != null) {
-            mPlayerViewModel.setLevel(oldLevel + toAdd)
-            Log.d("game level", mPlayerViewModel.setLevel(oldLevel + toAdd).toString())
-        }
-    }
 
 
 

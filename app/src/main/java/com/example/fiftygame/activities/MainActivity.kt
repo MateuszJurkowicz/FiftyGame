@@ -36,4 +36,18 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+    override fun onResume() {
+        super.onResume()
+        clearBackStackIfNeeded()
+    }
+
+    private fun clearBackStackIfNeeded() {
+        if (intent?.extras?.getBoolean("sign_out") == true) {
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+            finish()
+        }
+    }
+
 }

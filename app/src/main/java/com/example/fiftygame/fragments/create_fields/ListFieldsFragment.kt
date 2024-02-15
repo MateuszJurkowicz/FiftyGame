@@ -2,7 +2,6 @@ package com.example.fiftygame.fragments.create_fields
 
 import  android.app.AlertDialog
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.Menu
@@ -18,7 +17,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fiftygame.R
-import com.example.fiftygame.data.models.Field
 import com.example.fiftygame.data.models.FieldStorage
 import com.example.fiftygame.data.viewmodels.FieldViewModel
 import com.example.fiftygame.databinding.FragmentListFieldsBinding
@@ -106,15 +104,13 @@ class ListFieldsFragment : Fragment(), SearchView.OnQueryTextListener, MenuProvi
 
     private fun insertExampleDataToDatabase(gameId: Int) {
         val fields = FieldStorage.getExampleFields(gameId)
-        Log.d("insert", fields.toString())
         fields.map { field ->
             mFieldViewModel.addField(field)
-            Log.d("insert2", field.toString())
         }
     }
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-        menuInflater.inflate(R.menu.create_game_menu, menu)
+        menuInflater.inflate(R.menu.create_fields_menu, menu)
         val search = menu.findItem(R.id.search_item)
         val searchView = search?.actionView as? SearchView
         searchView?.isSubmitButtonEnabled = true
@@ -131,6 +127,7 @@ class ListFieldsFragment : Fragment(), SearchView.OnQueryTextListener, MenuProvi
             return true
         }
         return false
+
     }
 
 }

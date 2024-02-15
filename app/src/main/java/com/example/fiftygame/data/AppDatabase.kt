@@ -12,7 +12,7 @@ import com.example.fiftygame.data.models.Game
         Field::class,
         Game::class
     ],
-    version = 1, exportSchema = false
+    version = 2, exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun appDao(): AppDao
@@ -29,7 +29,7 @@ abstract class AppDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
-                    "app_database"
+                    "fifty_game"
                 )
                     .build()
                 INSTANCE = instance

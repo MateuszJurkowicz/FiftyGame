@@ -38,10 +38,14 @@
             app:destination="@id/userProfileFragment" />
         <action
             android:id="@+id/action_listFieldsFragment_to_addFieldFragment"
-            app:destination="@id/addFieldFragment" />
+            app:destination="@id/addFieldFragment"
+            app:popUpTo="@+id/listFieldsFragment"
+            app:popUpToInclusive="true"/>
         <action
             android:id="@+id/action_listFieldsFragment_to_updateFieldFragment"
-            app:destination="@id/updateFieldFragment" />
+            app:destination="@id/updateFieldFragment"
+            app:popUpTo="@+id/listFieldsFragment"
+            app:popUpToInclusive="true"/>
         <argument
             android:name="currentGame"
             app:argType="com.example.fiftygame.data.models.Game" />
@@ -50,16 +54,7 @@
         android:id="@+id/userProfileFragment"
         android:name="com.example.fiftygame.fragments.UserProfileFragment"
         android:label="@string/profile"
-        tools:layout="@layout/fragment_user_profile" >
-        <action
-            android:id="@+id/action_userProfileFragment_to_mainActivity"
-            app:destination="@id/mainActivity" />
-    </fragment>
-    <activity
-        android:id="@+id/mainActivity"
-        android:name="com.example.fiftygame.activities.MainActivity"
-        android:label="activity_main"
-        tools:layout="@layout/activity_main" />
+        tools:layout="@layout/fragment_user_profile" />
     <fragment
         android:id="@+id/addFieldFragment"
         android:name="com.example.fiftygame.fragments.create_fields.AddFieldFragment"
@@ -67,7 +62,9 @@
         tools:layout="@layout/fragment_add_field" >
         <action
             android:id="@+id/action_addFieldFragment_to_listFieldsFragment"
-            app:destination="@id/listFieldsFragment" />
+            app:destination="@id/listFieldsFragment"
+            app:popUpTo="@+id/addFieldFragment"
+            app:popUpToInclusive="true"/>
         <argument
             android:name="game"
             app:argType="com.example.fiftygame.data.models.Game" />
@@ -79,7 +76,9 @@
         tools:layout="@layout/fragment_update_field" >
         <action
             android:id="@+id/action_updateFieldFragment_to_listFieldsFragment"
-            app:destination="@id/listFieldsFragment" />
+            app:destination="@id/listFieldsFragment"
+            app:popUpTo="@+id/updateFieldFragment"
+            app:popUpToInclusive="true"/>
         <argument
             android:name="currentField"
             app:argType="com.example.fiftygame.data.models.Field" />

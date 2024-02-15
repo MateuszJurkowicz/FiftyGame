@@ -18,7 +18,6 @@ import com.example.fiftygame.R
 import com.example.fiftygame.data.models.Field
 import com.example.fiftygame.data.viewmodels.FieldViewModel
 import com.example.fiftygame.databinding.FragmentUpdateFieldBinding
-import org.w3c.dom.Text
 
 class UpdateFieldFragment : Fragment() {
     private val args by navArgs<UpdateFieldFragmentArgs>()
@@ -83,7 +82,7 @@ class UpdateFieldFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.create_game_menu, menu)
+        inflater.inflate(R.menu.create_fields_menu, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
