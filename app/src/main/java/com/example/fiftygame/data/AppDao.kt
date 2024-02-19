@@ -18,6 +18,9 @@ interface AppDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addField(field: Field)
 
+    @Insert
+    suspend fun addAllFields(fields: List<Field>)
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addGame(game: Game)
 
@@ -35,9 +38,6 @@ interface AppDao {
 
     @Query("DELETE FROM fields_table WHERE ownerGameId = :gameId")
     suspend fun deleteFieldsInGame(gameId: Int)
-
-    @Query("DELETE FROM fields_table")
-    suspend fun deleteAllFields()
 
     @Query("SELECT * FROM games_table ORDER BY gameId ASC")
     fun readAllGames(): LiveData<List<Game>>

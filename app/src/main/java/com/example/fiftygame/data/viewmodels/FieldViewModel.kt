@@ -24,41 +24,43 @@ class FieldViewModel(application: Application) : AndroidViewModel(application) {
 
     fun addField(field: Field) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.addField(field)
+            //repository.addField(field)
             firestore.addField(field)
+        }
+    }
+    fun addAllFields(fields: List<Field>) {
+        viewModelScope.launch(Dispatchers.IO) {
+            //repository.addAllFields(fields)
         }
     }
 
     fun updateField(field: Field) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.updateField(field)
+            //repository.updateField(field)
         }
     }
 
     fun deleteField(field: Field) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.deleteField(field)
+            //repository.deleteField(field)
         }
     }
     fun deleteFieldsInGame(gameId: Int) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.deleteFieldsInGame(gameId)
+            //repository.deleteFieldsInGame(gameId)
         }
     }
 
-    fun deleteAllFields() {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.deleteAllFields()
-        }
-    }
-
-    fun readGameWithFields(gameId: Int): LiveData<List<GameWithFields>> {
+    /*fun readGameWithFields(gameId: Int): LiveData<List<GameWithFields>> {
         return repository.readGameWithFields(gameId)
+    }*/
+    fun readUserGames() {
+
     }
 
-    fun searchDatabase(gameId: Int, searchQuery: String): LiveData<List<Field>> {
+    /*fun searchDatabase(gameId: Int, searchQuery: String): LiveData<List<Field>> {
         return repository.searchDatabase(gameId, searchQuery).asLiveData()
-    }
+    }*/
 
 
 }

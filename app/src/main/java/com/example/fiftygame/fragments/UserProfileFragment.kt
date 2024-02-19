@@ -7,11 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.fiftygame.R
 import com.example.fiftygame.activities.CreateFieldsActivity
 import com.example.fiftygame.activities.MainActivity
+import com.example.fiftygame.data.viewmodels.UserViewModel
 import com.example.fiftygame.databinding.FragmentUserProfileBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -19,6 +21,7 @@ class UserProfileFragment : Fragment() {
     private lateinit var mAuth: FirebaseAuth
     private var _binding: FragmentUserProfileBinding? = null
     private val binding get() = _binding!!
+    private lateinit var mUserViewModel: UserViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,8 +29,11 @@ class UserProfileFragment : Fragment() {
         _binding = FragmentUserProfileBinding.inflate(inflater, container, false)
         val view = binding.root
 
+        mUserViewModel = ViewModelProvider(this)[UserViewModel::class.java]
+
         mAuth = FirebaseAuth.getInstance()
         val user = mAuth.currentUser
+
 
         binding.profileName.text = user?.displayName
         Glide.with(this).load(user?.photoUrl).into(binding.profileImage)

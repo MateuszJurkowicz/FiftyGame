@@ -738,3 +738,5 @@ z
 Japp/src/main/java/com/example/fiftygame/data/viewmodels/PlayerViewModel.kt,b\1\b148e23ef4b51cb88f382130927b26ab3d131cc1
 s
 Capp/src/main/java/com/example/fiftygame/data/models/FieldStorage.kt,0\3\0328adb8429d7d17914bf5bcbaabe40133991717
+x
+Happ/src/main/java/com/example/fiftygame/data/viewmodels/UserViewModel.kt,8\0\80e335d4ff127ade9d3d2500e34d1a94c67404b3

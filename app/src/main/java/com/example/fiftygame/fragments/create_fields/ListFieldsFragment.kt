@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,9 +21,11 @@ import com.example.fiftygame.R
 import com.example.fiftygame.data.models.FieldStorage
 import com.example.fiftygame.data.viewmodels.FieldViewModel
 import com.example.fiftygame.databinding.FragmentListFieldsBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
-class ListFieldsFragment : Fragment(), SearchView.OnQueryTextListener, MenuProvider {
+class ListFieldsFragment : Fragment()/*, SearchView.OnQueryTextListener*/, MenuProvider {
     private val args by navArgs<ListFieldsFragmentArgs>()
     private lateinit var mFieldViewModel: FieldViewModel
     private val adapter: ListFieldsAdapter by lazy { ListFieldsAdapter(args.currentGame) }
@@ -43,13 +46,13 @@ class ListFieldsFragment : Fragment(), SearchView.OnQueryTextListener, MenuProvi
 
 
         mFieldViewModel = ViewModelProvider(this)[FieldViewModel::class.java]
-        mFieldViewModel.readGameWithFields(args.currentGame.gameId).observe(viewLifecycleOwner) { gameWithFieldsList ->
+        /*mFieldViewModel.readGameWithFields(args.currentGame.gameId).observe(viewLifecycleOwner) { gameWithFieldsList ->
             gameWithFieldsList?.let {
                 if (it.isNotEmpty()) {
                     adapter.setData(it[0].fields)
                 }
             }
-        }
+        }*/
 
         binding.fieldFloatingActionButton.setOnClickListener {
             val action = ListFieldsFragmentDirections.actionListFieldsFragmentToAddFieldFragment(
@@ -70,7 +73,7 @@ class ListFieldsFragment : Fragment(), SearchView.OnQueryTextListener, MenuProvi
     private fun deleteAllFields() {
         val builder = AlertDialog.Builder(requireContext())
         builder.setPositiveButton("Potwierdź") { _, _ ->
-            mFieldViewModel.deleteAllFields()
+            mFieldViewModel.deleteFieldsInGame(args.currentGame.gameId)
             Toast.makeText(requireContext(), "Pomyślnie usunięto!", Toast.LENGTH_SHORT).show()
         }
         builder.setNegativeButton("Cofnij") { _, _ -> }
@@ -79,7 +82,7 @@ class ListFieldsFragment : Fragment(), SearchView.OnQueryTextListener, MenuProvi
         builder.create().show()
     }
 
-    override fun onQueryTextSubmit(query: String?): Boolean {
+    /*override fun onQueryTextSubmit(query: String?): Boolean {
         if (query != null) {
             searchDatabase(query)
         }
@@ -91,22 +94,21 @@ class ListFieldsFragment : Fragment(), SearchView.OnQueryTextListener, MenuProvi
             searchDatabase(query)
         }
         return true
-    }
+    }*/
 
-    private fun searchDatabase(query: String) {
+    /*private fun searchDatabase(query: String) {
         val searchQuery = "%$query%"
         mFieldViewModel.searchDatabase(args.currentGame.gameId, searchQuery).observe(this) { list ->
             list.let {
                 adapter.setDataForSearch(it)
             }
         }
-    }
+    }*/
 
     private fun insertExampleDataToDatabase(gameId: Int) {
         val fields = FieldStorage.getExampleFields(gameId)
-        fields.map { field ->
-            mFieldViewModel.addField(field)
-        }
+        mFieldViewModel.addAllFields(fields)
+
     }
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
@@ -114,7 +116,7 @@ class ListFieldsFragment : Fragment(), SearchView.OnQueryTextListener, MenuProvi
         val search = menu.findItem(R.id.search_item)
         val searchView = search?.actionView as? SearchView
         searchView?.isSubmitButtonEnabled = true
-        searchView?.setOnQueryTextListener(this)
+        //searchView?.setOnQueryTextListener(this)
     }
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {

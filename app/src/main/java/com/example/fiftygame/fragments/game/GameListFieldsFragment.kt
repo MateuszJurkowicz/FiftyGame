@@ -46,12 +46,12 @@ class GameListFieldsFragment : Fragment() {
         })
 
         mFieldViewModel = ViewModelProvider(this)[FieldViewModel::class.java]
-        args.currentGame.let {
+        /*args.currentGame.let {
             mFieldViewModel.readGameWithFields(it.gameId)
                 .observe(viewLifecycleOwner, Observer { gameWithFields ->
                     adapter.setData(gameWithFields)
                 })
-        }
+        }*/
 
         return view
     }

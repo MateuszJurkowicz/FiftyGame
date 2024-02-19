@@ -12,38 +12,43 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class GameViewModel(application: Application) : AndroidViewModel(application) {
-    val readAllGames: LiveData<List<Game>>
     private val repository: GameRepository
     private val firestore: Firestore = Firestore()
 
     init {
         val appDao = AppDatabase.getDatabase(application).appDao()
         repository = GameRepository(appDao)
-        readAllGames = repository.readAllGames
     }
+
 
     fun addGame(game: Game) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.addGame(game)
+            //repository.addGame(game)
             firestore.addGame(game)
         }
+    }
+    fun readAllGames(email: String?): LiveData<List<Game>> {
+        return firestore.readAllGames(email)
     }
 
     fun updateGame(game: Game) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.updateGame(game)
+            //repository.updateGame(game)
         }
     }
 
     fun deleteGame(game: Game) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.deleteGame(game)
+            //repository.deleteGame(game)
+            firestore.deleteGame(game)
         }
     }
 
     fun readGameWithPin(pin: Int): Game {
         return repository.readGameWithPin(pin)
     }
+
+
 
 
 }

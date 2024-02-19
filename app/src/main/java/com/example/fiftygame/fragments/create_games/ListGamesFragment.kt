@@ -20,10 +20,12 @@ import com.example.fiftygame.data.models.Game
 import com.example.fiftygame.data.viewmodels.FieldViewModel
 import com.example.fiftygame.data.viewmodels.GameViewModel
 import com.example.fiftygame.databinding.FragmentListGamesBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class ListGamesFragment : Fragment(), MenuProvider {
     private lateinit var mGameViewModel: GameViewModel
     private lateinit var mFieldViewModel: FieldViewModel
+    private lateinit var mAuth: FirebaseAuth
     private val adapter: ListGamesAdapter by lazy { ListGamesAdapter(this) }
     private var _binding: FragmentListGamesBinding? = null
     private val binding get() = _binding!!
@@ -37,13 +39,15 @@ class ListGamesFragment : Fragment(), MenuProvider {
 
         activity?.addMenuProvider(this, viewLifecycleOwner)
 
+        mAuth = FirebaseAuth.getInstance()
+
         val recyclerView = binding.gamesRecyclerView
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         mFieldViewModel = ViewModelProvider(this)[FieldViewModel::class.java]
         mGameViewModel = ViewModelProvider(this)[GameViewModel::class.java]
-        mGameViewModel.readAllGames.observe(viewLifecycleOwner, Observer { games ->
+        mGameViewModel.readAllGames(mAuth.currentUser?.email).observe(viewLifecycleOwner, Observer { games ->
             adapter.setData(games)
         })
 

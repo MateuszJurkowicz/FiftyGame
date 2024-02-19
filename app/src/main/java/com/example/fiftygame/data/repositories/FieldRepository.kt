@@ -10,6 +10,9 @@ class FieldRepository(private val appDao: AppDao) {
     suspend fun addField(field: Field) {
         appDao.addField(field)
     }
+    suspend fun addAllFields(fields: List<Field>) {
+        appDao.addAllFields(fields)
+    }
 
     suspend fun updateField(field: Field) {
         appDao.updateField(field)
@@ -23,9 +26,6 @@ class FieldRepository(private val appDao: AppDao) {
         appDao.deleteFieldsInGame(gameId)
     }
 
-    suspend fun deleteAllFields() {
-        appDao.deleteAllFields()
-    }
 
     fun readGameWithFields(gameId: Int): LiveData<List<GameWithFields>> {
         return appDao.readGameWithFields(gameId)

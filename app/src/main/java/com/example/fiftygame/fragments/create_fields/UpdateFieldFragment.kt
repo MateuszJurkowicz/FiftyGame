@@ -18,6 +18,7 @@ import com.example.fiftygame.R
 import com.example.fiftygame.data.models.Field
 import com.example.fiftygame.data.viewmodels.FieldViewModel
 import com.example.fiftygame.databinding.FragmentUpdateFieldBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class UpdateFieldFragment : Fragment() {
     private val args by navArgs<UpdateFieldFragmentArgs>()
@@ -31,7 +32,7 @@ class UpdateFieldFragment : Fragment() {
         _binding = FragmentUpdateFieldBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        mFieldViewModel = ViewModelProvider(this)[FieldViewModel::class.java]
+
 
         binding.updateNumberEditText.setText(args.currentField.number.toString())
         binding.updateEntryEditText.setText(args.currentField.entry)

@@ -11,6 +11,9 @@ data class Game(
     @PrimaryKey(autoGenerate = true)
     val gameId: Int,
     val pin: Int,
-    val description: String
+    val description: String?,
+    val ownerEmail: String?
 
-) : Parcelable
+) : Parcelable {
+    constructor() : this(0, 0, "", "")
+}

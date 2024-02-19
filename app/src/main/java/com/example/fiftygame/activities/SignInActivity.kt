@@ -4,7 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.lifecycle.ViewModelProvider
 import com.example.fiftygame.R
+import com.example.fiftygame.data.viewmodels.UserViewModel
 import com.example.fiftygame.databinding.ActivitySignInBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -17,7 +19,7 @@ class SignInActivity : AppCompatActivity() {
     companion object {
         private const val RC_SIGN_IN = 15
     }
-
+    private lateinit var mUserViewModel: UserViewModel
     private lateinit var mAuth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var binding: ActivitySignInBinding
@@ -26,6 +28,8 @@ class SignInActivity : AppCompatActivity() {
         binding = ActivitySignInBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        mUserViewModel = ViewModelProvider(this)[UserViewModel::class.java]
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.webId))
@@ -73,10 +77,12 @@ class SignInActivity : AppCompatActivity() {
         mAuth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
+                    mAuth.currentUser?.let { mUserViewModel.addUser(it.uid, it.email, it.displayName) }
                     Log.d("SignInActivity", "signInWithCredential:success")
                     val intent = Intent(this, CreateGamesActivity::class.java)
                     startActivity(intent)
                     finish()
+
                 } else {
                     Log.d("SignInActivity", "signInWithCredential:failure")
                 }
