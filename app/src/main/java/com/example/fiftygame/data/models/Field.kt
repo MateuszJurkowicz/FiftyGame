@@ -6,12 +6,11 @@ import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Field(
-    val fieldId: Int,
+    var fieldId: String,
     val number: Int,
     val entry: String,
     val question: String,
     val correctAnswer: String,
-    val ownerGameId: String?
 ) : Parcelable {
-    constructor() : this(0, 0, "hasło", "pytanie", "okoń", "a")
+    constructor() : this("0", 0, "hasło", "pytanie", "okoń")
 }

@@ -11,6 +11,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.fiftygame.R
@@ -30,7 +31,7 @@ class UpdateFieldFragment : Fragment() {
         _binding = FragmentUpdateFieldBinding.inflate(inflater, container, false)
         val view = binding.root
 
-
+        mFieldViewModel = ViewModelProvider(this)[FieldViewModel::class.java]
 
         binding.updateNumberEditText.setText(args.currentField.number.toString())
         binding.updateEntryEditText.setText(args.currentField.entry)
@@ -58,17 +59,14 @@ class UpdateFieldFragment : Fragment() {
         val entry = binding.updateEntryEditText.text.toString()
         val question = binding.updateQuestionEditText.text.toString()
         val answer = binding.updateAnswerEditText.text.toString()
-        val gameId = args.currentField.ownerGameId
         if (inputCheck(number, entry, question, answer)) {
-            val updatedField =
-                Field(args.currentField.fieldId, number.toInt(), entry, question, answer, gameId)
-            mFieldViewModel.updateField(updatedField)
+            val updatedField = Field(args.currentField.fieldId, number.toInt(), entry, question, answer)
+            mFieldViewModel.updateField(updatedField, args.currentGame.gameId)
             Toast.makeText(requireContext(), "Pomyślnie zaktualizowano!", Toast.LENGTH_SHORT).show()
             val action = UpdateFieldFragmentDirections.actionUpdateFieldFragmentToListFieldsFragment(args.currentGame)
             findNavController().navigate(action)
         } else {
-            Toast.makeText(requireContext(), "Nie udało się zaktualizować!", Toast.LENGTH_SHORT)
-                .show()
+            Toast.makeText(requireContext(), "Nie udało się zaktualizować!", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -94,7 +92,7 @@ class UpdateFieldFragment : Fragment() {
     private fun deleteField() {
         val builder = AlertDialog.Builder(requireContext())
         builder.setPositiveButton("Potwierdź") { _, _ ->
-            mFieldViewModel.deleteField(args.currentField)
+            mFieldViewModel.deleteField(args.currentField, args.currentGame.gameId)
             Toast.makeText(requireContext(), "Pomyślnie usunięto!", Toast.LENGTH_SHORT).show()
             val action = UpdateFieldFragmentDirections.actionUpdateFieldFragmentToListFieldsFragment(args.currentGame)
             findNavController().navigate(action)

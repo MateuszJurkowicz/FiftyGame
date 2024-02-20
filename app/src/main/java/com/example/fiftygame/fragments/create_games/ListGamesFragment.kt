@@ -25,7 +25,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class ListGamesFragment : Fragment(), MenuProvider {
     private lateinit var mGameViewModel: GameViewModel
-    private lateinit var mFieldViewModel: FieldViewModel
     private lateinit var adapter: ListGamesAdapter
     private var _binding: FragmentListGamesBinding? = null
     private val binding get() = _binding!!
@@ -39,7 +38,6 @@ class ListGamesFragment : Fragment(), MenuProvider {
 
         activity?.addMenuProvider(this, viewLifecycleOwner)
 
-        mFieldViewModel = ViewModelProvider(this)[FieldViewModel::class.java]
         mGameViewModel = ViewModelProvider(this)[GameViewModel::class.java]
 
         setupRecyclerView()
@@ -55,9 +53,7 @@ class ListGamesFragment : Fragment(), MenuProvider {
     private fun setupRecyclerView() {
         val query = mGameViewModel.readAllGames
 
-        val options = FirestoreRecyclerOptions.Builder<Game>()
-            .setQuery(query, Game::class.java)
-            .build()
+        val options = FirestoreRecyclerOptions.Builder<Game>().setQuery(query, Game::class.java).build()
 
         adapter = ListGamesAdapter(this, options)
         val recyclerView = binding.gamesRecyclerView
@@ -76,8 +72,6 @@ class ListGamesFragment : Fragment(), MenuProvider {
     }
 
 
-
-
     fun editGame(currentGame: Game) {
         val action = ListGamesFragmentDirections.actionListGamesFragmentToListFieldsFragment(currentGame)
         findNavController().navigate(action)
@@ -88,8 +82,7 @@ class ListGamesFragment : Fragment(), MenuProvider {
     }
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-        if(menuItem.itemId == R.id.profile_item)
-        {
+        if (menuItem.itemId == R.id.profile_item) {
             findNavController().navigate(R.id.action_listGamesFragment_to_userProfileFragment)
             return true
         }

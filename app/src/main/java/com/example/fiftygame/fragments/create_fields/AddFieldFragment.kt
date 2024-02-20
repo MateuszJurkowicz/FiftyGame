@@ -29,7 +29,6 @@ class AddFieldFragment : Fragment() {
 
         mFieldViewModel = ViewModelProvider(this)[FieldViewModel::class.java]
 
-
         binding.addQuestionButton.setOnClickListener {
             insertDataToDatabase()
         }
@@ -37,15 +36,14 @@ class AddFieldFragment : Fragment() {
     }
 
     private fun insertDataToDatabase() {
-
         val number = binding.numberEditText.text.toString()
         val entry = binding.entryEditText.text.toString()
         val question = binding.questionEditText.text.toString()
         val answer = binding.answerEditText.text.toString()
         val gameId = args.game.gameId
         if (inputCheck(number, entry, question, answer)) {
-            val field = Field(0, number.toInt(), entry, question, answer, gameId)
-            mFieldViewModel.addField(field)
+            val field = Field("0", number.toInt(), entry, question, answer)
+            mFieldViewModel.addField(field, gameId)
             Toast.makeText(requireContext(), "Pomyślnie dodano!", Toast.LENGTH_LONG).show()
             val action = AddFieldFragmentDirections.actionAddFieldFragmentToListFieldsFragment(
                 args.game

@@ -19,11 +19,14 @@ class Firestore {
     private val gamesColRef = db.collection("games")
     private val usersColRef = db.collection("users")
 
-    fun addField(field: Field) {
-        fieldsColRef
+    fun addField(field: Field, gameId: String?) {
+        gamesColRef.document(gameId.toString()).collection("fields")
             .add(field)
-            .addOnSuccessListener { documentReference ->
-                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+            .addOnSuccessListener {
+                field.fieldId = it.id
+                gamesColRef.document(gameId.toString()).collection("fields").document(it.id)
+                    .set(field)
+                Log.d(TAG, "DocumentSnapshot added with ID: ${it.id}")
             }
             .addOnFailureListener { e ->
                 Log.w(TAG, "Error adding document", e)
@@ -35,7 +38,7 @@ class Firestore {
             .add(game)
             .addOnSuccessListener {
                 game.gameId = it.id
-                db.collection("games").document(it.id)
+                gamesColRef.document(it.id)
                     .set(game)
                 Log.d(TAG, "DocumentSnapshot added with ID: ${it.id}")
             }
@@ -77,5 +80,32 @@ class Firestore {
                 Log.d(TAG, e.toString())
             }
         return game
+    }
+
+    fun readAllFields(gameId: String?): Query {
+        return gamesColRef.document(gameId.toString()).collection("fields").orderBy("number")
+
+    }
+
+    fun updateField(field: Field, gameId: String?) {
+        gamesColRef.document(gameId.toString()).collection("fields").document(field.fieldId)
+            .set(field)
+
+    }
+
+    fun deleteFieldsInGame(gameId: String) {
+        gamesColRef.document(gameId).collection("fields")
+            .get()
+            .addOnSuccessListener{
+                for(doc in it)
+                {
+                    gamesColRef.document(gameId).collection("fields").document(doc.id).delete()
+                }
+            }
+
+    }
+
+    fun deleteField(field: Field, gameId: String?) {
+        gamesColRef.document(gameId.toString()).collection("fields").document(field.fieldId).delete()
     }
 }

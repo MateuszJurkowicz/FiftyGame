@@ -18,7 +18,7 @@ import com.example.fiftygame.fragments.create_fields.ListFieldsFragmentDirection
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 
-class ListGamesAdapter(private val fragment: ListGamesFragment, options: FirestoreRecyclerOptions<Game>):
+class ListGamesAdapter(private val fragment: ListGamesFragment, options: FirestoreRecyclerOptions<Game>) :
     FirestoreRecyclerAdapter<Game, ListGamesAdapter.ViewHolder>(options) {
     //private var gamesList = emptyList<Game>()
 
@@ -34,10 +34,10 @@ class ListGamesAdapter(private val fragment: ListGamesFragment, options: Firesto
         holder.itemView.findViewById<TextView>(R.id.pin_textView).text = currentItem.pin.toString()
         holder.itemView.findViewById<TextView>(R.id.description_textView).text = currentItem.description
 
-        holder.itemView.findViewById<ConstraintLayout>(R.id.game_row).setOnClickListener{
+        holder.itemView.findViewById<ConstraintLayout>(R.id.game_row).setOnClickListener {
             fragment.editGame(currentItem)
         }
-        holder.itemView.findViewById<ConstraintLayout>(R.id.game_row).setOnLongClickListener{
+        holder.itemView.findViewById<ConstraintLayout>(R.id.game_row).setOnLongClickListener {
             deleteGame(position, currentItem)
             true
         }

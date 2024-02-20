@@ -18,9 +18,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fiftygame.R
+import com.example.fiftygame.data.models.Field
 import com.example.fiftygame.data.models.FieldStorage
+import com.example.fiftygame.data.models.Game
 import com.example.fiftygame.data.viewmodels.FieldViewModel
 import com.example.fiftygame.databinding.FragmentListFieldsBinding
+import com.example.fiftygame.fragments.create_games.ListGamesAdapter
+import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -28,7 +32,7 @@ import kotlinx.coroutines.launch
 class ListFieldsFragment : Fragment()/*, SearchView.OnQueryTextListener*/, MenuProvider {
     private val args by navArgs<ListFieldsFragmentArgs>()
     private lateinit var mFieldViewModel: FieldViewModel
-    private val adapter: ListFieldsAdapter by lazy { ListFieldsAdapter(args.currentGame) }
+    private lateinit var adapter: ListFieldsAdapter
     private var _binding: FragmentListFieldsBinding? = null
     private val binding get() = _binding!!
     override fun onCreateView(
@@ -39,13 +43,12 @@ class ListFieldsFragment : Fragment()/*, SearchView.OnQueryTextListener*/, MenuP
         val view = binding.root
 
         activity?.addMenuProvider(this, viewLifecycleOwner)
-
-        val recyclerView = binding.fieldsRecyclerView
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-
-
         mFieldViewModel = ViewModelProvider(this)[FieldViewModel::class.java]
+
+        setupRecyclerView()
+
+
+
         /*mFieldViewModel.readGameWithFields(args.currentGame.gameId).observe(viewLifecycleOwner) { gameWithFieldsList ->
             gameWithFieldsList?.let {
                 if (it.isNotEmpty()) {
@@ -67,6 +70,27 @@ class ListFieldsFragment : Fragment()/*, SearchView.OnQueryTextListener*/, MenuP
 
 
         return view
+    }
+
+    private fun setupRecyclerView() {
+        val query = mFieldViewModel.readAllFields(args.currentGame.gameId)
+
+        val options = FirestoreRecyclerOptions.Builder<Field>().setQuery(query, Field::class.java).build()
+
+        adapter = ListFieldsAdapter(args.currentGame, options)
+        val recyclerView = binding.fieldsRecyclerView
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+    }
+
+    override fun onStart() {
+        super.onStart()
+        adapter.startListening()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        adapter.stopListening()
     }
 
 
@@ -107,7 +131,9 @@ class ListFieldsFragment : Fragment()/*, SearchView.OnQueryTextListener*/, MenuP
 
     private fun insertExampleDataToDatabase(gameId: String) {
         val fields = FieldStorage.getExampleFields(gameId)
-        mFieldViewModel.addAllFields(fields)
+        fields.forEach{
+            mFieldViewModel.addField(it, gameId)
+        }
 
     }
 
