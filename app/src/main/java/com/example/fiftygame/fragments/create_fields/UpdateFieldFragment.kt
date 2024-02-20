@@ -11,14 +11,12 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.fiftygame.R
 import com.example.fiftygame.data.models.Field
 import com.example.fiftygame.data.viewmodels.FieldViewModel
 import com.example.fiftygame.databinding.FragmentUpdateFieldBinding
-import com.google.firebase.auth.FirebaseAuth
 
 class UpdateFieldFragment : Fragment() {
     private val args by navArgs<UpdateFieldFragmentArgs>()

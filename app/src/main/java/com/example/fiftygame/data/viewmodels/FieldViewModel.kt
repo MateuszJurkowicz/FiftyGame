@@ -2,25 +2,18 @@ package com.example.fiftygame.data.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.fiftygame.data.AppDatabase
 import com.example.fiftygame.data.repositories.FieldRepository
 import com.example.fiftygame.data.models.Field
 import com.example.fiftygame.data.repositories.Firestore
-import com.example.fiftygame.data.relations.GameWithFields
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class FieldViewModel(application: Application) : AndroidViewModel(application) {
-    private val repository: FieldRepository
     private val firestore: Firestore = Firestore()
+    private val mAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
-    init {
-        val appDao = AppDatabase.getDatabase(application).appDao()
-        repository = FieldRepository(appDao)
-    }
 
     fun addField(field: Field) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -45,7 +38,7 @@ class FieldViewModel(application: Application) : AndroidViewModel(application) {
             //repository.deleteField(field)
         }
     }
-    fun deleteFieldsInGame(gameId: Int) {
+    fun deleteFieldsInGame(gameId: String) {
         viewModelScope.launch(Dispatchers.IO) {
             //repository.deleteFieldsInGame(gameId)
         }

@@ -1,39 +1,38 @@
 package com.example.fiftygame.data.repositories
 
 import androidx.lifecycle.LiveData
-import com.example.fiftygame.data.AppDao
 import com.example.fiftygame.data.models.Field
 import com.example.fiftygame.data.relations.GameWithFields
 import kotlinx.coroutines.flow.Flow
 
-class FieldRepository(private val appDao: AppDao) {
+class FieldRepository() {
     suspend fun addField(field: Field) {
-        appDao.addField(field)
+        //appDao.addField(field)
     }
     suspend fun addAllFields(fields: List<Field>) {
-        appDao.addAllFields(fields)
+        //appDao.addAllFields(fields)
     }
 
     suspend fun updateField(field: Field) {
-        appDao.updateField(field)
+        //appDao.updateField(field)
     }
 
     suspend fun deleteField(field: Field) {
-        appDao.deleteField(field)
+        //appDao.deleteField(field)
     }
 
     suspend fun deleteFieldsInGame(gameId: Int) {
-        appDao.deleteFieldsInGame(gameId)
+        //appDao.deleteFieldsInGame(gameId)
     }
 
 
-    fun readGameWithFields(gameId: Int): LiveData<List<GameWithFields>> {
+    /*fun readGameWithFields(gameId: Int): LiveData<List<GameWithFields>> {
         return appDao.readGameWithFields(gameId)
-    }
+    }*/
 
-    fun searchDatabase(gameId: Int, searchQuery: String): Flow<List<Field>> {
+    /*fun searchDatabase(gameId: Int, searchQuery: String): Flow<List<Field>> {
         return appDao.searchDatabase(gameId, searchQuery)
-    }
+    }*/
 
 
 }

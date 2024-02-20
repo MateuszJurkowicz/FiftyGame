@@ -7,14 +7,20 @@ import androidx.lifecycle.MutableLiveData
 import com.example.fiftygame.data.models.Field
 import com.example.fiftygame.data.models.Game
 import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.firestore
 import com.google.firebase.firestore.toObject
 
 class Firestore {
     private val db = Firebase.firestore
+    private val fieldsColRef = db.collection("fields")
+    private val gamesColRef = db.collection("games")
+    private val usersColRef = db.collection("users")
+
     fun addField(field: Field) {
-        db.collection("fields")
+        fieldsColRef
             .add(field)
             .addOnSuccessListener { documentReference ->
                 Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
@@ -25,10 +31,13 @@ class Firestore {
     }
 
     fun addGame(game: Game) {
-        db.collection("games")
-            .add(Game())
+        gamesColRef
+            .add(game)
             .addOnSuccessListener {
-                Log.d(TAG, "DocumentSnapshot added with ID: ${game.pin}")
+                game.gameId = it.id
+                db.collection("games").document(it.id)
+                    .set(game)
+                Log.d(TAG, "DocumentSnapshot added with ID: ${it.id}")
             }
             .addOnFailureListener { e ->
                 Log.w(TAG, "Error adding document", e)
@@ -41,38 +50,32 @@ class Firestore {
             "email" to email,
             "name" to name
         )
-        db.collection("users").document(email.toString())
+        usersColRef.document(email.toString())
             .set(user)
             .addOnSuccessListener {
-                Log.d(TAG, "DocumentSnapshot added with ID: ${email}")
+                Log.d(TAG, "DocumentSnapshot added with ID: $email")
             }
             .addOnFailureListener { e ->
                 Log.w(TAG, "Error adding document", e)
             }
     }
 
-    fun readAllGames(email: String?): LiveData<List<Game>> {
-        val gamesLiveData = MutableLiveData<List<Game>>()
+    fun readAllGames(email: String?): Query {
+        return gamesColRef.whereEqualTo("ownerEmail", email)
+    }
 
-        db.collection("games").whereEqualTo("ownerEmail", email)
+    fun readGameWithPin(pin: Int): Game {
+        lateinit var game: Game
+        gamesColRef
+            .whereEqualTo("pin", pin)
+            .limit(1)
             .get()
             .addOnSuccessListener { queryDocumentSnapshots ->
-                val gamesList = ArrayList<Game>()
-                for (docSnapshot in queryDocumentSnapshots) {
-                    val game = docSnapshot.toObject(Game::class.java)
-                    gamesList.add(Game(game.gameId, game.pin, game.description, game.ownerEmail))
-                }
-                gamesLiveData.value = gamesList
+                game = queryDocumentSnapshots.documents[0].toObject(Game::class.java)!!
             }
             .addOnFailureListener { e ->
                 Log.d(TAG, e.toString())
             }
-
-        return gamesLiveData
-    }
-
-    fun deleteGame(game: Game) {
-        //db.collection("games").document(game.id).delete()
-
+        return game
     }
 }

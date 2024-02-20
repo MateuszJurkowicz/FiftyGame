@@ -308,10 +308,6 @@ Q.idea/sonarlint/securityhotspotstore/9/a/9aed88f31eac276604c6355c1adcc0bce1f80f
 Q.idea/sonarlint/securityhotspotstore/f/7/f7819ea138c33fec28e7e536cb2de34db38fc121,e\5\e5babc9c4e98545e8c1fa7856f821fec6cf0d876
 w
 G.idea/sonarlint/issuestore/c/7/c76499eb523c29a11219d64213c35fc7c0f1498d,2\4\24181caeb3d2b4ed6224096362649a8561664dda
-f
-6app/src/main/java/com/example/fiftygame/data/AppDao.kt,9\9\99760ae82bc34b01066f1f503875b14af74d88cf
-k
-;app/src/main/java/com/example/fiftygame/data/AppDatabase.kt,7\3\737ebc51880209150774a03677e7091c06de25d5
 x
 Happ/src/main/java/com/example/fiftygame/data/relations/GameWithFields.kt,f\9\f9c148a52995d198f40e1f075596a5357ce1a95c
 y
@@ -726,8 +722,6 @@ Papp/src/main/java/com/example/fiftygame/fragments/game/GameListFieldsFragment.k
 Oapp/src/main/java/com/example/fiftygame/fragments/game/GameListFieldsAdapter.kt,d\1\d149d6be59835466cc3e3e10a5282f25ac68f382
 z
 Japp/src/main/java/com/example/fiftygame/fragments/game/JoinGameFragment.kt,c\c\cc0056cb72ac5fa8edb484d5a404a9bd18e5875b
-{
-Kapp/src/main/java/com/example/fiftygame/data/repositories/GameRepository.kt,0\2\029abbc3de19b40cd0bda88aac5d742d4a335c77
 |
 Lapp/src/main/java/com/example/fiftygame/data/repositories/FieldRepository.kt,3\8\3898df3d4ae756cfd4c2fd66aa1a1b5e55cee70c
 v

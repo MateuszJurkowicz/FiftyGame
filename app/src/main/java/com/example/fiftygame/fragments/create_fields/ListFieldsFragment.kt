@@ -61,7 +61,7 @@ class ListFieldsFragment : Fragment()/*, SearchView.OnQueryTextListener*/, MenuP
             findNavController().navigate(action)
         }
         binding.fieldFloatingActionButton.setOnLongClickListener {
-            insertExampleDataToDatabase(args.currentGame.gameId)
+            insertExampleDataToDatabase(args.currentGame.gameId.toString())
             true
         }
 
@@ -73,7 +73,7 @@ class ListFieldsFragment : Fragment()/*, SearchView.OnQueryTextListener*/, MenuP
     private fun deleteAllFields() {
         val builder = AlertDialog.Builder(requireContext())
         builder.setPositiveButton("Potwierdź") { _, _ ->
-            mFieldViewModel.deleteFieldsInGame(args.currentGame.gameId)
+            mFieldViewModel.deleteFieldsInGame(args.currentGame.gameId.toString())
             Toast.makeText(requireContext(), "Pomyślnie usunięto!", Toast.LENGTH_SHORT).show()
         }
         builder.setNegativeButton("Cofnij") { _, _ -> }
@@ -105,7 +105,7 @@ class ListFieldsFragment : Fragment()/*, SearchView.OnQueryTextListener*/, MenuP
         }
     }*/
 
-    private fun insertExampleDataToDatabase(gameId: Int) {
+    private fun insertExampleDataToDatabase(gameId: String) {
         val fields = FieldStorage.getExampleFields(gameId)
         mFieldViewModel.addAllFields(fields)
 

@@ -45,7 +45,7 @@ class AddGameFragment : Fragment() {
         val pin: Int = (100000..999999).random()
         val description = binding.descriptionEditText.text.toString()
         if (inputCheck(pin.toString(), description)) {
-            val game = Game(0, pin, description, mAuth.currentUser?.email)
+            val game = Game("0", pin, description, mAuth.currentUser?.email)
             mGameViewModel.addGame(game)
             Toast.makeText(requireContext(), "Pomyślnie dodano!", Toast.LENGTH_LONG).show()
             findNavController().navigate(R.id.action_addGameFragment_to_listGamesFragment)

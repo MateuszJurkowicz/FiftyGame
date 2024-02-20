@@ -6,14 +6,12 @@ import androidx.room.PrimaryKey;
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-@Entity(tableName = "games_table")
 data class Game(
-    @PrimaryKey(autoGenerate = true)
-    val gameId: Int,
+    var gameId: String?,
     val pin: Int,
     val description: String?,
     val ownerEmail: String?
 
 ) : Parcelable {
-    constructor() : this(0, 0, "", "")
+    constructor() : this("0", 0, "", "")
 }

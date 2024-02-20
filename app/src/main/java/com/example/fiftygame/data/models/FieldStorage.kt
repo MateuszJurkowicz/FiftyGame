@@ -3,7 +3,7 @@ package com.example.fiftygame.data.models
 class FieldStorage {
     companion object {
         private val exampleFields: List<Field> by lazy {
-            val gameId = 1
+            val gameId = "1"
             listOf(
                 Field(0, 1, "Kubek", "Która klasa jest podstawową klasą do zarządzania bazą danych w Androidzie?", "RoomDatabase", gameId),
                 Field(0, 2, "Plac zabaw", "Co to jest Intent w Androidzie?", "Obiekt używany do przekazywania danych", gameId),
@@ -29,7 +29,7 @@ class FieldStorage {
             )
 
         }
-        fun getExampleFields(gameId: Int): List<Field> {
+        fun getExampleFields(gameId: String): List<Field> {
             return exampleFields.map { it.copy(ownerGameId = gameId) }
         }
     }

@@ -5,13 +5,13 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 @Parcelize
-@Entity(tableName = "fields_table")
-data class Field (
-    @PrimaryKey(autoGenerate = true)
+data class Field(
     val fieldId: Int,
     val number: Int,
     val entry: String,
     val question: String,
     val correctAnswer: String,
-    val ownerGameId: Int
-) : Parcelable
+    val ownerGameId: String?
+) : Parcelable {
+    constructor() : this(0, 0, "hasło", "pytanie", "okoń", "a")
+}

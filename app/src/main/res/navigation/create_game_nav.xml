@@ -17,7 +17,9 @@
             app:destination="@id/userProfileFragment" />
         <action
             android:id="@+id/action_listGamesFragment_to_addGameFragment"
-            app:destination="@id/addGameFragment" />
+            app:destination="@id/addGameFragment"
+            app:popUpTo="@+id/listGamesFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/addGameFragment"
@@ -26,7 +28,9 @@
         tools:layout="@layout/fragment_add_game" >
         <action
             android:id="@+id/action_addGameFragment_to_listGamesFragment"
-            app:destination="@id/listGamesFragment" />
+            app:destination="@id/listGamesFragment"
+            app:popUpTo="@+id/addGameFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/listFieldsFragment"
