@@ -16,6 +16,7 @@ import com.example.fiftygame.data.viewmodels.GameViewModel
 import com.example.fiftygame.data.viewmodels.PlayerViewModel
 import com.example.fiftygame.databinding.FragmentJoinGameBinding
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class JoinGameFragment : Fragment() {
@@ -48,7 +49,7 @@ class JoinGameFragment : Fragment() {
                     mPlayerViewModel.setLevel(1)
 
                     if (currentGame.pin == pin.toInt()) {
-                        launch(Dispatchers.Main) {
+                        lifecycleScope.launch(Dispatchers.Main) {
                             Toast.makeText(requireContext(), "Znaleziono grę", Toast.LENGTH_LONG)
                                 .show()
                             val action =
@@ -58,7 +59,7 @@ class JoinGameFragment : Fragment() {
                             findNavController().navigate(action)
                         }
                     } else {
-                        launch(Dispatchers.Main) {
+                        lifecycleScope.launch(Dispatchers.Main) {
                             Toast.makeText(
                                 requireContext(), "Nie znaleziono gry", Toast.LENGTH_LONG
                             ).show()
@@ -73,6 +74,7 @@ class JoinGameFragment : Fragment() {
 
         return view
     }
+
     override fun onDestroy() {
         mPlayerViewModel.setLevel(1)
         Log.d("destroyview", "DESTROY")

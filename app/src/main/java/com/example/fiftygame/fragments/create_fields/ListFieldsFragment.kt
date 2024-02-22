@@ -13,23 +13,19 @@ import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fiftygame.R
 import com.example.fiftygame.data.models.Field
 import com.example.fiftygame.data.models.FieldStorage
-import com.example.fiftygame.data.models.Game
 import com.example.fiftygame.data.viewmodels.FieldViewModel
 import com.example.fiftygame.databinding.FragmentListFieldsBinding
-import com.example.fiftygame.fragments.create_games.ListGamesAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import com.google.firebase.firestore.Query
 
 
-class ListFieldsFragment : Fragment()/*, SearchView.OnQueryTextListener*/, MenuProvider {
+class ListFieldsFragment : Fragment(), SearchView.OnQueryTextListener, MenuProvider {
     private val args by navArgs<ListFieldsFragmentArgs>()
     private lateinit var mFieldViewModel: FieldViewModel
     private lateinit var adapter: ListFieldsAdapter
@@ -45,7 +41,9 @@ class ListFieldsFragment : Fragment()/*, SearchView.OnQueryTextListener*/, MenuP
         activity?.addMenuProvider(this, viewLifecycleOwner)
         mFieldViewModel = ViewModelProvider(this)[FieldViewModel::class.java]
 
-        setupRecyclerView()
+        val query = mFieldViewModel.readAllFields(args.currentGame.gameId)
+
+        setupRecyclerView(query)
 
 
 
@@ -72,9 +70,7 @@ class ListFieldsFragment : Fragment()/*, SearchView.OnQueryTextListener*/, MenuP
         return view
     }
 
-    private fun setupRecyclerView() {
-        val query = mFieldViewModel.readAllFields(args.currentGame.gameId)
-
+    private fun setupRecyclerView(query: Query) {
         val options = FirestoreRecyclerOptions.Builder<Field>().setQuery(query, Field::class.java).build()
 
         adapter = ListFieldsAdapter(args.currentGame, options)
@@ -106,7 +102,7 @@ class ListFieldsFragment : Fragment()/*, SearchView.OnQueryTextListener*/, MenuP
         builder.create().show()
     }
 
-    /*override fun onQueryTextSubmit(query: String?): Boolean {
+    override fun onQueryTextSubmit(query: String?): Boolean {
         if (query != null) {
             searchDatabase(query)
         }
@@ -118,16 +114,18 @@ class ListFieldsFragment : Fragment()/*, SearchView.OnQueryTextListener*/, MenuP
             searchDatabase(query)
         }
         return true
-    }*/
+    }
 
-    /*private fun searchDatabase(query: String) {
+    private fun searchDatabase(query: String) {
         val searchQuery = "%$query%"
-        mFieldViewModel.searchDatabase(args.currentGame.gameId, searchQuery).observe(this) { list ->
+        val queryForRecyclerView = mFieldViewModel.searchDatabase(args.currentGame.gameId, searchQuery)
+        setupRecyclerView(queryForRecyclerView)
+        /*.observe(this) { list ->
             list.let {
                 adapter.setDataForSearch(it)
             }
-        }
-    }*/
+        }*/
+    }
 
     private fun insertExampleDataToDatabase(gameId: String) {
         val fields = FieldStorage.getExampleFields(gameId)
@@ -142,7 +140,7 @@ class ListFieldsFragment : Fragment()/*, SearchView.OnQueryTextListener*/, MenuP
         val search = menu.findItem(R.id.search_item)
         val searchView = search?.actionView as? SearchView
         searchView?.isSubmitButtonEnabled = true
-        //searchView?.setOnQueryTextListener(this)
+        searchView?.setOnQueryTextListener(this)
     }
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {

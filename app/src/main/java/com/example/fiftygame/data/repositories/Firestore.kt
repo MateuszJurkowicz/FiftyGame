@@ -12,6 +12,7 @@ import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.firestore
 import com.google.firebase.firestore.toObject
+import kotlinx.coroutines.tasks.await
 
 class Firestore {
     private val db = Firebase.firestore
@@ -24,6 +25,7 @@ class Firestore {
             .add(field)
             .addOnSuccessListener {
                 field.fieldId = it.id
+                field.keywords = generateKeywords(field.entry)
                 gamesColRef.document(gameId.toString()).collection("fields").document(it.id)
                     .set(field)
                 Log.d(TAG, "DocumentSnapshot added with ID: ${it.id}")
@@ -67,19 +69,14 @@ class Firestore {
         return gamesColRef.whereEqualTo("ownerEmail", email)
     }
 
-    fun readGameWithPin(pin: Int): Game {
-        lateinit var game: Game
-        gamesColRef
+    suspend fun readGameWithPin(pin: Int): Game {
+        val game = gamesColRef
             .whereEqualTo("pin", pin)
             .limit(1)
             .get()
-            .addOnSuccessListener { queryDocumentSnapshots ->
-                game = queryDocumentSnapshots.documents[0].toObject(Game::class.java)!!
-            }
-            .addOnFailureListener { e ->
-                Log.d(TAG, e.toString())
-            }
-        return game
+            .await()
+            .toObjects(Game::class.java)
+        return game[0]
     }
 
     fun readAllFields(gameId: String?): Query {
@@ -96,9 +93,8 @@ class Firestore {
     fun deleteFieldsInGame(gameId: String) {
         gamesColRef.document(gameId).collection("fields")
             .get()
-            .addOnSuccessListener{
-                for(doc in it)
-                {
+            .addOnSuccessListener {
+                for (doc in it) {
                     gamesColRef.document(gameId).collection("fields").document(doc.id).delete()
                 }
             }
@@ -107,5 +103,23 @@ class Firestore {
 
     fun deleteField(field: Field, gameId: String?) {
         gamesColRef.document(gameId.toString()).collection("fields").document(field.fieldId).delete()
+    }
+
+    fun searchDatabase(gameId: String?, searchQuery: String): Query {
+        return gamesColRef.document(gameId.toString()).collection("fields")
+            .whereArrayContains("keywords", searchQuery)
+            .limit(10)
+        //return gamesColRef.document(gameId.toString()).collection("fields").orderBy("number")
+
+    }
+
+    private fun generateKeywords(name: String): List<String> {
+        val keywords = mutableListOf<String>()
+        for (i in 0 until name.length) {
+            for (j in (i + 1)..name.length) {
+                keywords.add(name.slice(i until j))
+            }
+        }
+        return keywords
     }
 }

@@ -60,7 +60,7 @@ class UpdateFieldFragment : Fragment() {
         val question = binding.updateQuestionEditText.text.toString()
         val answer = binding.updateAnswerEditText.text.toString()
         if (inputCheck(number, entry, question, answer)) {
-            val updatedField = Field(args.currentField.fieldId, number.toInt(), entry, question, answer)
+            val updatedField = Field(args.currentField.fieldId, number.toInt(), entry, question, answer, listOf())
             mFieldViewModel.updateField(updatedField, args.currentGame.gameId)
             Toast.makeText(requireContext(), "Pomyślnie zaktualizowano!", Toast.LENGTH_SHORT).show()
             val action = UpdateFieldFragmentDirections.actionUpdateFieldFragmentToListFieldsFragment(args.currentGame)

@@ -14,9 +14,11 @@ import com.example.fiftygame.R
 import com.example.fiftygame.data.models.Field
 import com.example.fiftygame.data.models.Game
 import com.example.fiftygame.data.relations.GameWithFields
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter
+import com.firebase.ui.firestore.FirestoreRecyclerOptions
 
-class GameListFieldsAdapter(game: Game) : RecyclerView.Adapter<GameListFieldsAdapter.ViewHolder>() {
-    private var fieldsList = emptyList<Field>()
+class GameListFieldsAdapter(game: Game, options: FirestoreRecyclerOptions<Field>) :
+    FirestoreRecyclerAdapter<Field, GameListFieldsAdapter.ViewHolder>(options) {
     private var playerLevel: Int? = null
     private var clickablePosition: Int? = null
     private var currentGame = game
@@ -32,46 +34,43 @@ class GameListFieldsAdapter(game: Game) : RecyclerView.Adapter<GameListFieldsAda
         )
     }
 
-    override fun getItemCount(): Int = fieldsList.size
 
-    override fun onBindViewHolder(holder: ViewHolder, @SuppressLint("RecyclerView") position: Int) {
-        val currentItem = fieldsList[position]
+    override fun onBindViewHolder(holder: ViewHolder, @SuppressLint("RecyclerView") position: Int, currentItem: Field) {
 
-        holder.itemView.findViewById<TextView>(R.id.field_number).text =
-            currentItem.number.toString()
+        holder.itemView.findViewById<TextView>(R.id.field_number).text = currentItem.number.toString()
 
         // Sprawdź i podświetl pole, jeśli playerLevel jest zdefiniowany i równy poziomowi pola
         if (playerLevel != null && playerLevel == position) {
-            holder.itemView.findViewById<CardView>(R.id.field_CardView).setCardBackgroundColor(holder.itemView.context.getColor(R.color.access_color_card_view))
+            holder.itemView.findViewById<CardView>(R.id.field_CardView)
+                .setCardBackgroundColor(holder.itemView.context.getColor(R.color.access_color_card_view))
             clickablePosition = position // Ustaw klikalność tylko dla podświetlonego pola
         } else {
             // Jeśli nie, przywróć domyślny kolor tła
-            holder.itemView.findViewById<CardView>(R.id.field_CardView).setCardBackgroundColor(holder.itemView.context.getColor(R.color.card_field_color))
+            holder.itemView.findViewById<CardView>(R.id.field_CardView)
+                .setCardBackgroundColor(holder.itemView.context.getColor(R.color.card_field_color))
         }
 
         holder.itemView.findViewById<TextView>(R.id.field_number).setOnClickListener {
             if (clickablePosition == position) {
                 // Kliknięcie będzie obsługiwane tylko dla podświetlonego pola
-                val action =
-                    GameListFieldsFragmentDirections.actionGameListFieldsFragmentToGameFieldFragment(
-                        currentItem, currentGame
-                    )
+                val action = GameListFieldsFragmentDirections.actionGameListFieldsFragmentToGameFieldFragment(
+                    currentItem, currentGame
+                )
                 holder.itemView.findNavController().navigate(action)
             } else {
                 // Pokaż powiadomienie "Pole niedostępne"
-                Toast.makeText(holder.itemView.context, "Pole niedostępne", Toast.LENGTH_SHORT)
-                    .show()
+                Toast.makeText(holder.itemView.context, "Pole niedostępne", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    fun setData(gameWithFieldsList: List<GameWithFields>) {
+    /*fun setData(gameWithFieldsList: List<GameWithFields>) {
         gameWithFieldsList.forEach { gameWithFields ->
             fieldsList = gameWithFields.fields
             // Tutaj możesz wykonać operacje na fields
         }
         notifyDataSetChanged()
-    }
+    }*/
 
     fun setLevel(level: Int?) {
         playerLevel = level

@@ -25,7 +25,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun readGameWithPin(pin: Int): Game {
+    suspend fun readGameWithPin(pin: Int): Game {
         return firestore.readGameWithPin(pin)
     }
 

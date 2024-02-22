@@ -47,7 +47,7 @@ class GameFieldFragment : Fragment() {
 
         }
         binding.playerAnswer.setEndIconOnClickListener {
-            if (binding.playerAnswerEdit.text.toString() == args.currentItem.correctAnswer) {
+            if (binding.playerAnswerEdit.text.toString().trim() == args.currentItem.correctAnswer) {
                 binding.submitAnswerButton.visibility = View.VISIBLE
             }
         }
@@ -67,15 +67,14 @@ class GameFieldFragment : Fragment() {
     }
 
     private fun showResultDialog(result: Int) {
-        MaterialAlertDialogBuilder(requireContext()).setTitle("Wynik rzutu kostką")
-            .setMessage("Wylosowano liczbę: $result").setPositiveButton("OK") { dialog, _ ->
+        MaterialAlertDialogBuilder(requireContext()).setTitle("Wynik rzutu kostką").setMessage("Wylosowano liczbę: $result")
+            .setPositiveButton("OK") { dialog, _ ->
                 mPlayerViewModel.getLevel.observe(viewLifecycleOwner) { pLevel ->
                     mPlayerViewModel.setLevel(pLevel + result)
                     Log.d("GameLevel", "Nowy poziom gry: $pLevel")
-                    val action =
-                        GameFieldFragmentDirections.actionGameFieldFragmentToGameListFieldsFragment(
-                            args.currentGame
-                        )
+                    val action = GameFieldFragmentDirections.actionGameFieldFragmentToGameListFieldsFragment(
+                        args.currentGame
+                    )
                     findNavController().navigate(action)
 
                 }

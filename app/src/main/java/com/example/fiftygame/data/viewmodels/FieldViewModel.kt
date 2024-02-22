@@ -19,6 +19,7 @@ class FieldViewModel(application: Application) : AndroidViewModel(application) {
             firestore.addField(field, gameId)
         }
     }
+
     fun addAllFields(fields: List<Field>) {
         viewModelScope.launch(Dispatchers.IO) {
             //repository.addAllFields(fields)
@@ -36,6 +37,7 @@ class FieldViewModel(application: Application) : AndroidViewModel(application) {
             firestore.deleteField(field, gameId)
         }
     }
+
     fun deleteFieldsInGame(gameId: String) {
         viewModelScope.launch(Dispatchers.IO) {
             firestore.deleteFieldsInGame(gameId)
@@ -43,14 +45,13 @@ class FieldViewModel(application: Application) : AndroidViewModel(application) {
     }
 
 
-
     fun readAllFields(gameId: String?): Query {
         return firestore.readAllFields(gameId)
     }
 
-    /*fun searchDatabase(gameId: Int, searchQuery: String): LiveData<List<Field>> {
-        return repository.searchDatabase(gameId, searchQuery).asLiveData()
-    }*/
+    fun searchDatabase(gameId: String?, searchQuery: String): Query {
+        return firestore.searchDatabase(gameId, searchQuery)
+    }
 
 
 }
