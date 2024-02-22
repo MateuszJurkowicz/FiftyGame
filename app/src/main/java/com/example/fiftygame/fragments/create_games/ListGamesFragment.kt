@@ -1,27 +1,22 @@
 package com.example.fiftygame.fragments.create_games
 
-import android.app.AlertDialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.view.MenuProvider
-import androidx.lifecycle.Observer
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fiftygame.R
 import com.example.fiftygame.data.models.Game
-import com.example.fiftygame.data.viewmodels.FieldViewModel
 import com.example.fiftygame.data.viewmodels.GameViewModel
 import com.example.fiftygame.databinding.FragmentListGamesBinding
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
-import com.google.firebase.firestore.FirebaseFirestore
 
 class ListGamesFragment : Fragment(), MenuProvider {
     private lateinit var mGameViewModel: GameViewModel
@@ -37,7 +32,6 @@ class ListGamesFragment : Fragment(), MenuProvider {
         val view = binding.root
 
         activity?.addMenuProvider(this, viewLifecycleOwner)
-
         mGameViewModel = ViewModelProvider(this)[GameViewModel::class.java]
 
         setupRecyclerView()

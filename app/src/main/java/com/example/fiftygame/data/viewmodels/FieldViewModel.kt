@@ -4,53 +4,50 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.fiftygame.data.models.Field
-import com.example.fiftygame.data.repositories.Firestore
-import com.google.firebase.auth.FirebaseAuth
+import com.example.fiftygame.data.repositories.FieldRepository
+import com.example.fiftygame.data.Firestore
 import com.google.firebase.firestore.Query
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class FieldViewModel(application: Application) : AndroidViewModel(application) {
+    private val fieldRepository: FieldRepository
     private val firestore: Firestore = Firestore()
-    private val mAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
+    init {
+        fieldRepository = FieldRepository(firestore)
+    }
     fun addField(field: Field, gameId: String?) {
         viewModelScope.launch(Dispatchers.IO) {
-            firestore.addField(field, gameId)
-        }
-    }
-
-    fun addAllFields(fields: List<Field>) {
-        viewModelScope.launch(Dispatchers.IO) {
-            //repository.addAllFields(fields)
+            fieldRepository.addField(field, gameId)
         }
     }
 
     fun updateField(field: Field, gameId: String?) {
         viewModelScope.launch(Dispatchers.IO) {
-            firestore.updateField(field, gameId)
+            fieldRepository.updateField(field, gameId)
         }
     }
 
     fun deleteField(field: Field, gameId: String?) {
         viewModelScope.launch(Dispatchers.IO) {
-            firestore.deleteField(field, gameId)
+            fieldRepository.deleteField(field, gameId)
         }
     }
 
     fun deleteFieldsInGame(gameId: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            firestore.deleteFieldsInGame(gameId)
+            fieldRepository.deleteFieldsInGame(gameId)
         }
     }
 
 
     fun readAllFields(gameId: String?): Query {
-        return firestore.readAllFields(gameId)
+        return fieldRepository.readAllFields(gameId)
     }
 
     fun searchDatabase(gameId: String?, searchQuery: String): Query {
-        return firestore.searchDatabase(gameId, searchQuery)
+        return fieldRepository.searchDatabase(gameId, searchQuery)
     }
 
 

@@ -46,15 +46,6 @@ class ListFieldsFragment : Fragment(), SearchView.OnQueryTextListener, MenuProvi
         setupRecyclerView(query)
 
 
-
-        /*mFieldViewModel.readGameWithFields(args.currentGame.gameId).observe(viewLifecycleOwner) { gameWithFieldsList ->
-            gameWithFieldsList?.let {
-                if (it.isNotEmpty()) {
-                    adapter.setData(it[0].fields)
-                }
-            }
-        }*/
-
         binding.fieldFloatingActionButton.setOnClickListener {
             val action = ListFieldsFragmentDirections.actionListFieldsFragmentToAddFieldFragment(
                 args.currentGame
@@ -129,7 +120,7 @@ class ListFieldsFragment : Fragment(), SearchView.OnQueryTextListener, MenuProvi
 
     private fun insertExampleDataToDatabase(gameId: String) {
         val fields = FieldStorage.getExampleFields(gameId)
-        fields.forEach{
+        fields.forEach {
             mFieldViewModel.addField(it, gameId)
         }
 

@@ -2,16 +2,12 @@ package com.example.fiftygame.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
-import com.example.fiftygame.R
-import com.example.fiftygame.activities.CreateFieldsActivity
 import com.example.fiftygame.activities.MainActivity
 import com.example.fiftygame.data.viewmodels.UserViewModel
 import com.example.fiftygame.databinding.FragmentUserProfileBinding
@@ -25,7 +21,7 @@ class UserProfileFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentUserProfileBinding.inflate(inflater, container, false)
         val view = binding.root
 

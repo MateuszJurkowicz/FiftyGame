@@ -1,7 +1,6 @@
 package com.example.fiftygame.fragments.game
 
 import android.annotation.SuppressLint
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.fiftygame.R
 import com.example.fiftygame.data.models.Field
 import com.example.fiftygame.data.models.Game
-import com.example.fiftygame.data.relations.GameWithFields
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 
@@ -24,9 +22,8 @@ class GameListFieldsAdapter(game: Game, options: FirestoreRecyclerOptions<Field>
     private var currentGame = game
 
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -63,14 +60,6 @@ class GameListFieldsAdapter(game: Game, options: FirestoreRecyclerOptions<Field>
             }
         }
     }
-
-    /*fun setData(gameWithFieldsList: List<GameWithFields>) {
-        gameWithFieldsList.forEach { gameWithFields ->
-            fieldsList = gameWithFields.fields
-            // Tutaj możesz wykonać operacje na fields
-        }
-        notifyDataSetChanged()
-    }*/
 
     fun setLevel(level: Int?) {
         playerLevel = level

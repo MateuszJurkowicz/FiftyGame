@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.fiftygame.data.models.Game
 import com.example.fiftygame.data.repositories.DataStoreRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -24,11 +23,6 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
     fun setLevel(level: Int) {
         viewModelScope.launch {
             dataStore.setLevel(level)
-        }
-    }
-    fun sumLevel(add: Int) {
-        viewModelScope.launch {
-            dataStore.sumLevel(add)
         }
     }
 }

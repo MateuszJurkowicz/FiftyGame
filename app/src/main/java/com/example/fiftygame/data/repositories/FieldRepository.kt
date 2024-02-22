@@ -1,38 +1,35 @@
 package com.example.fiftygame.data.repositories
 
-import androidx.lifecycle.LiveData
+import com.example.fiftygame.data.Firestore
 import com.example.fiftygame.data.models.Field
-import com.example.fiftygame.data.relations.GameWithFields
-import kotlinx.coroutines.flow.Flow
+import com.google.firebase.firestore.Query
 
-class FieldRepository() {
-    suspend fun addField(field: Field) {
-        //appDao.addField(field)
-    }
-    suspend fun addAllFields(fields: List<Field>) {
-        //appDao.addAllFields(fields)
+class FieldRepository(private val firestore: Firestore) {
+
+
+    fun addField(field: Field, gameId: String?) {
+        firestore.addField(field, gameId)
     }
 
-    suspend fun updateField(field: Field) {
-        //appDao.updateField(field)
+    fun updateField(field: Field, gameId: String?) {
+        firestore.updateField(field, gameId)
     }
 
-    suspend fun deleteField(field: Field) {
-        //appDao.deleteField(field)
+    fun deleteField(field: Field, gameId: String?) {
+        firestore.deleteField(field, gameId)
     }
 
-    suspend fun deleteFieldsInGame(gameId: Int) {
-        //appDao.deleteFieldsInGame(gameId)
+    fun deleteFieldsInGame(gameId: String) {
+        firestore.deleteFieldsInGame(gameId)
     }
 
+    fun searchDatabase(gameId: String?, searchQuery: String): Query {
+        return firestore.searchDatabase(gameId, searchQuery)
+    }
 
-    /*fun readGameWithFields(gameId: Int): LiveData<List<GameWithFields>> {
-        return appDao.readGameWithFields(gameId)
-    }*/
-
-    /*fun searchDatabase(gameId: Int, searchQuery: String): Flow<List<Field>> {
-        return appDao.searchDatabase(gameId, searchQuery)
-    }*/
+    fun readAllFields(gameId: String?): Query {
+        return firestore.readAllFields(gameId)
+    }
 
 
 }

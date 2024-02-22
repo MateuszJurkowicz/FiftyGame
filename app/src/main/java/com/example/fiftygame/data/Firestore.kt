@@ -1,22 +1,16 @@
-package com.example.fiftygame.data.repositories
+package com.example.fiftygame.data
 
 import android.content.ContentValues.TAG
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.example.fiftygame.data.models.Field
 import com.example.fiftygame.data.models.Game
 import com.google.firebase.Firebase
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.firestore
-import com.google.firebase.firestore.toObject
 import kotlinx.coroutines.tasks.await
 
 class Firestore {
     private val db = Firebase.firestore
-    private val fieldsColRef = db.collection("fields")
     private val gamesColRef = db.collection("games")
     private val usersColRef = db.collection("users")
 
@@ -31,7 +25,7 @@ class Firestore {
                 Log.d(TAG, "DocumentSnapshot added with ID: ${it.id}")
             }
             .addOnFailureListener { e ->
-                Log.w(TAG, "Error adding document", e)
+                Log.w(TAG, "Error adding field document", e)
             }
     }
 
@@ -45,7 +39,7 @@ class Firestore {
                 Log.d(TAG, "DocumentSnapshot added with ID: ${it.id}")
             }
             .addOnFailureListener { e ->
-                Log.w(TAG, "Error adding document", e)
+                Log.w(TAG, "Error adding game document", e)
             }
     }
 
@@ -61,7 +55,7 @@ class Firestore {
                 Log.d(TAG, "DocumentSnapshot added with ID: $email")
             }
             .addOnFailureListener { e ->
-                Log.w(TAG, "Error adding document", e)
+                Log.w(TAG, "Error adding user document", e)
             }
     }
 
@@ -109,13 +103,12 @@ class Firestore {
         return gamesColRef.document(gameId.toString()).collection("fields")
             .whereArrayContains("keywords", searchQuery)
             .limit(10)
-        //return gamesColRef.document(gameId.toString()).collection("fields").orderBy("number")
 
     }
 
     private fun generateKeywords(name: String): List<String> {
         val keywords = mutableListOf<String>()
-        for (i in 0 until name.length) {
+        for (i in name.indices) {
             for (j in (i + 1)..name.length) {
                 keywords.add(name.slice(i until j))
             }

@@ -11,6 +11,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.MenuProvider
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -19,18 +20,19 @@ import com.example.fiftygame.data.models.Field
 import com.example.fiftygame.data.viewmodels.FieldViewModel
 import com.example.fiftygame.databinding.FragmentUpdateFieldBinding
 
-class UpdateFieldFragment : Fragment() {
+class UpdateFieldFragment : Fragment(), MenuProvider {
     private val args by navArgs<UpdateFieldFragmentArgs>()
     private lateinit var mFieldViewModel: FieldViewModel
     private var _binding: FragmentUpdateFieldBinding? = null
     private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentUpdateFieldBinding.inflate(inflater, container, false)
         val view = binding.root
 
+        activity?.addMenuProvider(this, viewLifecycleOwner)
         mFieldViewModel = ViewModelProvider(this)[FieldViewModel::class.java]
 
         binding.updateNumberEditText.setText(args.currentField.number.toString())
@@ -42,17 +44,11 @@ class UpdateFieldFragment : Fragment() {
             updateItem()
         }
 
-        setHasOptionsMenu(true)
 
         return view
 
     }
 
-    override fun onPrepareOptionsMenu(menu: Menu) {
-        menu.findItem(R.id.search_item).setVisible(false)
-        menu.findItem(R.id.profile_item).setVisible(false)
-        super.onPrepareOptionsMenu(menu)
-    }
 
     private fun updateItem() {
         val number = binding.updateNumberEditText.text.toString()
@@ -78,15 +74,22 @@ class UpdateFieldFragment : Fragment() {
         ) && TextUtils.isEmpty(entry))
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.create_fields_menu, menu)
+    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+        menuInflater.inflate(R.menu.create_fields_menu, menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    override fun onPrepareMenu(menu: Menu) {
+        menu.findItem(R.id.search_item).setVisible(false)
+        menu.findItem(R.id.profile_item).setVisible(false)
+        super.onPrepareMenu(menu)
+    }
+
+    override fun onMenuItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.delete_item) {
             deleteField()
+            return true
         }
-        return super.onOptionsItemSelected(item)
+        return false
     }
 
     private fun deleteField() {

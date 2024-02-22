@@ -1,14 +1,11 @@
 package com.example.fiftygame.activities
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.fiftygame.R
-import com.example.fiftygame.fragments.create_fields.ListFieldsFragment
 
 class CreateFieldsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

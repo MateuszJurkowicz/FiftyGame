@@ -6,17 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.fiftygame.R
 import com.example.fiftygame.data.models.Field
 import com.example.fiftygame.data.viewmodels.FieldViewModel
 import com.example.fiftygame.data.viewmodels.PlayerViewModel
 import com.example.fiftygame.databinding.FragmentGameListFieldsBinding
-import com.example.fiftygame.fragments.create_fields.ListFieldsAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.Query
 
@@ -30,7 +26,7 @@ class GameListFieldsFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentGameListFieldsBinding.inflate(inflater, container, false)
         val view = binding.root
@@ -44,20 +40,13 @@ class GameListFieldsFragment : Fragment() {
 
 
 
-        mPlayerViewModel.getLevel.observe(viewLifecycleOwner, Observer { playerLevel ->
+        mPlayerViewModel.getLevel.observe(viewLifecycleOwner) { playerLevel ->
             adapter.setLevel(playerLevel - 1)
             Log.d("oncreateview", "${mPlayerViewModel.getLevel.value}")
             Log.d("oncreateview2", playerLevel.toString())
 
 
-        })
-
-        /*args.currentGame.let {
-            mFieldViewModel.readGameWithFields(it.gameId)
-                .observe(viewLifecycleOwner, Observer { gameWithFields ->
-                    adapter.setData(gameWithFields)
-                })
-        }*/
+        }
 
         return view
     }

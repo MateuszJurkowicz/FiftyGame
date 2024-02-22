@@ -2,17 +2,15 @@ package com.example.fiftygame.fragments.create_games
 
 import android.os.Bundle
 import android.text.TextUtils
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.fiftygame.R
-import com.example.fiftygame.data.models.Field
 import com.example.fiftygame.data.models.Game
-import com.example.fiftygame.data.viewmodels.FieldViewModel
 import com.example.fiftygame.data.viewmodels.GameViewModel
 import com.example.fiftygame.databinding.FragmentAddGameBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -25,7 +23,7 @@ class AddGameFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentAddGameBinding.inflate(inflater, container, false)
         val view = binding.root

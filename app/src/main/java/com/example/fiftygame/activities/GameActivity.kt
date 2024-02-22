@@ -1,10 +1,7 @@
 package com.example.fiftygame.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.appcompat.app.AppCompatActivity
 import com.example.fiftygame.R
 
 class GameActivity : AppCompatActivity() {

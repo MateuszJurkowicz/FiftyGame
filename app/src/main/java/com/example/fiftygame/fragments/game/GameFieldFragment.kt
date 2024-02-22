@@ -1,7 +1,5 @@
 package com.example.fiftygame.fragments.game
 
-import android.animation.Animator
-import android.animation.ValueAnimator
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,10 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.fiftygame.R
 import com.example.fiftygame.data.viewmodels.PlayerViewModel
 import com.example.fiftygame.databinding.FragmentGameFieldBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
