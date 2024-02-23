@@ -1,14 +1,19 @@
 package com.example.fiftygame.fragments.game
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.MenuProvider
+import androidx.core.view.size
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.fiftygame.R
 import com.example.fiftygame.data.models.Field
 import com.example.fiftygame.data.viewmodels.FieldViewModel
 import com.example.fiftygame.data.viewmodels.PlayerViewModel
@@ -16,7 +21,7 @@ import com.example.fiftygame.databinding.FragmentGameListFieldsBinding
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.Query
 
-class GameListFieldsFragment : Fragment() {
+class GameListFieldsFragment : Fragment(), MenuProvider {
     private val args by navArgs<GameListFieldsFragmentArgs>()
     private var _binding: FragmentGameListFieldsBinding? = null
     private val binding get() = _binding!!
@@ -31,6 +36,7 @@ class GameListFieldsFragment : Fragment() {
         _binding = FragmentGameListFieldsBinding.inflate(inflater, container, false)
         val view = binding.root
 
+        //activity?.addMenuProvider(this, viewLifecycleOwner)
         mFieldViewModel = ViewModelProvider(this)[FieldViewModel::class.java]
         mPlayerViewModel = ViewModelProvider(this)[PlayerViewModel::class.java]
 
@@ -42,13 +48,16 @@ class GameListFieldsFragment : Fragment() {
 
         mPlayerViewModel.getLevel.observe(viewLifecycleOwner) { playerLevel ->
             adapter.setLevel(playerLevel - 1)
-            Log.d("oncreateview", "${mPlayerViewModel.getLevel.value}")
-            Log.d("oncreateview2", playerLevel.toString())
-
-
         }
 
         return view
+    }
+
+    override fun onPrepareMenu(menu: Menu) {
+        mPlayerViewModel.getLevel.observe(viewLifecycleOwner) { playerLevel ->
+            menu.findItem(R.id.game_level).setTitle(playerLevel.toString() + "/" + binding.gameRecyclerView.size)
+        }
+        super.onPrepareMenu(menu)
     }
 
     private fun setupRecyclerView(query: Query) {
@@ -68,6 +77,14 @@ class GameListFieldsFragment : Fragment() {
     override fun onStop() {
         super.onStop()
         adapter.stopListening()
+    }
+
+    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+        menuInflater.inflate(R.menu.game_menu, menu)
+    }
+
+    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        return true
     }
 
 

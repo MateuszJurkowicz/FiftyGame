@@ -720,8 +720,6 @@ z
 Japp/src/main/java/com/example/fiftygame/fragments/game/JoinGameFragment.kt,c\c\cc0056cb72ac5fa8edb484d5a404a9bd18e5875b
 |
 Lapp/src/main/java/com/example/fiftygame/data/repositories/FieldRepository.kt,3\8\3898df3d4ae756cfd4c2fd66aa1a1b5e55cee70c
-v
-Fapp/src/main/java/com/example/fiftygame/data/repositories/Firestore.kt,8\6\86f25db094a8690be2ac461f220168a936201c7b
 €
 Papp/src/main/java/com/example/fiftygame/data/repositories/DataStoreRepository.kt,c\b\cb100b7a7ba61d815c948f925a8efd2070433ef5
 z
@@ -734,3 +732,5 @@ i
 9app/src/main/java/com/example/fiftygame/data/Firestore.kt,7\5\75dcbc2571fb80082c2ec1c571602cb9f9c09461
 {
 Kapp/src/main/java/com/example/fiftygame/data/repositories/GameRepository.kt,0\2\029abbc3de19b40cd0bda88aac5d742d4a335c77
+t
+Dapp/src/main/java/com/example/fiftygame/activities/SignUpActivity.kt,a\6\a6adab14896282d99755bfd5868d564e46cd3518

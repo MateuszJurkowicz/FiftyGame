@@ -47,13 +47,6 @@ class DataStoreRepository private constructor(context: Context) {
         }
     }
 
-
-    suspend fun sumLevel(add: Int) {
-        dataStore.edit { preference ->
-            preference[levelKey]?.plus(add)
-        }
-    }
-
     fun getName(): Flow<String> {
         return dataStore.data.catch { exception ->
             if (exception is IOException) {
@@ -80,8 +73,6 @@ class DataStoreRepository private constructor(context: Context) {
             playerLevel
         }
     }
-
-
 
 
 }

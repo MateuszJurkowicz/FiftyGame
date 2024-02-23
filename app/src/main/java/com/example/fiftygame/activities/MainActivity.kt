@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+
         mAuth = FirebaseAuth.getInstance()
         val user = mAuth.currentUser
 
@@ -36,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
     override fun onResume() {
         super.onResume()
         clearBackStackIfNeeded()

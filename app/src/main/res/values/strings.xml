@@ -14,7 +14,7 @@
     <string name="field_question">Treść pytania</string>
     <string name="field_answer">Odpowiedź</string>
     <string name="submit_button">Idź dalej</string>
-    <string name="sign_in">Sign in</string>
+    <string name="sign_in">Zaloguj za pomocą google</string>
     <string name="game_join_button">Dołącz do gry</string>
     <string name="game_create_button">Stwórz nową grę</string>
     <string name="game_pin" translatable="false">123456</string>
@@ -37,7 +37,15 @@
     <string name="floating_button_games">Dodaj nową grę</string>
     <string name="Logout">Wyloguj</string>
     <string name="name_and_surname">Imię i nazwisko</string>
-    <string name="search">Search</string>
-    <string name="delete">Delete</string>
+    <string name="search">Wyszukaj</string>
+    <string name="delete">Usuń</string>
+    <string name="level">Level</string>
+    <string name="email">Email</string>
+    <string name="password">Hasło</string>
+    <string name="sign_up">Nie masz konta? Zarejestruj się</string>
+    <string name="or_login_by">lub zaloguj się poprzez</string>
+    <string name="login">Zaloguj się</string>
+    <string name="confirm_password">Powtórz hasło</string>
+    <string name="register">Zarejestruj się</string>
 
 </resources>

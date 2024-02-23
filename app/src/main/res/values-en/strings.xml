@@ -14,7 +14,7 @@
     <string name="field_question">Question</string>
     <string name="field_answer">Answer</string>
     <string name="submit_button">Next</string>
-    <string name="sign_in">Sign in</string>
+    <string name="sign_in">Sign in with google</string>
     <string name="game_join_button">Join the game</string>
     <string name="game_description">Short description about game</string>
     <string name="add">Add</string>
@@ -29,4 +29,16 @@
     <string name="Join_to_the_game">Join to the game</string>
     <string name="floating_button_fields">Add new field</string>
     <string name="floating_button_games">Add new game</string>
+    <string name="Logout">Logout</string>
+    <string name="name_and_surname">Name and surname</string>
+    <string name="search">Search</string>
+    <string name="delete">Delete</string>
+    <string name="level">Level</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_up">Don\'t have an account? Register</string>
+    <string name="or_login_by">or login with</string>
+    <string name="login">Login</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="register">Register</string>
 </resources>

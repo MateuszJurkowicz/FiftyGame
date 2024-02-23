@@ -19,6 +19,7 @@ class SignInActivity : AppCompatActivity() {
     companion object {
         private const val RC_SIGN_IN = 15
     }
+
     private lateinit var mUserViewModel: UserViewModel
     private lateinit var mAuth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
@@ -28,6 +29,9 @@ class SignInActivity : AppCompatActivity() {
         binding = ActivitySignInBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        supportActionBar?.hide()
+
 
         mUserViewModel = ViewModelProvider(this)[UserViewModel::class.java]
 
@@ -39,8 +43,12 @@ class SignInActivity : AppCompatActivity() {
         googleSignInClient = GoogleSignIn.getClient(this, gso)
         mAuth = FirebaseAuth.getInstance()
 
-        binding.signInButton.setOnClickListener {
+        binding.googleSignInButton.setOnClickListener {
             signIn()
+        }
+        binding.signupTextView.setOnClickListener {
+            val signUpIntent = Intent(this, SignUpActivity::class.java)
+            startActivity(signUpIntent)
         }
     }
 
