@@ -31,7 +31,7 @@ class UserProfileFragment : Fragment() {
         val user = mAuth.currentUser
 
 
-        binding.profileName.text = user?.displayName
+        binding.profileName.text = user?.email
         Glide.with(this).load(user?.photoUrl).into(binding.profileImage)
 
         binding.signOutButton.setOnClickListener {

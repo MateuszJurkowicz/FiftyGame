@@ -28,7 +28,7 @@
         android:contentDescription="@string/floating_button_games"
         android:focusable="true"
         android:src="@drawable/ic_add"
-        app:backgroundTint="@color/card_field_color"
+        app:backgroundTint="@color/dominant_field_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

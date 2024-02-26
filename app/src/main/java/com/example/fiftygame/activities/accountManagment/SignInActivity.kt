@@ -1,4 +1,4 @@
-package com.example.fiftygame.activities
+package com.example.fiftygame.activities.accountManagment
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +8,7 @@ import android.util.Patterns
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.fiftygame.R
+import com.example.fiftygame.activities.CreateGamesActivity
 import com.example.fiftygame.data.viewmodels.UserViewModel
 import com.example.fiftygame.databinding.ActivitySignInBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -54,11 +55,15 @@ class SignInActivity : AppCompatActivity() {
             val signUpIntent = Intent(this, SignUpActivity::class.java)
             startActivity(signUpIntent)
         }
+        binding.forgotPasswordTextView.setOnClickListener {
+            val resetPasswordIntent = Intent(this, ResetPasswordActivity::class.java)
+            startActivity(resetPasswordIntent)
+        }
 
         binding.loginButton.setOnClickListener {
-            val email = binding.signInEmailEditText.text.toString()
-            val password = binding.signInPasswordEditText.text.toString()
-            if (checkAllFields()) {
+            val email = binding.signInEmailEditText.text.toString().trim()
+            val password = binding.signInPasswordEditText.text.toString().trim()
+            if (checkAllFields(email, password)) {
                 mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
                     if (it.isSuccessful) {
                         Toast.makeText(this, "Pomyślnie zalogowano!", Toast.LENGTH_LONG).show()
@@ -119,9 +124,7 @@ class SignInActivity : AppCompatActivity() {
 
     }
 
-    private fun checkAllFields(): Boolean {
-        val email = binding.signInEmailEditText.text.toString()
-        val password = binding.signInPasswordEditText.text.toString()
+    private fun checkAllFields(email: String, password: String): Boolean {
 
         if (email.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             binding.signInEmailTextView.error = null

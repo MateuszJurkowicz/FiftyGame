@@ -2,7 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="card_field_color">#2196FF</color>
+    <color name="dominant_field_color">#218CFF</color>
     <color name="gradient_end_color">#2196DC</color>
+    <color name="text_blue_color">#2178DC</color>
     <color name="access_color_card_view">#3F8F42</color>
 </resources>

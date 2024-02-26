@@ -734,3 +734,11 @@ i
 Kapp/src/main/java/com/example/fiftygame/data/repositories/GameRepository.kt,0\2\029abbc3de19b40cd0bda88aac5d742d4a335c77
 t
 Dapp/src/main/java/com/example/fiftygame/activities/SignUpActivity.kt,a\6\a6adab14896282d99755bfd5868d564e46cd3518
+{
+Kapp/src/main/java/com/example/fiftygame/activities/ResetPasswordActivity.kt,8\4\843c0dbc4f007264212b10ffd7da9c0d69468edd
+…
+Uapp/src/main/java/com/example/fiftygame/activities/accountManagment/SignInActivity.kt,1\2\12b582659243d92fcece2e7105b6360950fb0a1a
+…
+Uapp/src/main/java/com/example/fiftygame/activities/accountManagment/SignUpActivity.kt,6\8\6852f3233ed7d9aaf0f62fae45e0e64f077968b5
+Œ
+\app/src/main/java/com/example/fiftygame/activities/accountManagment/ResetPasswordActivity.kt,d\f\dfff9aeeac22a918599e0bbbe18f4572f1b08bd3

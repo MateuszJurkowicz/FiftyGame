@@ -1,4 +1,4 @@
-package com.example.fiftygame.activities
+package com.example.fiftygame.activities.accountManagment
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,7 +6,6 @@ import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.example.fiftygame.R
 import com.example.fiftygame.data.viewmodels.UserViewModel
 import com.example.fiftygame.databinding.ActivitySignUpBinding
 import com.google.firebase.Firebase
@@ -30,9 +29,9 @@ class SignUpActivity : AppCompatActivity() {
         mUserViewModel = ViewModelProvider(this)[UserViewModel::class.java]
 
         binding.registerButton.setOnClickListener {
-            val email = binding.signUpEmailEditText.text.toString()
-            val password = binding.signUpPasswordEditText.text.toString()
-            if (checkAllFields()) {
+            val email = binding.signUpEmailEditText.text.toString().trim()
+            val password = binding.signUpPasswordEditText.text.toString().trim()
+            if (checkAllFields(email, password)) {
                 mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
                     if (it.isSuccessful) {
                         Toast.makeText(this, "Konto zarejestrowane pomyślnie!", Toast.LENGTH_SHORT).show()
@@ -47,9 +46,7 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
-    private fun checkAllFields(): Boolean {
-        val email = binding.signUpEmailEditText.text.toString()
-        val password = binding.signUpPasswordEditText.text.toString()
+    private fun checkAllFields(email: String, password: String): Boolean {
         val confirmPassword = binding.signUpConfirmPasswordEditText.text.toString()
 
         if (email.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()) {

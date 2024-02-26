@@ -44,7 +44,7 @@ class GameListFieldsAdapter(game: Game, options: FirestoreRecyclerOptions<Field>
         } else {
             // Jeśli nie, przywróć domyślny kolor tła
             holder.itemView.findViewById<CardView>(R.id.field_CardView)
-                .setCardBackgroundColor(holder.itemView.context.getColor(R.color.card_field_color))
+                .setCardBackgroundColor(holder.itemView.context.getColor(R.color.dominant_field_color))
         }
 
         holder.itemView.findViewById<TextView>(R.id.field_number).setOnClickListener {

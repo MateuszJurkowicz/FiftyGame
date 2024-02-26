@@ -42,10 +42,12 @@
     <string name="level">Level</string>
     <string name="email">Email</string>
     <string name="password">Hasło</string>
-    <string name="sign_up">Nie masz konta? Zarejestruj się</string>
+    <string name="sign_up">Zarejestruj się</string>
     <string name="or_login_by">lub zaloguj się poprzez</string>
     <string name="login">Zaloguj się</string>
     <string name="confirm_password">Powtórz hasło</string>
     <string name="register">Zarejestruj się</string>
+    <string name="forgot_password">Przypomnij hasło</string>
+    <string name="send">Wyślij</string>
 
 </resources>
