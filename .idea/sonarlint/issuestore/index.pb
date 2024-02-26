@@ -742,3 +742,5 @@ Uapp/src/main/java/com/example/fiftygame/activities/accountManagment/SignInActiv
 Uapp/src/main/java/com/example/fiftygame/activities/accountManagment/SignUpActivity.kt,6\8\6852f3233ed7d9aaf0f62fae45e0e64f077968b5
 Œ
 \app/src/main/java/com/example/fiftygame/activities/accountManagment/ResetPasswordActivity.kt,d\f\dfff9aeeac22a918599e0bbbe18f4572f1b08bd3
+t
+Dapp/src/main/java/com/example/fiftygame/activities/ChoiceActivity.kt,9\b\9b82d659b2508fa1379cc7ce738b65c18362274d

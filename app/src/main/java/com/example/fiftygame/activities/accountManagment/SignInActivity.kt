@@ -8,6 +8,7 @@ import android.util.Patterns
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.fiftygame.R
+import com.example.fiftygame.activities.ChoiceActivity
 import com.example.fiftygame.activities.CreateGamesActivity
 import com.example.fiftygame.data.viewmodels.UserViewModel
 import com.example.fiftygame.databinding.ActivitySignInBinding
@@ -67,9 +68,8 @@ class SignInActivity : AppCompatActivity() {
                 mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
                     if (it.isSuccessful) {
                         Toast.makeText(this, "Pomyślnie zalogowano!", Toast.LENGTH_LONG).show()
-                        val intent = Intent(this, CreateGamesActivity::class.java)
+                        val intent = Intent(this, ChoiceActivity::class.java)
                         startActivity(intent)
-                        finish()
                     } else {
                         Toast.makeText(this, "Coś poszło nie tak!", Toast.LENGTH_LONG).show()
                         Log.e("error: ", it.exception.toString())
@@ -110,17 +110,15 @@ class SignInActivity : AppCompatActivity() {
     private fun firebaseAuthWithGoogle(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         mAuth.signInWithCredential(credential).addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    mAuth.currentUser?.let { mUserViewModel.addUser(it.uid, it.email, it.displayName) }
-                    Log.d("SignInActivity", "signInWithCredential:success")
-                    val intent = Intent(this, CreateGamesActivity::class.java)
-                    startActivity(intent)
-                    finish()
-
-                } else {
-                    Log.d("SignInActivity", "signInWithCredential:failure")
-                }
+            if (task.isSuccessful) {
+                mAuth.currentUser?.let { mUserViewModel.addUser(it.uid, it.email, it.displayName) }
+                Log.d("SignInActivity", "signInWithCredential:success")
+                val intent = Intent(this, ChoiceActivity::class.java)
+                startActivity(intent)
+            } else {
+                Log.d("SignInActivity", "signInWithCredential:failure")
             }
+        }
 
     }
 
