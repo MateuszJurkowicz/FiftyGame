@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.util.Patterns
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.fiftygame.R
 import com.example.fiftygame.data.viewmodels.UserViewModel
@@ -12,8 +14,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.auth.auth
 
 class SignInActivity : AppCompatActivity() {
     companion object {
@@ -41,7 +45,7 @@ class SignInActivity : AppCompatActivity() {
             .build()
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
-        mAuth = FirebaseAuth.getInstance()
+        mAuth = Firebase.auth
 
         binding.googleSignInButton.setOnClickListener {
             signIn()
@@ -49,6 +53,24 @@ class SignInActivity : AppCompatActivity() {
         binding.signupTextView.setOnClickListener {
             val signUpIntent = Intent(this, SignUpActivity::class.java)
             startActivity(signUpIntent)
+        }
+
+        binding.loginButton.setOnClickListener {
+            val email = binding.signInEmailEditText.text.toString()
+            val password = binding.signInPasswordEditText.text.toString()
+            if (checkAllFields()) {
+                mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        Toast.makeText(this, "Pomyślnie zalogowano!", Toast.LENGTH_LONG).show()
+                        val intent = Intent(this, CreateGamesActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        Toast.makeText(this, "Coś poszło nie tak!", Toast.LENGTH_LONG).show()
+                        Log.e("error: ", it.exception.toString())
+                    }
+                }
+            }
         }
     }
 
@@ -82,8 +104,7 @@ class SignInActivity : AppCompatActivity() {
 
     private fun firebaseAuthWithGoogle(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
-        mAuth.signInWithCredential(credential)
-            .addOnCompleteListener(this) { task ->
+        mAuth.signInWithCredential(credential).addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     mAuth.currentUser?.let { mUserViewModel.addUser(it.uid, it.email, it.displayName) }
                     Log.d("SignInActivity", "signInWithCredential:success")
@@ -96,5 +117,26 @@ class SignInActivity : AppCompatActivity() {
                 }
             }
 
+    }
+
+    private fun checkAllFields(): Boolean {
+        val email = binding.signInEmailEditText.text.toString()
+        val password = binding.signInPasswordEditText.text.toString()
+
+        if (email.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            binding.signInEmailTextView.error = null
+        } else {
+            binding.signInEmailTextView.error = "Check email format"
+            return false
+        }
+
+        if (password.isNotEmpty()) {
+            binding.signInPasswordTextView.error = null
+        } else {
+            binding.signInPasswordTextView.error = "This is required field"
+            return false
+        }
+
+        return true
     }
 }
