@@ -318,8 +318,6 @@ l
 <app/src/main/java/com/example/fiftygame/data/models/Field.kt,5\3\5317dbac139e58c6d4e61cda28d96c8e4beb2777
 x
 Happ/src/main/java/com/example/fiftygame/data/viewmodels/GameViewModel.kt,b\4\b43370b478196531645290d49914c5957e856e04
-t
-Dapp/src/main/java/com/example/fiftygame/activities/SignInActivity.kt,4\c\4c65aa4bbcef71371157b29b457740a3e1da04bd
 x
 Happ/src/main/java/com/example/fiftygame/fragments/UserProfileFragment.kt,6\f\6f7db2b7cad4f9dace975701693221fd6dd81a72
 r
@@ -732,10 +730,6 @@ i
 9app/src/main/java/com/example/fiftygame/data/Firestore.kt,7\5\75dcbc2571fb80082c2ec1c571602cb9f9c09461
 {
 Kapp/src/main/java/com/example/fiftygame/data/repositories/GameRepository.kt,0\2\029abbc3de19b40cd0bda88aac5d742d4a335c77
-t
-Dapp/src/main/java/com/example/fiftygame/activities/SignUpActivity.kt,a\6\a6adab14896282d99755bfd5868d564e46cd3518
-{
-Kapp/src/main/java/com/example/fiftygame/activities/ResetPasswordActivity.kt,8\4\843c0dbc4f007264212b10ffd7da9c0d69468edd
 …
 Uapp/src/main/java/com/example/fiftygame/activities/accountManagment/SignInActivity.kt,1\2\12b582659243d92fcece2e7105b6360950fb0a1a
 …
@@ -744,3 +738,13 @@ Uapp/src/main/java/com/example/fiftygame/activities/accountManagment/SignUpActiv
 \app/src/main/java/com/example/fiftygame/activities/accountManagment/ResetPasswordActivity.kt,d\f\dfff9aeeac22a918599e0bbbe18f4572f1b08bd3
 t
 Dapp/src/main/java/com/example/fiftygame/activities/ChoiceActivity.kt,9\b\9b82d659b2508fa1379cc7ce738b65c18362274d
+s
+Capp/src/main/java/com/example/fiftygame/fragments/AvatarDialog.java,a\b\abe8ba081dba65a3be377dfe275ce36fc11a0b6c
+y
+Iapp/src/main/java/com/example/fiftygame/fragments/AvatarDialogFragment.kt,1\3\130021b5c66196fc8c10777978bdc1fc1755dc63
+s
+Capp/src/main/java/com/example/fiftygame/fragments/AvatarsAdapter.kt,e\b\eb85f1503d23df6f03e939058a775b320546bf78
+z
+Japp/src/main/java/com/example/fiftygame/fragments/AvatarsDialogFragment.kt,0\b\0b1f1d9e68d830fa0075ffed177910ab1816d822
+m
+=app/src/main/java/com/example/fiftygame/data/models/Avatar.kt,3\a\3ab400c9928c40f161484e031d9ed28807e48df4

@@ -49,5 +49,7 @@
     <string name="register">Zarejestruj się</string>
     <string name="forgot_password">Przypomnij hasło</string>
     <string name="send">Wyślij</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

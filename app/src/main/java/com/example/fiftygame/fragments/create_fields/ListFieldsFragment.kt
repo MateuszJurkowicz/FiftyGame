@@ -28,9 +28,9 @@ import com.google.firebase.firestore.Query
 class ListFieldsFragment : Fragment(), SearchView.OnQueryTextListener, MenuProvider {
     private val args by navArgs<ListFieldsFragmentArgs>()
     private lateinit var mFieldViewModel: FieldViewModel
-    private lateinit var adapter: ListFieldsAdapter
-    private var _binding: FragmentListFieldsBinding? = null
-    private val binding get() = _binding!!
+        private lateinit var adapter: ListFieldsAdapter
+        private var _binding: FragmentListFieldsBinding? = null
+        private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {

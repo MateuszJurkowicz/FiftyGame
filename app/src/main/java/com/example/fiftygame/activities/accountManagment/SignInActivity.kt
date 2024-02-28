@@ -41,10 +41,7 @@ class SignInActivity : AppCompatActivity() {
 
         mUserViewModel = ViewModelProvider(this)[UserViewModel::class.java]
 
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.webId))
-            .requestEmail()
-            .build()
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken(getString(R.string.webId)).requestEmail().build()
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
         mAuth = Firebase.auth
