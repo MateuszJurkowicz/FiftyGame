@@ -739,10 +739,6 @@ Uapp/src/main/java/com/example/fiftygame/activities/accountManagment/SignUpActiv
 t
 Dapp/src/main/java/com/example/fiftygame/activities/ChoiceActivity.kt,9\b\9b82d659b2508fa1379cc7ce738b65c18362274d
 s
-Capp/src/main/java/com/example/fiftygame/fragments/AvatarDialog.java,a\b\abe8ba081dba65a3be377dfe275ce36fc11a0b6c
-y
-Iapp/src/main/java/com/example/fiftygame/fragments/AvatarDialogFragment.kt,1\3\130021b5c66196fc8c10777978bdc1fc1755dc63
-s
 Capp/src/main/java/com/example/fiftygame/fragments/AvatarsAdapter.kt,e\b\eb85f1503d23df6f03e939058a775b320546bf78
 z
 Japp/src/main/java/com/example/fiftygame/fragments/AvatarsDialogFragment.kt,0\b\0b1f1d9e68d830fa0075ffed177910ab1816d822

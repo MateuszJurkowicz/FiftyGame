@@ -30,7 +30,6 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/sign_in_email_textView"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -49,7 +48,6 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/sign_in_password_textView"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"

@@ -9,66 +9,97 @@
 
     <ImageView
         android:id="@+id/profileImage"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
         android:layout_marginTop="50dp"
         android:adjustViewBounds="false"
-        android:contentDescription="Zdjęcie profilowe"
+        android:contentDescription="@string/avatar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/profile_avatar" />
 
 
-    <ImageView
+    <ImageButton
         android:id="@+id/editImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="-25dp"
         android:layout_marginTop="-25dp"
-        android:src="@drawable/ic_edit"
         android:background="@drawable/circle_background"
+        android:contentDescription="@string/edit_avatar"
+        android:src="@drawable/ic_edit"
         app:layout_constraintStart_toEndOf="@+id/profileImage"
-        app:layout_constraintTop_toBottomOf="@+id/profileImage" />
+        app:layout_constraintTop_toBottomOf="@+id/profileImage"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/profileNameTextView"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="74dp"
         android:layout_marginTop="50dp"
-        android:hint="Nazwa użytkownika"
+        android:layout_marginEnd="74dp"
+        android:hint="@string/username"
         app:counterEnabled="true"
         app:counterMaxLength="20"
-        app:endIconDrawable="@drawable/ic_check"
-        app:endIconMode="custom"
+        app:endIconDrawable="@drawable/ic_clear"
+        app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileImage">
+        app:layout_constraintTop_toBottomOf="@+id/profileImage"
+        app:startIconDrawable="@drawable/ic_profile">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/profileNameEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:maxLength="20"/>
+            android:maxLength="20" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <ImageButton
+        android:id="@+id/profileNameButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
+        android:src="@drawable/ic_arrow_forward"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/profileNameTextView"
+        android:contentDescription="@string/update_nick" />
+
+
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/profilePasswordTextView"
-        android:layout_width="300dp"
+        android:id="@+id/profileNewPasswordTextView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="74dp"
         android:layout_marginTop="20dp"
-        android:hint="Nowe hasło"
-        app:endIconDrawable="@drawable/ic_check"
-        app:endIconMode="custom"
+        android:layout_marginEnd="74dp"
+        app:startIconDrawable="@drawable/ic_lock"
+        android:hint="@string/new_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileNameTextView">
+        app:layout_constraintTop_toBottomOf="@+id/profileNameTextView"
+        app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/profilePasswordEditText"
+            android:id="@+id/profileNewPasswordEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </com.google.android.material.textfield.TextInputLayout>
+
+
+    <ImageButton
+        android:id="@+id/profilePasswordButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
+        android:contentDescription="@string/update_password"
+        android:src="@drawable/ic_arrow_forward"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/profileNewPasswordTextView" />
 
 
     <androidx.appcompat.widget.AppCompatButton

@@ -3,6 +3,7 @@ package com.example.fiftygame.fragments
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,25 +14,18 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.fiftygame.R
 import com.example.fiftygame.activities.accountManagment.SignInActivity
-import com.example.fiftygame.data.models.Avatar
 import com.example.fiftygame.data.viewmodels.UserViewModel
 import com.example.fiftygame.databinding.FragmentUserProfileBinding
-import com.firebase.ui.firestore.FirestoreRecyclerOptions
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.userProfileChangeRequest
-import com.google.firebase.firestore.FirebaseFirestore
 
 class UserProfileFragment : Fragment(), AvatarsDialogFragment.AvatarSelectionListener {
     private lateinit var mAuth: FirebaseAuth
     private var _binding: FragmentUserProfileBinding? = null
     private val binding get() = _binding!!
-    private lateinit var dialog: BottomSheetDialog
-    private lateinit var adapter: AvatarsAdapter
     private lateinit var mUserViewModel: UserViewModel
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentUserProfileBinding.inflate(inflater, container, false)
         val view = binding.root
@@ -53,7 +47,7 @@ class UserProfileFragment : Fragment(), AvatarsDialogFragment.AvatarSelectionLis
             Glide.with(this).load(user.photoUrl).into(binding.profileImage)
         }
 
-        binding.profileNameTextView.setEndIconOnClickListener {
+        binding.profileNameButton.setOnClickListener {
             val profileUpdates = userProfileChangeRequest {
                 displayName = binding.profileNameEditText.text.toString().trim()
             }
@@ -63,6 +57,19 @@ class UserProfileFragment : Fragment(), AvatarsDialogFragment.AvatarSelectionLis
                 } else {
                     Toast.makeText(requireContext(), "Coś poszło nie tak", Toast.LENGTH_LONG).show()
                     Log.d("error updateProfile: ", it.exception.toString())
+                }
+            }
+        }
+        binding.profilePasswordButton.setOnClickListener {
+            val newPassword = binding.profileNewPasswordEditText.text.toString().trim()
+            if (checkPassword(newPassword)) {
+                user?.updatePassword(newPassword)?.addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        Toast.makeText(requireContext(), "Pomyślnie zaktualizowano hasło", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(requireContext(), "Coś poszło nie tak", Toast.LENGTH_LONG).show()
+                        Log.d("error updatePassword: ", it.exception.toString())
+                    }
                 }
             }
         }
@@ -88,9 +95,9 @@ class UserProfileFragment : Fragment(), AvatarsDialogFragment.AvatarSelectionLis
         return view
     }
 
-    override fun onAvatarSelected(newPhotoUrl: String) {
+    override fun onAvatarSelected(photoUrl: String) {
         val profileUpdates = userProfileChangeRequest {
-            photoUri = newPhotoUrl.toUri()
+            photoUri = photoUrl.toUri()
         }
         mAuth.currentUser?.updateProfile(profileUpdates)?.addOnCompleteListener {
             if (it.isSuccessful) {
@@ -103,5 +110,20 @@ class UserProfileFragment : Fragment(), AvatarsDialogFragment.AvatarSelectionLis
         }
     }
 
+    private fun checkPassword(newPassword: String): Boolean {
+
+        if (newPassword.isNotEmpty() && newPassword.length > 6) {
+            binding.profileNewPasswordTextView.error = null
+        } else {
+            if (newPassword.isEmpty()) {
+                binding.profileNewPasswordTextView.error = "This is required field"
+            } else {
+                binding.profileNewPasswordTextView.error = "Password should be at least 6 characters long"
+            }
+            return false
+        }
+
+        return true
+    }
 
 }

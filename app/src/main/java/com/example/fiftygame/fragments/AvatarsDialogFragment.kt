@@ -23,8 +23,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class AvatarsDialogFragment : DialogFragment() {
     private lateinit var adapter: AvatarsAdapter
-    private var _binding: FragmentAvatarDialogBinding? = null
-    private val binding get() = _binding!!
     private var selectionListener: AvatarSelectionListener? = null
 
 
@@ -33,30 +31,6 @@ class AvatarsDialogFragment : DialogFragment() {
     }
 
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View {
-        // Inflate the layout for this fragment
-        _binding = FragmentAvatarDialogBinding.inflate(inflater, container, false)
-        val view = binding.root
-
-        //setupRecyclerView()
-
-
-
-        return view
-    }
-
-    private fun setupRecyclerView() {
-        val query = FirebaseFirestore.getInstance().collection("images")
-
-        val options = FirestoreRecyclerOptions.Builder<Avatar>().setQuery(query, Avatar::class.java).build()
-
-        adapter = AvatarsAdapter(options)
-        val recyclerView = binding.avatarsRecyclerView
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = GridLayoutManager(requireContext(),3)
-    }
     override fun onStart() {
         super.onStart()
         adapter.startListening()
@@ -79,20 +53,17 @@ class AvatarsDialogFragment : DialogFragment() {
         adapter = AvatarsAdapter(options)
         recyclerView.adapter = adapter
 
-        return AlertDialog.Builder(requireContext())
-            .setView(dialogView)
-            .setPositiveButton("Wybierz") { _, _ ->
+        return AlertDialog.Builder(requireContext()).setView(dialogView).setPositiveButton("Wybierz") { _, _ ->
                 val selectedAvatar = adapter.getSelectedAvatar()
                 selectedAvatar.let {
                     selectionListener?.onAvatarSelected(selectedAvatar.imageUrl)
                 }
-            }
-            .setNegativeButton("Anuluj") {_, _ ->
+            }.setNegativeButton("Anuluj") { _, _ ->
                 dismiss()
-            }
-            .create()
+            }.create()
 
     }
+
     fun setAvatarSelectionListener(listener: AvatarSelectionListener) {
         selectionListener = listener
     }

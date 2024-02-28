@@ -51,5 +51,12 @@
     <string name="send">Wyślij</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="edit_avatar">Edytuj zdjęcie</string>
+    <string name="update_nick">Zmień nick</string>
+    <string name="old_password">Stare hasło</string>
+    <string name="new_password">Nowe hasło</string>
+    <string name="update_password">Resetuj hasło</string>
+    <string name="username">Nazwa użytkownika</string>
+    <string name="avatar">Zdjęcie profilowe</string>
 
 </resources>

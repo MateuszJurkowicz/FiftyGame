@@ -51,10 +51,6 @@ class AvatarsAdapter(options: FirestoreRecyclerOptions<Avatar>) :
             // Powiadomienie adaptera o zmianie danych
             notifyItemChanged(selectedPosition)
         }
-        /*val action = ListFieldsFragmentDirections.actionListFieldsFragmentToUpdateFieldFragment(
-            currentItem, currentGame
-        )
-        holder.itemView.findNavController().navigate(action)*/
     }
 
     fun getSelectedAvatar(): Avatar {
