@@ -4,6 +4,7 @@ import android.content.ContentValues.TAG
 import android.util.Log
 import com.example.fiftygame.data.models.Field
 import com.example.fiftygame.data.models.Game
+import com.example.fiftygame.data.models.Player
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.firestore
@@ -115,4 +116,50 @@ class Firestore {
         }
         return keywords
     }
+
+    suspend fun readPlayer(email: String?): Player {
+        val querySnapshot = usersColRef
+            .whereEqualTo("email", email)
+            .get()
+            .await()
+
+        return querySnapshot.toObjects(Player::class.java).firstOrNull()!!
+    }
+
+    fun addPlayer(currentGame: Game, player: Player) {
+        val gameId = currentGame.gameId.toString()
+        val gameRef = gamesColRef.document(gameId)
+
+        gameRef.get().addOnSuccessListener { documentSnapshot ->
+            if (documentSnapshot.exists()) {
+                val gameData = documentSnapshot.toObject(Game::class.java)
+
+                val updatedGamePlayers = gameData?.gamePlayers?.toMutableList()
+
+                // Sprawdzenie, czy gracz jest już na liście
+                val isPlayerOnList = updatedGamePlayers?.any { it.email == player.email }
+
+                if (!isPlayerOnList!!) {
+                    updatedGamePlayers.add(player)
+
+                    gameRef.update("gamePlayers", updatedGamePlayers)
+                        .addOnSuccessListener {
+                            Log.d(TAG, "Player added successfully")
+                        }
+                        .addOnFailureListener { exception ->
+                            Log.e(TAG, "Error adding player", exception)
+                        }
+                } else {
+                    Log.e(TAG, "Player with email ${player.email} is already on the list")
+                }
+            } else {
+                Log.e(TAG, "Game with ID $gameId does not exist")
+            }
+        }.addOnFailureListener { exception ->
+            Log.e(TAG, "Error retrieving game", exception)
+        }
+    }
+
+
+
 }

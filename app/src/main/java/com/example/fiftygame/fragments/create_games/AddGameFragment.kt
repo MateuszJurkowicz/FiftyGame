@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.fiftygame.R
 import com.example.fiftygame.data.models.Game
+import com.example.fiftygame.data.models.Player
 import com.example.fiftygame.data.viewmodels.GameViewModel
 import com.example.fiftygame.databinding.FragmentAddGameBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -43,7 +44,7 @@ class AddGameFragment : Fragment() {
         val pin: Int = (100000..999999).random()
         val description = binding.descriptionEditText.text.toString()
         if (inputCheck(pin.toString(), description)) {
-            val game = Game("0", pin, description, mAuth.currentUser?.email)
+            val game = Game("0", pin, description, mAuth.currentUser?.email, listOf(Player()))
             mGameViewModel.addGame(game)
             Toast.makeText(requireContext(), "Pomyślnie dodano!", Toast.LENGTH_LONG).show()
             findNavController().navigate(R.id.action_addGameFragment_to_listGamesFragment)

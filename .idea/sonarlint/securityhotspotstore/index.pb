@@ -744,3 +744,5 @@ z
 Japp/src/main/java/com/example/fiftygame/fragments/AvatarsDialogFragment.kt,0\b\0b1f1d9e68d830fa0075ffed177910ab1816d822
 m
 =app/src/main/java/com/example/fiftygame/data/models/Avatar.kt,3\a\3ab400c9928c40f161484e031d9ed28807e48df4
+m
+=app/src/main/java/com/example/fiftygame/data/models/Player.kt,b\d\bd41792795532c7b8eb362b352e6d72a6c390c77

@@ -2,6 +2,7 @@ package com.example.fiftygame.data.repositories
 
 import com.example.fiftygame.data.Firestore
 import com.example.fiftygame.data.models.Game
+import com.example.fiftygame.data.models.Player
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.Query
 
@@ -14,6 +15,10 @@ class GameRepository(private val firestore: Firestore, mAuth: FirebaseAuth) {
 
     suspend fun readGameWithPin(pin: Int): Game {
         return firestore.readGameWithPin(pin)
+    }
+
+    fun addPlayer(currentGame: Game, player: Player) {
+        return firestore.addPlayer(currentGame, player)
     }
 
 

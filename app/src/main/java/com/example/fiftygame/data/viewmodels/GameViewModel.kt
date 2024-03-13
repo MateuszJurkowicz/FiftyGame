@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.fiftygame.data.Firestore
 import com.example.fiftygame.data.models.Game
+import com.example.fiftygame.data.models.Player
 import com.example.fiftygame.data.repositories.GameRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.Query
@@ -31,8 +32,9 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
         return gameRepository.readGameWithPin(pin)
     }
 
-
-
+    fun addPlayer(currentGame: Game, player: Player) {
+        return gameRepository.addPlayer(currentGame, player)
+    }
 
 
 }

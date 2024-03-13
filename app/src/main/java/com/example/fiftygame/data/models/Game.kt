@@ -8,8 +8,9 @@ data class Game(
     var gameId: String?,
     val pin: Int,
     val description: String?,
-    val ownerEmail: String?
+    val ownerEmail: String?,
+    var gamePlayers: List<Player>
 
 ) : Parcelable {
-    constructor() : this("0", 0, "", "")
+    constructor() : this("0", 0, "", "", listOf(Player()))
 }
