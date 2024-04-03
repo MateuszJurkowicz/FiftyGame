@@ -308,8 +308,6 @@ Q.idea/sonarlint/securityhotspotstore/9/a/9aed88f31eac276604c6355c1adcc0bce1f80f
 Q.idea/sonarlint/securityhotspotstore/f/7/f7819ea138c33fec28e7e536cb2de34db38fc121,e\5\e5babc9c4e98545e8c1fa7856f821fec6cf0d876
 w
 G.idea/sonarlint/issuestore/c/7/c76499eb523c29a11219d64213c35fc7c0f1498d,2\4\24181caeb3d2b4ed6224096362649a8561664dda
-x
-Happ/src/main/java/com/example/fiftygame/data/relations/GameWithFields.kt,f\9\f9c148a52995d198f40e1f075596a5357ce1a95c
 y
 Iapp/src/main/java/com/example/fiftygame/data/viewmodels/FieldViewModel.kt,9\2\9279d74ae3b427d40dabdb2b30ed92766363d4f8
 k
@@ -720,8 +718,6 @@ Japp/src/main/java/com/example/fiftygame/fragments/game/JoinGameFragment.kt,c\c
 Lapp/src/main/java/com/example/fiftygame/data/repositories/FieldRepository.kt,3\8\3898df3d4ae756cfd4c2fd66aa1a1b5e55cee70c
 €
 Papp/src/main/java/com/example/fiftygame/data/repositories/DataStoreRepository.kt,c\b\cb100b7a7ba61d815c948f925a8efd2070433ef5
-z
-Japp/src/main/java/com/example/fiftygame/data/viewmodels/PlayerViewModel.kt,b\1\b148e23ef4b51cb88f382130927b26ab3d131cc1
 s
 Capp/src/main/java/com/example/fiftygame/data/models/FieldStorage.kt,0\3\0328adb8429d7d17914bf5bcbaabe40133991717
 x
@@ -746,3 +742,5 @@ m
 =app/src/main/java/com/example/fiftygame/data/models/Avatar.kt,3\a\3ab400c9928c40f161484e031d9ed28807e48df4
 m
 =app/src/main/java/com/example/fiftygame/data/models/Player.kt,b\d\bd41792795532c7b8eb362b352e6d72a6c390c77
+{
+Kapp/src/main/java/com/example/fiftygame/data/repositories/UserRepository.kt,1\b\1be168f4b29df7b21934d24cbeb0bdf11345077a

@@ -8,6 +8,7 @@ import com.example.fiftygame.data.models.Player
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.firestore
+import com.google.firebase.firestore.toObject
 import kotlinx.coroutines.tasks.await
 
 class Firestore {
@@ -126,40 +127,61 @@ class Firestore {
         return querySnapshot.toObjects(Player::class.java).firstOrNull()!!
     }
 
+    suspend fun readPlayerInGame(currentGame: Game, userId: String?): Player? {
+        val querySnapshot = gamesColRef.document(currentGame.gameId.toString()).collection("gamePlayers").document(userId.toString())
+            .get()
+            .await()
+
+        return querySnapshot.toObject(Player::class.java)
+    }
+
     fun addPlayer(currentGame: Game, player: Player) {
-        val gameId = currentGame.gameId.toString()
-        val gameRef = gamesColRef.document(gameId)
-
-        gameRef.get().addOnSuccessListener { documentSnapshot ->
-            if (documentSnapshot.exists()) {
-                val gameData = documentSnapshot.toObject(Game::class.java)
-
-                val updatedGamePlayers = gameData?.gamePlayers?.toMutableList()
-
-                // Sprawdzenie, czy gracz jest już na liście
-                val isPlayerOnList = updatedGamePlayers?.any { it.email == player.email }
-
-                if (!isPlayerOnList!!) {
-                    updatedGamePlayers.add(player)
-
-                    gameRef.update("gamePlayers", updatedGamePlayers)
+        gamesColRef.document(currentGame.gameId.toString()).collection("gamePlayers").document(player.userId.toString())
+            .get()
+            .addOnSuccessListener { documentSnapshot ->
+                if (documentSnapshot.exists()) {
+                    Log.d(TAG, "Player with ID ${player.userId} already exists in the game")
+                } else {
+                    // Dokument nie istnieje, dodaj nowego gracza
+                    gamesColRef.document(currentGame.gameId.toString()).collection("gamePlayers")
+                        .document(player.userId.toString())
+                        .set(player)
                         .addOnSuccessListener {
                             Log.d(TAG, "Player added successfully")
                         }
-                        .addOnFailureListener { exception ->
-                            Log.e(TAG, "Error adding player", exception)
+                        .addOnFailureListener { e ->
+                            Log.e(TAG, "Error adding player document", e)
                         }
-                } else {
-                    Log.e(TAG, "Player with email ${player.email} is already on the list")
                 }
-            } else {
-                Log.e(TAG, "Game with ID $gameId does not exist")
+
             }
-        }.addOnFailureListener { exception ->
-            Log.e(TAG, "Error retrieving game", exception)
-        }
+
     }
 
+    fun setLevel(playerId: String?, game: Game, newLevel: Int) {
+        gamesColRef.document(game.gameId.toString())
+            .collection("gamePlayers")
+            .document(playerId.toString())
+            .update("level", newLevel)
+            .addOnSuccessListener {
+                Log.d(TAG, "Player level updated successfully")
+            }
+            .addOnFailureListener { e ->
+                Log.e(TAG, "Error updating player level", e)
+            }
+
+    }
+
+    suspend fun getLevel(playerId: String?, game: Game): Int {
+       /* return gamesColRef.document(game.gameId.toString())
+            .collection("gamePlayers")
+            .document(playerId.toString())
+            .get()
+            .await()
+            .toObject(Player::class.java)?.level ?: error("Document doesn't exists")*/
+        return 1
+
+    }
 
 
 }

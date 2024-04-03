@@ -7,8 +7,8 @@ import kotlinx.parcelize.Parcelize
 data class Player(
     var email: String?,
     val name: String?,
-    val userId: String?,
-    val level: Int
+    var userId: String?,
+    var level: Int
 
 ) : Parcelable {
     constructor() : this("", "", "", 1)

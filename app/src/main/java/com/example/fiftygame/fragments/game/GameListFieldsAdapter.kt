@@ -64,7 +64,6 @@ class GameListFieldsAdapter(game: Game, options: FirestoreRecyclerOptions<Field>
     fun setLevel(level: Int?) {
         playerLevel = level
         clickablePosition = null
-        notifyDataSetChanged()
     }
 }
 

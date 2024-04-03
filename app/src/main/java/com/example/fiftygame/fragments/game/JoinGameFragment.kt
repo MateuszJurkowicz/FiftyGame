@@ -11,7 +11,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.fiftygame.data.viewmodels.GameViewModel
-import com.example.fiftygame.data.viewmodels.PlayerViewModel
 import com.example.fiftygame.data.viewmodels.UserViewModel
 import com.example.fiftygame.databinding.FragmentJoinGameBinding
 import com.google.firebase.Firebase
@@ -26,7 +25,6 @@ class JoinGameFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var mAuth: FirebaseAuth
     private lateinit var mGameViewModel: GameViewModel
-    private lateinit var mPlayerViewModel: PlayerViewModel
     private lateinit var mUserViewModel: UserViewModel
 
 
@@ -40,7 +38,6 @@ class JoinGameFragment : Fragment() {
         val user = mAuth.currentUser
 
         mGameViewModel = ViewModelProvider(this)[GameViewModel::class.java]
-        mPlayerViewModel = ViewModelProvider(this)[PlayerViewModel::class.java]
         mUserViewModel = ViewModelProvider(this)[UserViewModel::class.java]
         binding.nameEditText.setText(user?.displayName)
 
@@ -89,7 +86,7 @@ class JoinGameFragment : Fragment() {
     }
 
     override fun onDestroy() {
-        mPlayerViewModel.setLevel(1)
+        //mPlayerViewModel.setLevel(1)
         Log.d("destroyview", "DESTROY")
         super.onDestroy()
     }
